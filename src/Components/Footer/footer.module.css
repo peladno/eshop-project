@@ -1,0 +1,57 @@
+/*Footer pagina app web*/
+
+.footer {
+  background: rgb(90,94,92);
+  background: linear-gradient(345deg, rgba(90,94,92,1) 18%, rgba(3,25,38,1) 18%);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top:auto; 
+  padding-top: 2rem;
+
+
+}
+.github {
+  color: #FFFF;
+  padding-right: 0.5rem;
+}
+
+.github:hover {
+  color:rgba(3,25,38,1);
+}
+
+.linkedin:hover {
+  color:rgba(3,25,38,1);
+}
+
+.linkedin {
+  color: #FFFF;
+  padding-right: 0.5rem;
+}
+
+.links li {
+  color: #FFFF;
+  list-style: none;
+  margin-top: 1rem;
+  margin-left: 3rem;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: row;
+  width: 120px;
+  align-items: center;
+}
+
+.links li:hover {
+  color:rgb(143, 140, 140);
+}
+
+.links p {
+  font-size: 3rem;
+}
+
+.icons {
+  display: flex;
+  justify-content:flex-end;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}

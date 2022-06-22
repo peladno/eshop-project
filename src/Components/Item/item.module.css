@@ -1,0 +1,31 @@
+.imageItem {
+  width: 180px;
+}
+
+/*Algunos estilos de tarjeta mas transicion de ellas*/
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 1rem !important;
+  box-shadow:  7px 7px 14px #969696 !important;
+  transition: transform .2s !important; 
+}
+
+
+
+  .cardItem:hover {
+    transform:scale(1.04);
+  }
+
+.cardItem p {
+  text-align: center;
+  font-size: clamp(1rem, 1vw, 1.2rem);
+}
+
+.cardItem Button {
+  border-radius: 3rem;
+}

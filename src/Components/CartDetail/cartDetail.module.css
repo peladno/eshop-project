@@ -1,0 +1,144 @@
+.cartContainer {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1.5rem;
+  min-height: calc(75vh - 35px);
+}
+
+.cartTitle {
+  font-size: clamp(2rem, 2.5vw, 4rem); 
+  text-align: left;
+  border-bottom: solid rgba(144, 139, 139, 0.215);
+  width:52vw;
+  padding-bottom: 1rem;
+  margin:1rem;
+}
+
+.cartList {
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 0.3fr 1fr 0.2fr;
+  width: 80vw;;
+  box-shadow:  7px 7px 14px #969696;
+}
+
+.cartNotification {
+  text-align: center;
+  color: rgb(144, 139, 139);
+  font-size: 2rem;
+  margin: 5rem;
+}
+
+.cartTotalSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0rem 8rem 1.5rem 8rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.cartTotalSection Button {
+  width: 200px;
+  margin: 0 0 1rem;
+  border-radius: 2rem;
+  background-color:#AF1B3F;
+}
+
+.cartTotalSection Button:hover {
+  background-color:#a84a62;
+}
+
+.cartItem {
+  display : flex;
+  justify-content:center;
+  align-items:center;
+  padding: 1rem;
+  border-bottom: solid rgba(144, 139, 139, 0.215);
+  flex-direction: column;
+  width:70vw;
+}
+
+.quantityItem {
+  text-align: center;
+}
+
+.priceItem {
+  text-align: center;
+}
+
+.cartItem img {
+  width:40vw;
+}
+
+.cartItem h2 {
+  text-align: center;
+}
+
+.cartItem p {
+  color: rgb(144, 139, 139);
+  font-size: clamp(1rem, 1vw, 1.2rem);
+  text-align: center;
+  margin: 0.5rem;
+}
+.delete {
+  font-size: 2rem;
+  margin: 1.5rem;
+}
+
+.cartTotalSection h3 { 
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.cartTotalSection p {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 1200px) {
+  .cartItem {
+    flex-direction: row; 
+    margin: 0rem 8rem;
+    width:50vw;
+    
+  }
+
+  .cartList {
+    width:70vw;
+  }
+
+  .cartItem img {
+    width: 10vw;
+    margin-right: 1rem;
+  }
+
+  .cartTotalSection {
+    width: 55vw;
+    align-items: flex-end;
+  }
+
+  .cartItem h2 {
+    width: 20%;
+    padding-right: 5rem;
+  }
+
+  .priceItem {
+    padding-right: 5rem;
+    width:10%;
+  }
+
+  .quantityItem {
+    padding-right: 5rem;
+    width:10%;
+  
+  }
+  
+
+}
