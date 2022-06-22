@@ -5,7 +5,7 @@
 To deploy this project run
 
 ```bash
-  git clone https://github.com/peladno/JavierPerezReact31140.git
+  git clone https://github.com/peladno/eshop-project.git
   npm install
   npm start
 ```
