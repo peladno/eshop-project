@@ -21,7 +21,7 @@ const ItemDetail = ({item, loading}) => {
 
   return (
     <>
-      {!loading ?
+      {loading ?
         <div className={styles.loadingContainer}>
           <Waveform className={styles.loading}
           size={80}

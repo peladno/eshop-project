@@ -7,14 +7,15 @@ import { Waveform } from "@uiball/loaders";
 
 const ItemListContainer = () => {
   const [item, setItem] = useState ([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   //useEffect que llama a los productos del API
   useEffect(() => {
+    setLoading(true)
     fetch('https://apicart.herokuapp.com/api/products')
     .then((response) => response.json())
-    .then((data) => setItem(data))
-    setLoading(false)
+    .then((data) => setItem(data)
+    ).finally(() => setLoading(false));
   }, []);
 
   return (
