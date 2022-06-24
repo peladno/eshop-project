@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from "react"; 
+import React, {useContext} from "react"; 
 import ItemList from "../ItemList/index.jsx";
 import styles  from "./itemListContainer.module.css";
 import { Waveform } from "@uiball/loaders";
+import { APIContext } from "../../Context/ApiContext.jsx";
 
 //contenedor de todos los productos
 
 const ItemListContainer = () => {
-  const [item, setItem] = useState ([]);
-  const [loading, setLoading] = useState(false);
-
-  //useEffect que llama a los productos del API
-  useEffect(() => {
-    setLoading(true)
-    fetch('https://apicart.herokuapp.com/api/products')
-    .then((response) => response.json())
-    .then((data) => setItem(data)
-    ).finally(() => setLoading(false));
-  }, []);
+  const {loading, item} = useContext(APIContext);
+  
 
   return (
       <div className={styles.itemListContainer}>

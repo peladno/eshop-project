@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
   //llamada a producto segun cambia el id
   useEffect(() => {
     setLoading(true);
-    fetch(`https://apicart.herokuapp.com/api/products/${id}`)
+    fetch("https://apicart.herokuapp.com/api/products/" + id)
       .then((response) => response.json())
       .then((data) => setItem(data)
       ).finally(() => setLoading(false));
