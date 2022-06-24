@@ -12,11 +12,25 @@ const ItemDetailContainer = () => {
   //llamada a producto segun cambia el id
   useEffect(() => {
     setLoading(true);
-    fetch("https://apicart.herokuapp.com/api/products/" + id)
-      .then((response) => response.json())
-      .then((data) => setItem(data)
-      ).finally(() => setLoading(false));
+    
+    const fetchData = async () => {
+      try {
+        const result = await fetch(
+          "https://apicart.herokuapp.com/api/products/" + id
+        );
+        const data = await result.json();
+        setItem(data);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [id]);
+
 
   return (
     <div className={styles.itemContainer}>
