@@ -16,3 +16,45 @@
   label: 'Label🏷️',
   timestamp: 'Aug-31-2022 19:24:38'
 }
+{
+  message: 'Error -2 - Ruta /login, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-09-2022 06:02:16'
+}
+{
+  message: 'Error -2 - Ruta /favicon.ico, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-09-2022 06:02:16'
+}
+{
+  message: 'Error -2 - Ruta /login, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-09-2022 06:02:23'
+}
+{
+  message: 'Error -2 - Ruta /, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-09-2022 06:02:50'
+}
+{
+  message: 'Error -2 - Ruta /login, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-09-2022 06:03:12'
+}
+{
+  message: 'Error -2 - Ruta /login-failure, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-09-2022 06:05:13'
+}
+{
+  message: 'Error -2 - Ruta /login-failure, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-09-2022 06:05:23'
+}

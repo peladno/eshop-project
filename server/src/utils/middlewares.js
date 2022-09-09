@@ -8,6 +8,14 @@ const ruteNotFound = (req, res, next) => {
     });
 }
 
+function isAuth(req, res, next) {
+    if (req.isAuthenticated()) {
+        next()
+    } else {
+        res.redirect('/login')
+    }
+}
+
 module.exports = {
-    ruteNotFound
+    ruteNotFound, isAuth
 }

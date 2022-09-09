@@ -1,16 +1,45 @@
-const mongoose = require('mongoose');
+const {
+	mongoose,
+	Schema,
+	model
+} = require('mongoose')
 
-const ProductModel = mongoose.model(
-    'products', 
-    new mongoose.Schema({
-        name: {type:String, required:true},
-        price: {type:Number, required:true},
-        description: {type:String, required:true},
-        image_url: {type:String},
-        code: {type:String, required:true},
-        stock: {type:Number, required:true},
-        timeStamp: {type:String, required:true},
-    })
-);
- 
-module.exports = ProductModel;
+const productsCollection = 'products'
+const ProductSchema = new Schema({
+	timestamp: {
+		type: String,
+		required: true
+	},
+	name: {
+		type: String,
+		required: true
+	},
+	description: {
+		type: String,
+		required: true
+	},
+	code: {
+		type: Number,
+		required: true
+	},
+	photo: {
+		type: String},
+	price: {
+		type: Number,
+		required: true,
+		default: 0
+	},
+	stock: {
+		type: Number,
+		required: true,
+		default: 0
+	}
+})
+
+
+const productModel = model(productsCollection, ProductSchema)
+
+const ContenedorMongo = require("../contenedores/mongoContainer")
+const productsDAO = new ContenedorMongo(productModel)
+
+module.exports = productsDAO

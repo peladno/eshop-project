@@ -10,21 +10,20 @@ const numCPUs = require("os").cpus().length;
 
 //config server
 const config = require("./src/utils/config");
-const { URL, URL2 } = config.mongoLocal;
+const { URL } = config.mongoLocal;
 const http = require("http");
 const app = express();
 const httpServer = http.createServer(app);
 const userRouter = require("./src/routers/user");
-const webRouter = require("./src/routers/web");
+const products = require("./src/routers/products");
 const { ruteNotFound } = require("./src/utils/middlewares");
 const logger = require("./src/logger/logger");
 
 //minimist
-const options = { default: { PORT: "8080", mode: "FORK" } };
+const options = { default: { port: config.PORT, mode: "FORK" } };
 const args = parseArgs(process.argv.slice(2), options);
-const PORT = args.PORT;
+const port = parseInt(args.port);
 const mode = args.mode.toUpperCase();
-
 
 //mongo
 const MongoStore = require("connect-mongo");
@@ -49,9 +48,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     store: new MongoStore({
-      mongoUrl: URL2,
+      mongoUrl: URL,
     }),
-    secret: "secret",
+    secret: config.PASS2,
     resave: false,
     saveUninitialized: false,
     rolling: true,
@@ -72,8 +71,8 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use("", userRouter);
-app.use("", webRouter);
+app.use("/", userRouter);
+app.use("/api/products", products);
 app.use(ruteNotFound);
 
 if (mode === "CLUSTER") {
@@ -96,7 +95,7 @@ if (mode === "CLUSTER") {
       cluster.fork();
     });
   } else {
-    const connectedServer = httpServer.listen(PORT, function () {
+    const connectedServer = httpServer.listen(port, function () {
       console.log(
         `websocket listen PORT ${
           connectedServer.address().port
@@ -107,7 +106,7 @@ if (mode === "CLUSTER") {
   }
 } else {
   //fork default mode
-  const connectedServer = httpServer.listen(PORT, function () {
+  const connectedServer = httpServer.listen(port, function () {
     console.log(
       `websocket listen PORT ${
         connectedServer.address().port

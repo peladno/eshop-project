@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-</head>
-<body>
-   <main>
-    <form action="/signup" method="post">
+  </head>
+  <body>
+    <main>
+      <form action="/signup" method="post">
         <label>Nombre</label>
-        <input type="text" name="username" placeholder="User">
-        <input type="text" name="name" placeholder="Name">
-        <input type="text" name="password" placeholder="Password">
-        <button type="submit">Entrar</button>
-    </form>
-   </main>
-   <input type="button" onclick="location.href='/login'" value="Login">
+        <input type="email" name="email" placeholder="email" />
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="password" placeholder="Password" />
+        <input type="text" name="age" placeholder="Age" />
+        <input type="text" name="address" placeholder="Adress" />
+        <input type="text" name="avatar" placeholder="Avatar" />
+        <input type="text" name="phone" placeholder="Phone">
 
-</body>
+        <button type="submit">Entrar</button>
+      </form>
+    </main>
+    <input type="button" onclick="location.href='/login'" value="Login" />
+  </body>
 </html>

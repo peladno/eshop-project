@@ -17,11 +17,10 @@ class ContainerMongo {
 
   async save(obj) {
     const date = new Date();
-    const actualDate = date.toLocaleDateString();
-    const actualTime = date.toLocaleTimeString();
+    const timeStamp = date.toLocaleString();
     const object = {
       ...obj,
-      timeStamp: `${actualDate} ${actualTime}`,
+      timeStamp,
     };
     const newProduct = new this.model(object);
     const Saved = await newProduct.save();
@@ -34,7 +33,7 @@ class ContainerMongo {
 
   async getByID(id) {
     try {
-      const search = await this.model.find({ _id: new ObjectId(id) });
+      const search = await this.model.find({ $eq: id });
       if (search.length === 0) {
         return { error: "product not found" };
       } else {
@@ -84,7 +83,7 @@ class ContainerMongo {
             name: product.name,
             price: product.price,
             description: product.description,
-            image_url: product.image_url,
+            avatar: product.avatar,
             code: product.code,
             stock: product.stock,
             timeStamp: timestamp,

@@ -7,7 +7,7 @@ function AdminForm() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [imageURL, setImageURL] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [code, setCode] = useState("");
   const [stock, setStock] = useState("");
 
@@ -15,7 +15,7 @@ function AdminForm() {
     name: name,
     price: price,
     description: description,
-    imageURL: imageURL,
+    avatar: avatar,
     code: code,
     stock: stock,
   };
@@ -83,10 +83,10 @@ function AdminForm() {
           <input
             className={styles.input}
             type="text"
-            name="imageURL"
-            value={imageURL}
+            name="avatar"
+            value={avatar}
             onChange={(e) => {
-              setImageURL(e.currentTarget.value);
+              setAvatar(e.currentTarget.value);
             }}
             required
             maxLength={100}
