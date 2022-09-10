@@ -1,66 +1,35 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
-const userDAO = require("../../model/login.model");
-
-const rounds = 12;
-const hashPassword = (password) => {
-  const hash = bcrypt.hash(password, rounds, (err, hash) => {
-    if (err) {
-      console.log(err)
-    }
-    return hash;
-  });
-  return hash;
-};
-
-const comparePassword = async (password, hash) => {
-  const bool = bcrypt.compare(password, hash, (err, res) => {
-    if (err) {
-      console.log(err)
-    }
-    return res;
-  });
-  return bool;
-};
+const User = require("../../model/login.model");
 
 passport.use(
-  new LocalStrategy(async function (email, password, done) {
-    let searchUser;
+  "login",
+  new LocalStrategy(async (username, password, done) => {
     try {
-      searchUser = await userDAO.getByID(email);
-    } catch (err) {
-      throw done(err);
+      const user = await User.findOne({ username: username });
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
+      const isMatch = await user.isValidPassword(password);
+      if (!isMatch) {
+        return done(null, false, { message: "Incorrect password" });
+      } else {
+        return done(null, user, { message: "Logged in successfully" });
+      }
+    } catch (error) {
+      console.log(error);
     }
-    if (!searchUser) {
-      console.log("user not found");
-      return done(null, false);
-    }
-    const bool = await comparePassword(password, searchUser.password);
-    if (bool === false) {
-      console.log("invalid password");
-      return done(null, false);
-    }
-
-    return done(null, searchUser);
   })
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.email);
+  done(null, user._id);
 });
 
-passport.deserializeUser(async (email, done) => {
-  let user;
-  try {
-    user = await userDAO.getById(email);
-  } catch (err) {
-    throw done(err);
-  }
-  done(null, user);
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
 });
 
-module.exports = {
-  passport,
-  hashPassword,
-};
+module.exports = passport;
