@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const ObjectId = require("mongoose").Types.ObjectId;
+const logger = require("../src/logger/logger");
 
 class ContainerMongo {
   constructor(model) {
@@ -11,49 +11,53 @@ class ContainerMongo {
       const searched = await this.model.find();
       return searched;
     } catch (err) {
-      console.log(err);
+      logger.err(`Erro to get all elements ${err}`);
+      throw new Error(`Erro to get all elements ${err}`);
     }
   }
 
   async save(obj) {
-    const date = new Date();
-    const timeStamp = date.toLocaleString();
-    const object = {
-      ...obj,
-      timeStamp,
-    };
-    const newProduct = new this.model(object);
-    const Saved = await newProduct.save();
-    if (newProduct.error) {
-      return { error: newProduct.error };
-    } else {
+    try {
+      const date = new Date();
+      const timeStamp = date.toLocaleString();
+      const object = {
+        ...obj,
+        timeStamp,
+      };
+      const newProduct = new this.model(object);
+      const Saved = await newProduct.save();
       return Saved;
+    } catch (err) {
+      logger.err(`Error to save ${err}`);
+      throw new Error(`Error to save ${err}`);
     }
   }
 
   async getByID(id) {
     try {
-      const search = await this.model.find({ $eq: id });
+      const search = await this.model.find({ _id: { $eq: id } });
       if (search.length === 0) {
         return { error: "product not found" };
       } else {
         return search;
       }
     } catch (err) {
-      console.log(err);
+      logger.err(`Cannot find id ${id}`);
+      throw new Error(`Cannot find id ${id}`);
     }
   }
 
   async deleteById(id) {
     try {
-      const deleted = await this.model.deleteOne({ _id: new ObjectId(id) });
+      const deleted = await this.model.deleteOne({ _id: { $eq: id } });
       if (deleted.length === 0) {
         return { error: "product not found" };
       } else {
         return deleted;
       }
     } catch (err) {
-      console.log(err);
+      logger.err(`Cannot find id ${id}`);
+      throw new Error(`Cannot find id ${id}`);
     }
   }
 
@@ -66,7 +70,8 @@ class ContainerMongo {
         return deleted;
       }
     } catch (err) {
-      console.log(err);
+      logger.err(`Error deleting all ${err}`);
+      throw new Error(`Error deleting all ${err}`);
     }
   }
 
@@ -77,7 +82,7 @@ class ContainerMongo {
     const timestamp = `${newDate} ${newTime}`;
     try {
       const updated = await this.model.findByIdAndUpdate(
-        { _id: new ObjectId(id) },
+        { _id: { $eq: id } },
         {
           $push: {
             name: product.name,
@@ -92,17 +97,19 @@ class ContainerMongo {
       );
       return updated;
     } catch (err) {
-      console.log(err);
+      logger.err(`Error updating ${id}`);
+      throw new Error(`Error updating ${id}`);
     }
   }
 
-  async createCart() {
-    const actualDate = new Date().toLocaleDateString();
-    const actualTime = new Date().toLocaleTimeString();
+  async createCart(client, obj) {
+    const actualDate = new Date().toLocaleString();
+
     try {
       const cart = new this.model({
-        products: [],
-        timeStamp: `${actualDate} ${actualTime}`,
+        products: { ...obj },
+        timeStamp: `${actualDate}`,
+        client: client,
       });
       const saved = await cart.save();
       if (cart.error) {
@@ -110,33 +117,51 @@ class ContainerMongo {
       } else {
         return saved;
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      logger.err(`Error to save ${err}`);
+      throw new Error(`Error to save ${err}`);
     }
   }
-  async editCart(obj, id) {
+
+  async editCart(obj, client) {
     try {
       const updated = await this.model.findByIdAndUpdate(
-        { _id: new ObjectId(id) },
+        { client: client },
         { $push: { products: obj } },
         { new: true }
       );
       return updated;
     } catch (err) {
-      console.log(err);
+      logger.err(`Error to edit cart ${err}`);
+      throw new Error(`Error to edit cart ${err}`);
     }
   }
 
-  async deleteProduct(idCart, idProduct) {
+  async deleteProduct(client, idProduct) {
     try {
       const updated = await this.model.updateOne(
-        { _id: new ObjectId(idCart) },
+        { client: client },
         { $pull: { products: { _id: idProduct } } },
         { new: true }
       );
       return updated;
     } catch (err) {
-      console.log(err);
+      logger.err(`Error to delete product ${idProduct} from cart ${client}`);
+      throw new Error(
+        `Error to delete product ${idProduct} from cart ${client}`
+      );
+    }
+  }
+
+  async deleteCart(client) {
+    try {
+      const deleted = await this.model.deleteOne({
+        client: { $eq: client },
+      });
+      return deleted;
+    } catch (err) {
+      logger.err(`Error deleting ${err}`);
+      throw new Error(`Error deleting ${err}`);
     }
   }
 }

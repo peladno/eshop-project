@@ -1,3 +1,4 @@
+const { model } = require("mongoose");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../../model/login.model");
@@ -32,4 +33,4 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-module.exports = passport;
+module.exports = passport

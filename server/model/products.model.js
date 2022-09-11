@@ -23,7 +23,8 @@ const ProductSchema = new Schema({
 		required: true
 	},
 	photo: {
-		type: String},
+		type: String,
+		required: true},
 	price: {
 		type: Number,
 		required: true,
@@ -32,7 +33,7 @@ const ProductSchema = new Schema({
 	stock: {
 		type: Number,
 		required: true,
-		default: 0
+		default: 1
 	}
 })
 

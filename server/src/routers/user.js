@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+//const passport = require("passport");
+const passport = require("../utils/passport");
 const User = require("../../model/login.model");
 
 //Passport config
-
+/*
 passport.use(
   "login",
   new LocalStrategy(async (username, password, done) => {
@@ -27,7 +26,6 @@ passport.use(
   })
 );
 
-
 passport.serializeUser((user, done) => {
   done(null, user._id);
 });
@@ -36,7 +34,7 @@ passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => {
     done(err, user);
   });
-});
+});*/
 
 //Routes
 
@@ -45,18 +43,22 @@ router.post("/login", passport.authenticate("login"), async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  console.log(req.body);
+  const { email, name, address, phone, avatar, password } = req.body;
   try {
     const user = await User.findOne({ username: req.body.username });
     if (user) {
       res.send({ message: "User already exists" });
     }
-    const newUser = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-      name: req.body.name,
+    const newUser = ({
+      email,
+      name,
+      address,
+      phone,
+      avatar,
+      password,
     });
-    res.send({ user: newUser });
+    await User.create(newUser)
+    res.send({ message: "User created" });
   } catch (err) {
     console.log(err);
   }
@@ -64,7 +66,7 @@ router.post("/signup", async (req, res) => {
 
 function checkAuthentication(req, res, next) {
   if (req.isAuthenticated()) next();
-  else res.redirect("/login");
+  else res.send({ message: "user is not  authenticated" });
 }
 
 router.get("/logout", (req, res) => {
@@ -77,7 +79,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/user", checkAuthentication, (req, res) => {
-  res.send({ user: req.user?.name });
+  res.send({ user: req.user });
 });
 
 module.exports = router;

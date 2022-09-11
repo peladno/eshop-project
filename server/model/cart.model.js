@@ -6,11 +6,11 @@ const CartSchema = new Schema({
     type: String,
     required: true,
   },
-  cliente: {
+  client: {
     type: String,
     required: true,
   },
-  productos: [
+  products: [
     {
       id: {
         type: String,
@@ -32,7 +32,10 @@ const CartSchema = new Schema({
         type: Number,
         required: true,
       },
-      photo: { type: String },
+      photo: {
+        type: String,
+        required: true,
+      },
       price: {
         type: Number,
         required: true,

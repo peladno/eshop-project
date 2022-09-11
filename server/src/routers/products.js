@@ -53,12 +53,12 @@ router.delete("/:id", auth, async (request, resolve) => {
 //save product
 router.post("/", auth, async (request, resolve) => {
   try {
-    const { name, code, description, imageURL, stock, price } = request.body;
+    const { name, code, description, photo, stock, price } = request.body;
     const data = await DAO.save({
       name,
       code,
       description,
-      imageURL,
+      photo,
       stock,
       price,
     });
