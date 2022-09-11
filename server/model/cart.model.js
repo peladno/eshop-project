@@ -2,7 +2,7 @@ const { mongoose, Schema, model } = require("mongoose");
 
 const cartCollection = "carts";
 const CartSchema = new Schema({
-  timestamp: {
+  timeStamp: {
     type: String,
     required: true,
   },
@@ -16,7 +16,7 @@ const CartSchema = new Schema({
         type: String,
         required: true,
       },
-      timestamp: {
+      timeStamp: {
         type: String,
         required: true,
       },
@@ -44,7 +44,7 @@ const CartSchema = new Schema({
       stock: {
         type: Number,
         required: true,
-        default: 0,
+        default: 1,
       },
     },
   ],

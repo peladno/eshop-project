@@ -88,3 +88,9 @@
   label: 'Label🏷️',
   timestamp: 'Sep-10-2022 06:54:38'
 }
+{
+  message: 'Error -2 - Ruta /api/cart/631d6b790ca612336d866ca9/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 03:45:18'
+}

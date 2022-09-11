@@ -3,7 +3,7 @@ const { Schema, model } = mongoose;
 const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
-  timestamp: {
+  username:{
     type: String,
     required: true,
   },

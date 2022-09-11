@@ -15,9 +15,14 @@ router.get("/", async (request, resolve) => {
 });
 
 //save empty cart
-router.post("/", async (request, resolve) => {
+router.post("/:id", async (request, resolve) => {
   try {
-    const saved = await DAO.createCart();
+    const id = request.params.id;
+    const cart = {
+      products: [],
+    };
+    const saved = await DAO.createCart(id, cart)
+
     resolve.send({ message: "Cart saved", saved });
   } catch (error) {
     resolve.status(500);
@@ -43,9 +48,9 @@ router.get("/:id/products", async (request, resolve) => {
   const id = request.params.id;
 
   try {
-    const data = await DAO.getByID(id);
+    const data = await DAO.getByCart(id);
     if (data === undefined) {
-      resolve.send({ error: "product not found" });
+      resolve.send({ error: "cart not found" });
     } else {
       resolve.send({ message: "cart found", data });
     }
@@ -84,3 +89,5 @@ router.delete("/:id/products/:id_prod", async (request, resolve) => {
     resolve.send(error);
   }
 });
+
+module.exports = router;

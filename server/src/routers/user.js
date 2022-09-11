@@ -43,13 +43,14 @@ router.post("/login", passport.authenticate("login"), async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  const { email, name, address, phone, avatar, password } = req.body;
+  const { username, email, name, address, phone, avatar, password } = req.body;
   try {
     const user = await User.findOne({ username: req.body.username });
     if (user) {
       res.send({ message: "User already exists" });
     }
     const newUser = ({
+      username,
       email,
       name,
       address,

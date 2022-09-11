@@ -14,10 +14,13 @@ const { URL } = config.mongoLocal;
 const http = require("http");
 const app = express();
 const httpServer = http.createServer(app);
-const userRouter = require("./src/routers/user");
-const products = require("./src/routers/products");
 const { ruteNotFound } = require("./src/utils/middlewares");
 const logger = require("./src/logger/logger");
+
+//adding url routers
+const userRouter = require("./src/routers/user");
+const products = require("./src/routers/products");
+const cart = require("./src/routers/cart");
 
 //minimist
 const options = { default: { port: config.PORT, mode: "FORK" } };
@@ -42,7 +45,6 @@ app.set("views", "./public/views");
 //config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 ////////////////////////////////End config/////////////////////////////////////
 
@@ -75,6 +77,7 @@ app.use((req, res, next) => {
 //routes
 app.use("/", userRouter);
 app.use("/api/products", products);
+app.use("/api/cart", cart);
 app.use(ruteNotFound);
 
 if (mode === "CLUSTER") {

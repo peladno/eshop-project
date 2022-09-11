@@ -62,6 +62,7 @@ router.post("/", auth, async (request, resolve) => {
       stock,
       price,
     });
+    console.log(data);
     resolve.send({ Message: "Product saved", data });
   } catch (error) {
     resolve.status(500);
@@ -74,10 +75,11 @@ router.put("/:id", auth, async (request, resolve) => {
     const id = request.params.id;
     const newProduct = request.body;
     const data = await DAO.updateItems(id, newProduct);
+    console.log(newProduct);
     resolve.send({ message: "Product updated", data });
   } catch (error) {
     resolve.status(500);
-    resolve(error);
+    resolve.send(error);
   }
 });
 
