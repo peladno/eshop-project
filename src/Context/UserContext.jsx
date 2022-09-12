@@ -1,29 +1,23 @@
-import React, { useState, createContext, useEffect } from "react";
 import axios from "axios";
-export const APIContext = createContext();
+import React, { useState, createContext, useEffect } from "react";
 
-const APIContextProvider = ({ children }) => {
-  const [item, setItem] = useState([]);
-  const [loading, setLoading] = useState(false);
+export const USERContext = createContext();
 
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get("http://localhost:8080/api/products")
-      .then((response) => {
-        setItem(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        throw new Error(error);
-      })
-  }, []);
-  
-
-  /*
+const USERContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    axios
+      .get("http://localhost:8080/login/success")
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+  }, []);
+
+  /*useEffect(() => {
     const getUser = () => {
       fetch("http://localhost:8080/login/success", {
         method: "GET",
@@ -42,19 +36,15 @@ const APIContextProvider = ({ children }) => {
           setUser(resObject.user);
         })
         .catch((err) => {
-          throw new Error(err)
+          throw new Error(err);
         });
     };
     getUser();
-  }, [user]);
-
-  console.log(user);*/
+  }, [setUser]);*/
 
   return (
-    <APIContext.Provider value={{ loading, item }}>
-      {children}
-    </APIContext.Provider>
+    <USERContext.Provider value={{ user }}>{children}</USERContext.Provider>
   );
 };
 
-export default APIContextProvider;
+export default USERContextProvider;

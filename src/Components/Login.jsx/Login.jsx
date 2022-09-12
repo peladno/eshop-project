@@ -1,33 +1,40 @@
 import React from "react";
 import { useState } from "react";
 import Button from "@mui/material/Button";
-import styles from "./adminForm.module.css";
+import styles from './login.module.css'
 
-function AdminForm() {
+function Login() {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+  const [username, setUsername] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
-  const [code, setCode] = useState("");
-  const [stock, setStock] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
 
   const body = {
     name: name,
-    price: price,
-    description: description,
+    username: username,
+    address: address,
+    email: email,
     photo: photo,
-    code: code,
-    stock: stock,
+    phone: phone,
+    password: password,
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("https://apicart.herokuapp.com/api/products", {
+      let response = await fetch("http://localhost:8080/signup", {
         method: "POST",
-        headers: { admin: "true", "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+
+      if (response.status !== 200) {
+        throw new Error(response.statusText);
+      }
+      return await response.json()
     } catch (error) {
       console.log("error");
     }
@@ -36,7 +43,35 @@ function AdminForm() {
   return (
     <div className={styles.formContainer}>
       <form className={styles.adminForm} onSubmit={handleSubmit}>
-        <h1 className={styles.titleForm}>Add products</h1>
+        <h1 className={styles.titleForm}>SignUp</h1>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="text"
+            name="username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.currentTarget.value);
+            }}
+            required
+            maxLength={100}
+          />
+          <label className={styles.userLabel}>Username</label>
+        </div>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="text"
+            name="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.currentTarget.value);
+            }}
+            required
+            maxLength={100}
+          />
+          <label className={styles.userLabel}>Password</label>
+        </div>
         <div className={styles.inputGroup}>
           <input
             className={styles.input}
@@ -51,33 +86,20 @@ function AdminForm() {
           />
           <label className={styles.userLabel}>Name</label>
         </div>
+
         <div className={styles.inputGroup}>
           <input
             className={styles.input}
-            type="number"
-            name="price"
-            value={price}
+            type="email"
+            name="email"
+            value={email}
             onChange={(e) => {
-              setPrice(e.currentTarget.value);
+              setEmail(e.currentTarget.value);
             }}
             required
             maxLength={100}
           />
-          <label className={styles.userLabel}>Price</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="text"
-            name="description"
-            value={description}
-            onChange={(e) => {
-              setDescription(e.currentTarget.value);
-            }}
-            required
-            maxLength={100}
-          />
-          <label className={styles.userLabel}>description</label>
+          <label className={styles.userLabel}>Email</label>
         </div>
         <div className={styles.inputGroup}>
           <input
@@ -97,29 +119,29 @@ function AdminForm() {
           <input
             className={styles.input}
             type="text"
-            name="code"
-            value={code}
+            name="address"
+            value={address}
             onChange={(e) => {
-              setCode(e.currentTarget.value);
+              setAddress(e.currentTarget.value);
             }}
             required
             maxLength={100}
           />
-          <label className={styles.userLabel}>Code</label>
+          <label className={styles.userLabel}>Address</label>
         </div>
         <div className={styles.inputGroup}>
           <input
             className={styles.input}
             type="number"
-            name="stock"
-            value={stock}
+            name="phone"
+            value={phone}
             onChange={(e) => {
-              setStock(e.currentTarget.value);
+              setPhone(e.currentTarget.value);
             }}
             required
             maxLength={100}
           />
-          <label className={styles.userLabel}>Stock</label>
+          <label className={styles.userLabel}>Phone</label>
         </div>
         <Button variant="contained" type="submit">
           Submit
@@ -129,4 +151,5 @@ function AdminForm() {
   );
 }
 
-export default AdminForm;
+
+export default Login

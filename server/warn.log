@@ -94,3 +94,171 @@
   label: 'Label🏷️',
   timestamp: 'Sep-11-2022 03:45:18'
 }
+{
+  message: 'Error -2 - Ruta /, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 19:48:24'
+}
+{
+  message: 'Error -2 - Ruta /favicon.ico, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 19:48:25'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:15:58'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:16:00'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:16:13'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:17:11'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:17:30'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:17:42'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:17:54'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:18:01'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:18:29'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:18:51'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:18:58'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:19:04'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d729fbbe6ca481f352708, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:19:11'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:19:14'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:20:44'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:20:53'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:21:01'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:21:04'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:21:28'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:23:06'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:24:09'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:24:11'
+}
+{
+  message: 'Error -2 - Ruta /api/productsundefined, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:24:23'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:24:26'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-11-2022 20:24:52'
+}
+{
+  message: 'Error -2 - Ruta /, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-12-2022 01:51:57'
+}

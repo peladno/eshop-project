@@ -6,7 +6,7 @@ function AdminItemList({ products }) {
       <li>{products.name}</li>
       <li>{products.price}</li>
       <li>{products.description}</li>
-      <li><img src={products.image_url} alt={products.name}/></li>
+      <li><img src={products.photo} alt={products.name}/></li>
       <li>{products.stock}</li>
     </ul>
   ));

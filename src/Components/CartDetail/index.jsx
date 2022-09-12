@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from "../../Context/CartContext"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import styles from "./cartDetail.module.css"
@@ -8,7 +8,6 @@ import { Link } from "react-router-dom"
 
 const CartDetail = () => {
 const { cart, removeCart, totalPrice, clearCart} = useContext(CartContext); 
-
 
   return (
     <div className={styles.cartContainer}>

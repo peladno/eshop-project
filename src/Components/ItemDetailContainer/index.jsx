@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
     const fetchData = async () => {
       try {
         const result = await fetch(
-          "https://apicart.herokuapp.com/api/products/" + id
+          "http://localhost:8080/api/products/" + id
         );
         const data = await result.json();
         setItem(data);
@@ -30,7 +30,6 @@ const ItemDetailContainer = () => {
 
     fetchData();
   }, [id]);
-
 
   return (
     <div className={styles.itemContainer}>

@@ -28,9 +28,9 @@ router.get("/:id", async (request, resolve) => {
   try {
     const data = await DAO.getByID(id);
     if (data === undefined) {
-      resolve.send({ error: "product not found", data });
+      resolve.send(data);
     } else {
-      resolve.send({ message: "product found", data });
+      resolve.send(data);
     }
   } catch (error) {
     resolve.status(500);
@@ -63,7 +63,7 @@ router.post("/", auth, async (request, resolve) => {
       price,
     });
     console.log(data);
-    resolve.send({ Message: "Product saved", data });
+    resolve.send(data);
   } catch (error) {
     resolve.status(500);
     resolve.send(error);
@@ -75,8 +75,7 @@ router.put("/:id", auth, async (request, resolve) => {
     const id = request.params.id;
     const newProduct = request.body;
     const data = await DAO.updateItems(id, newProduct);
-    console.log(newProduct);
-    resolve.send({ message: "Product updated", data });
+    resolve.send(data);
   } catch (error) {
     resolve.status(500);
     resolve.send(error);

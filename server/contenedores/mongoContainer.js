@@ -38,7 +38,7 @@ class ContainerMongo {
 
   async getByID(id) {
     try {
-      const search = await this.model.find({ _id: { $eq: id } });
+      const search = await this.model.findOne({ _id: { $eq: id } });
       if (search.length === 0) {
         return { error: "product not found" };
       } else {
@@ -167,7 +167,7 @@ class ContainerMongo {
 
   async getByCart(client) {
     try {
-      const buscado = await this.model.find({
+      const buscado = await this.model.findOne({
         cliente: {
           $eq: client,
         },

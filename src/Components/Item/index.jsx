@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 import styles  from "./item.module.css";
 
 //tarjeta de cada item, se usó Material UI
-
-function Item({id, image_url, name, price}) {
+function Item({id, photo, name, price}) {
+  
   return (
     <>
       <Card className={styles.cardItem} sx={{ maxWidth: 275 }} key={id}>
         <CardContent>
-        <img className={styles.imageItem} src={image_url} alt={name}/>
+        <img className={styles.imageItem} src={photo} alt={name}/>
           <Typography variant="h5" component="div">
             <p>{name}</p>
           </Typography>
@@ -28,6 +28,7 @@ function Item({id, image_url, name, price}) {
       </Card>
     </>
   );
+  
 }
 
 export default Item;

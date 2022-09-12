@@ -4,6 +4,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const parseArgs = require("minimist");
 const cluster = require("cluster");
+var cors = require("cors");
 
 //numero de cpus
 const numCPUs = require("os").cpus().length;
@@ -45,6 +46,13 @@ app.set("views", "./public/views");
 //config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 
 ////////////////////////////////End config/////////////////////////////////////
 
@@ -102,7 +110,7 @@ if (mode === "CLUSTER") {
   } else {
     const connectedServer = httpServer.listen(port, function () {
       console.log(
-        `websocket listen PORT ${
+        `listen PORT ${
           connectedServer.address().port
         }, mode: ${mode} - PID: ${process.pid}`
       );

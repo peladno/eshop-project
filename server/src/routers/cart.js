@@ -23,7 +23,7 @@ router.post("/:id", async (request, resolve) => {
     };
     const saved = await DAO.createCart(id, cart)
 
-    resolve.send({ message: "Cart saved", saved });
+    resolve.send(saved);
   } catch (error) {
     resolve.status(500);
     resolve.send(error);
@@ -36,7 +36,7 @@ router.delete("/:id/products", async (request, resolve) => {
 
   try {
     const deleted = await DAO.deleteById(id);
-    resolve.send({ message: "Cart deleted", deleted });
+    resolve.send(deleted);
   } catch (error) {
     resolve.status(500);
     resolve.send(error);
@@ -52,7 +52,7 @@ router.get("/:id/products", async (request, resolve) => {
     if (data === undefined) {
       resolve.send({ error: "cart not found" });
     } else {
-      resolve.send({ message: "cart found", data });
+      resolve.send(data);
     }
   } catch (error) {
     resolve.status(500);
