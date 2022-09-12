@@ -7,14 +7,15 @@ const USERContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/login/success")
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
+    const getUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/login/success");
+        setUser(await response.json());
+      } catch (error) {
+        throw new Error(`error fetching data ${error}`);
+      }
+    };
+    getUser();
   }, []);
 
   /*useEffect(() => {
