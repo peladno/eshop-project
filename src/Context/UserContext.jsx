@@ -7,10 +7,22 @@ const USERContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const tokenKey = localStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${tokenKey}`,
+      "Content-Type": "application/json",
+    };
     const getUser = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/login/success");
-        setUser(await response.json());
+        const response = await axios.get(
+          "http://localhost:8080/login/success",
+          {
+            headers: headers,
+          }
+        );
+        const { user } = response.data;
+        console.log(user);
+        setUser(user);
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }
@@ -18,34 +30,9 @@ const USERContextProvider = ({ children }) => {
     getUser();
   }, []);
 
-  /*useEffect(() => {
-    const getUser = () => {
-      fetch("http://localhost:8080/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw new Error("authentication has been failed!");
-        })
-        .then((resObject) => {
-          setUser(resObject.user);
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
-    };
-    getUser();
-  }, [setUser]);*/
-
+  console.log(user);
   return (
     <USERContext.Provider value={{ user }}>{children}</USERContext.Provider>
   );
 };
-
 export default USERContextProvider;

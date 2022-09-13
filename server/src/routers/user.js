@@ -2,16 +2,11 @@ const express = require("express");
 const router = express.Router();
 const passport = require("../utils/passport");
 const User = require("../../model/login.model");
+const { login, verifyToken } = require("../utils/jwt.js");
 
 //Routes
 
-router.post("/login", passport.authenticate("login"), async (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "success login",
-    user: req.user
-  });
-});
+router.post("/login", passport.authenticate("login"), login);
 
 router.post("/signup", async (req, res) => {
   const { username, email, name, address, phone, photo, password } = req.body;
@@ -41,16 +36,6 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-function checkAuthentication(req, res, next) {
-  if (req.isAuthenticated()) next();
-  else {
-    res.status(200).json({
-      success: true,
-      message: "Failure",
-    });
-  }
-}
-
 router.get("/logout", (req, res) => {
   /*req.logout();
   res.redirect();*/
@@ -61,7 +46,7 @@ router.get("/logout", (req, res) => {
   }
 });
 
-router.get("/login/success", checkAuthentication, (req, res) => {
+router.get("/login/success", verifyToken, (req, res) => {
   if (req.user) {
     res.status(200).json({
       success: true,
@@ -69,11 +54,6 @@ router.get("/login/success", checkAuthentication, (req, res) => {
       user: req.user,
     });
     console.log(req.user);
-  } else {
-    req.status(404).json({
-      success: false,
-      message: "No user",
-    })
   }
 });
 

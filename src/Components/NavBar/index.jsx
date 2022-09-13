@@ -16,16 +16,15 @@ import CartWidget from "../CartWidget/index.jsx";
 import { Link } from "react-router-dom";
 import logo from "../../images/Nook_Inc.png";
 import styles from "./index.module.css";
-import { APIContext } from "../../Context/ApiContext.jsx";
+import { USERContext } from "../../Context/UserContext.jsx";
 
 //NavBar de Materia UI
-
-
 
 const pages = ["admin", "login","signup"];
 const settings = ["Profile", "Account", "Dashboard"];
 
 const ResponsiveAppBar = () => {
+  const {user} = React.useContext(USERContext)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -42,10 +41,6 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
-
-  const logout = () => {
-    window.open("http://localhost:8080/logout", "_self");
   };
 
   return (
@@ -177,8 +172,8 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+            {user?.username === undefined? "" : `Hola ${user.username}`}
             <CartWidget />
-
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -200,7 +195,7 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-               <MenuItem onClick={()=>{handleCloseUserMenu(); logout()}}>
+               <MenuItem onClick={()=>{handleCloseUserMenu()}}>
                   <Typography textAlign="center">logout</Typography>
                 </MenuItem>
               {settings.map((setting) => (

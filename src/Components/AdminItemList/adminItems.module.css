@@ -1,0 +1,19 @@
+.itemList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.itemList img {
+    width: 30%
+}
+
+.itemList li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

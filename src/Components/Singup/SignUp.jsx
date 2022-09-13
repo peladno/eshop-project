@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import Button from "@mui/material/Button";
-import styles from './login.module.css'
+import styles from './signup.module.css'
 
-function Login() {
+function SignUp() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [address, setAddress] = useState("");
@@ -152,4 +152,4 @@ function Login() {
 }
 
 
-export default Login
+export default SignUp

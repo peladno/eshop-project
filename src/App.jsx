@@ -10,8 +10,8 @@ import Error404 from "./Components/Error404/index.jsx";
 import AdminPage from "./Components/Adminpage/index.jsx";
 import APIContextProvider from "./Context/ApiContext.jsx";
 import USERContextProvider from "./Context/UserContext.jsx";
-import Login from "./Components/Login.jsx/Login.jsx";
-import Signup from "./Components/Signup/Signup.jsx";
+import Login from "./Components/Login/Login";
+import Signup from "./Components/Singup/SignUp";
 
 export default function App() {
   return (

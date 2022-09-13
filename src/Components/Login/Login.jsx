@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState} from "react";
 import Button from "@mui/material/Button";
-import styles from "./signup.module.css";
-import { APIContext } from "../../Context/ApiContext";
+import styles from "./login.module.css";
 
-function Signup() {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,19 +24,18 @@ function Signup() {
       if (response.status !== 200) {
         throw new Error(response.statusText);
       }
-      let data = await response.json()
+      const { token } = await response.json();
 
+      localStorage.setItem("token", token);
     } catch (error) {
       throw new Error(error);
     }
   };
 
-  
-
   return (
     <div className={styles.formContainer}>
       <form className={styles.adminForm} onSubmit={handleSubmit}>
-        <h1 className={styles.titleForm}>SignUp</h1>
+        <h1 className={styles.titleForm}>Login</h1>
         <div className={styles.inputGroup}>
           <input
             className={styles.input}
@@ -75,4 +73,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;
