@@ -1,32 +1,32 @@
 const nodemailer = require("nodemailer");
-const config = "../utils/config.js";
-const logger = "../logger/logger.js";
+const config = require("../utils/config.js");
+const logger = require("../logger/logger.js");
 
-const emailUser = config.EMAIL;
-const emailPass = config.EMAILPASS;
-
-function gmail(asunto, mensaje) {
+function gmail(subject, message) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
-    port: 587,
+    port: 857,
     auth: {
-      user: emailUser,
-      pass: emailPass,
+      user: config.EMAIL,
+      pass: config.EMAILPASS,
     },
   });
 
   const mailOptions = {
     from: "Ecommerce server",
-    to: emailUser,
-    subject: asunto,
-    html: mensaje,
+    to: config.EMAIL,
+    subject: subject,
+    html: message,
   };
 
   transporter.sendMail(mailOptions, async function (error, info) {
     if (error) {
-      logger.error("ERROR!!!!!!", error);
+      logger.error(`Error: ${error}`)
+      throw new Error(error);
     } else {
-      logger.info("Email sent. ");
+     logger.info({msg:"mailsent", info})
     }
   });
 }
+
+module.exports = { gmail };

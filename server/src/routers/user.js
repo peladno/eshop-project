@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require("../utils/passport");
 const User = require("../../model/login.model");
 const { login, verifyToken } = require("../utils/jwt.js");
+const messages = require("../utils/messages")
 
 //Routes
 
@@ -34,6 +35,19 @@ router.post("/signup", async (req, res) => {
   } catch (err) {
     throw new Error(err);
   }
+
+  const subject = 'New User'
+        const message = `<h2>Ecommerce mail:</h2>
+        <ul>
+            <li>Nombre: ${name}</li>
+            <li>Email: ${email}</li>
+            <li>Dirección: ${address}</li>
+            <li>Teléfono Celular: ${phone}</li>
+            <li>Foto url: ${phone}</li>
+        </ul>
+        <p>Thank you for register</p>
+        `
+        messages.gmail(subject, message)
 });
 
 router.get("/logout", (req, res) => {
