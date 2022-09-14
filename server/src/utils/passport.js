@@ -2,6 +2,7 @@ const { model } = require("mongoose");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../../model/login.model");
+const logger = require("../logger/logger");
 
 passport.use(
   "login",
@@ -18,7 +19,8 @@ passport.use(
         return done(null, user, { message: "Logged in successfully" });
       }
     } catch (error) {
-      console.log(error);
+      logger.error(`Error login ${error}`);
+      throw new Error(`Error login ${error}`)
     }
   })
 );

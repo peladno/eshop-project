@@ -23,7 +23,7 @@ const AdminListProducts = () => {
         </div>
       ) : (
         <div className={styles.items}>
-          <AdminItemList products={item} loading={loading} />
+          <AdminItemList products={item}/>
         </div>
       )}
     </div>

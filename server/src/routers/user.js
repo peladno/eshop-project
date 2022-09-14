@@ -3,7 +3,8 @@ const router = express.Router();
 const passport = require("../utils/passport");
 const User = require("../../model/login.model");
 const { login, verifyToken } = require("../utils/jwt.js");
-const messages = require("../utils/messages")
+const messages = require("../utils/messages");
+const logger = require("../logger/logger")
 
 //Routes
 
@@ -33,11 +34,12 @@ router.post("/signup", async (req, res) => {
       });
     }
   } catch (err) {
-    throw new Error(err);
+    logger.err(`Error signing up ${err}`)
+    throw new Error(`Error signing up ${err}`);
   }
 
-  const subject = 'New User'
-        const message = `<h2>Ecommerce mail:</h2>
+  const subject = "New User";
+  const message = `<h2>Ecommerce mail:</h2>
         <ul>
             <li>Nombre: ${name}</li>
             <li>Email: ${email}</li>
@@ -46,8 +48,8 @@ router.post("/signup", async (req, res) => {
             <li>Foto url: ${phone}</li>
         </ul>
         <p>Thank you for register</p>
-        `
-        messages.gmail(subject, message)
+        `;
+  messages.gmail(subject, message);
 });
 
 router.get("/logout", (req, res) => {
@@ -63,11 +65,17 @@ router.get("/logout", (req, res) => {
 router.get("/login/success", verifyToken, (req, res) => {
   if (req.user) {
     res.status(200).json({
-      success: true,
+      auth: true,
       message: "success user",
       user: req.user,
     });
     console.log(req.user);
+  } else {
+    res.status(401).json({
+      auth: false,
+      message: "Enauthorized",
+      user: req.user,
+    });
   }
 });
 

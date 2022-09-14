@@ -280,3 +280,63 @@
   label: 'Label🏷️',
   timestamp: 'Sep-12-2022 23:47:09'
 }
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:26:19'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:27:54'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:28:04'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:30:33'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:31:32'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:37:12'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:37:13'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:38:07'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:38:31'
+}
+{
+  message: 'Error -2 - Ruta /api/products631d7224c453c34a38891bfa, Método PUT no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-13-2022 21:41:17'
+}

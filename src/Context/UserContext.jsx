@@ -4,7 +4,7 @@ import React, { useState, createContext, useEffect } from "react";
 export const USERContext = createContext();
 
 const USERContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [data, seData] = useState(null);
 
   useEffect(() => {
     const tokenKey = localStorage.getItem("token");
@@ -20,9 +20,8 @@ const USERContextProvider = ({ children }) => {
             headers: headers,
           }
         );
-        const { user } = response.data;
-        console.log(user);
-        setUser(user);
+        const data = response.data;
+        seData(data);
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }
@@ -30,9 +29,6 @@ const USERContextProvider = ({ children }) => {
     getUser();
   }, []);
 
-  console.log(user);
-  return (
-    <USERContext.Provider value={{ user }}>{children}</USERContext.Provider>
-  );
+  return <USERContext.Provider value={data}>{children}</USERContext.Provider>;
 };
 export default USERContextProvider;

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import styles from "./adminForm.module.css";
+import { APIContext } from "../../Context/ApiContext";
 
 function AdminForm() {
+  const { setItem } = useContext(APIContext);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -23,11 +25,13 @@ function AdminForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("https://apicart.herokuapp.com/api/products", {
+      await fetch("http://localhost:8080/api/products", {
         method: "POST",
         headers: { admin: "true", "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+
+      setItem((prev) => [...prev, body]);
     } catch (error) {
       console.log("error");
     }

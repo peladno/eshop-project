@@ -20,11 +20,12 @@ import { USERContext } from "../../Context/UserContext.jsx";
 
 //NavBar de Materia UI
 
-const pages = ["admin", "login","signup"];
-const settings = ["Profile", "Account", "Dashboard"];
-
 const ResponsiveAppBar = () => {
-  const {user} = React.useContext(USERContext)
+  const data = React.useContext(USERContext);
+
+  const pages = ["admin", "signup"];
+  const settings = ["Profile", "Account", "Dashboard"];
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -44,7 +45,6 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -109,6 +109,7 @@ const ResponsiveAppBar = () => {
                   </Link>
                 </Typography>
               </MenuItem>
+
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
@@ -125,6 +126,22 @@ const ResponsiveAppBar = () => {
                   </Typography>
                 </MenuItem>
               ))}
+              {data ? null : (
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        textTransform: "uppercase",
+                      }}
+                      to={"/login"}
+                    >
+                      login
+                    </Link>
+                  </Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -169,10 +186,23 @@ const ResponsiveAppBar = () => {
                 </Link>
               </Button>
             ))}
+            {data ? null : (
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={"login"}
+                >
+                  Login
+                </Link>
+              </Button>
+            )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {user?.username === undefined? "" : `Hola ${user.username}`}
+            {!data ? "" : `Hola ${data.user.username}`}
             <CartWidget />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -195,9 +225,13 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-               <MenuItem onClick={()=>{handleCloseUserMenu()}}>
-                  <Typography textAlign="center">logout</Typography>
-                </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleCloseUserMenu();
+                }}
+              >
+                <Typography textAlign="center">logout</Typography>
+              </MenuItem>
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
