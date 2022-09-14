@@ -41,6 +41,7 @@ function ItemEditDetail({ item, loading }) {
   return (
     <>
       <h1>Edite Su producto</h1>
+      <p>Porfavor tiene que llenar todos los campos antes de anviar la actualizacion</p>
       {loading ? (
         <div className={styles.loadingContainer}>
           <Waveform
@@ -65,6 +66,7 @@ function ItemEditDetail({ item, loading }) {
                   setName(e.currentTarget.value);
                 }}
                 maxLength={100}
+                required
               />
             </li>
             <li>
@@ -78,6 +80,7 @@ function ItemEditDetail({ item, loading }) {
                   setPrice(e.currentTarget.value);
                 }}
                 maxLength={100}
+                required
               />
             </li>
             <li>
@@ -90,6 +93,7 @@ function ItemEditDetail({ item, loading }) {
                   setDescription(e.currentTarget.value);
                 }}
                 maxLength={100}
+                required
               />
             </li>
             <li>
@@ -102,6 +106,7 @@ function ItemEditDetail({ item, loading }) {
                   setPhoto(e.currentTarget.value);
                 }}
                 maxLength={100}
+                required
               />
             </li>
             <li>
@@ -114,6 +119,7 @@ function ItemEditDetail({ item, loading }) {
                   setCode(e.currentTarget.value);
                 }}
                 maxLength={100}
+                required
               />
             </li>
             <li>
@@ -126,6 +132,7 @@ function ItemEditDetail({ item, loading }) {
                   setStock(e.currentTarget.value);
                 }}
                 maxLength={100}
+                required
               />
             </li>
             <Button variant="contained" type="submit" size="small">

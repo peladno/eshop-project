@@ -83,9 +83,6 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use("/",(req, res)=>{
-  res.send("ok")
-})
 app.use("/", userRouter);
 app.use("/api/products", products);
 app.use("/api/cart", cart);
