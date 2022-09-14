@@ -10,7 +10,7 @@ function AdminItemList({ products }) {
 
   const handleSubmit = async (id) => {
     try {
-      await fetch(`http://localhost:8080/api/products/${id}`, {
+      await fetch(`https://ecommerce-javierp.herokuapp.com/api/products/${id}`, {
         method: "DELETE",
         headers: { admin: "true", "Content-Type": "application/json" },
       });

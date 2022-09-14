@@ -9,7 +9,7 @@ const APIContextProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:8080/api/products")
+      .get("https://ecommerce-javierp.herokuapp.com/api/products")
       .then((response) => {
         setItem(response.data);
         setLoading(false);

@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
     const fetchData = async () => {
       try {
         const result = await fetch(
-          "http://localhost:8080/api/products/" + id
+          "https://ecommerce-javierp.herokuapp.com/api/products/" + id
         );
         const data = await result.json();
         setItem(data);

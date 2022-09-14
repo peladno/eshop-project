@@ -19,6 +19,6 @@ function run(url) {
   });
 }
 
-run("http://localhost:8080/infoProcess");
+run("https://ecommerce-javierp.herokuapp.com/infoProcess");
 
 console.log("Runnig all benchmarks in parallel ...");

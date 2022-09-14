@@ -25,7 +25,7 @@ function AdminForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:8080/api/products", {
+      await fetch("https://ecommerce-javierp.herokuapp.com/api/products", {
         method: "POST",
         headers: { admin: "true", "Content-Type": "application/json" },
         body: JSON.stringify(body),

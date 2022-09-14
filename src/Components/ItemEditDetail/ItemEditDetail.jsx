@@ -27,7 +27,7 @@ function ItemEditDetail({ item, loading }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:8080/api/products/${item._id}`, {
+      await fetch(`https://ecommerce-javierp.herokuapp.com/api/products/${item._id}`, {
         method: "PUT",
         headers: { admin: "true", "Content-Type": "application/json" },
         body: JSON.stringify(body),
