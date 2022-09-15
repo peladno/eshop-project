@@ -1,10 +1,8 @@
 import React from "react";
 import { Waveform } from "@uiball/loaders";
 import styles from "./itemEditDetail.module.css";
-import { useState, useRef } from "react";
+import { useState} from "react";
 import { Button } from "@mui/material";
-import { useContext } from "react";
-import { APIContext } from "../../Context/ApiContext";
 
 function ItemEditDetail({ item, loading }) {
 
@@ -31,10 +29,9 @@ function ItemEditDetail({ item, loading }) {
         method: "PUT",
         headers: { admin: "true", "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      });
-
+      })
     } catch (error) {
-      console.log("error");
+      console.log(error);
     }
   };
 

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const DAO = require("../../model/cart.model");
 
 //get all carts
@@ -9,8 +8,7 @@ router.get("/", async (request, resolve) => {
     const data = await DAO.getAll();
     resolve.send(data);
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    throw new Error(error);
   }
 });
 
@@ -21,12 +19,11 @@ router.post("/:id", async (request, resolve) => {
     const cart = {
       products: [],
     };
-    const saved = await DAO.createCart(id, cart)
+    const saved = await DAO.createCart(id, cart);
 
     resolve.send(saved);
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    throw new Error(error);
   }
 });
 
@@ -38,8 +35,7 @@ router.delete("/:id/products", async (request, resolve) => {
     const deleted = await DAO.deleteById(id);
     resolve.send(deleted);
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    throw new Error(error);
   }
 });
 
@@ -55,8 +51,7 @@ router.get("/:id/products", async (request, resolve) => {
       resolve.send(data);
     }
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    throw new Error(error);
   }
 });
 
@@ -69,8 +64,7 @@ router.post("/:id/products", async (request, resolve) => {
     const data = await DAO.editCart(newData, id);
     resolve.send({ message: "Products Saved in cart", data });
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    throw new Error(error);
   }
 });
 
@@ -85,8 +79,7 @@ router.delete("/:id/products/:id_prod", async (request, resolve) => {
 
     resolve.send({ message: "Product deleted", deleteProduct });
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    throw new Error(error);
   }
 });
 

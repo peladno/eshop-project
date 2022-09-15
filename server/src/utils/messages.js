@@ -24,7 +24,7 @@ function gmail(subject, message) {
       logger.error(`Error: ${error}`)
       throw new Error(error);
     } else {
-     logger.info({msg:"mailsent", info})
+     //logger.info({msg:"mailsent", info})
     }
   });
 }

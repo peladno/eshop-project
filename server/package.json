@@ -19,6 +19,7 @@
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^8.5.1",
+    "logger": "^0.0.1",
     "minimist": "^1.2.6",
     "mongoose": "^6.5.0",
     "nodemailer": "^6.7.8",

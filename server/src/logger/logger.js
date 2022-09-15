@@ -1,5 +1,5 @@
 const { format, createLogger, transports } = require("winston");
-const { combine, timestamp, label, printf, prettyPrint } = format;
+const { combine, timestamp, label, prettyPrint } = format;
 
 const logger = createLogger({
     transports: [
@@ -23,7 +23,6 @@ const logger = createLogger({
         format: 'MMM-DD-YYYY HH:mm:ss'
       }),
       prettyPrint(),
-    //  printf(info => `${info.label} ${info.level}: ${[info.timestamp]} - ${info.message}`),
     )
   })
 

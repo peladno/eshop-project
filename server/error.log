@@ -22,3 +22,8 @@
   label: 'Label🏷️',
   timestamp: 'Sep-10-2022 02:08:05'
 }
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-15-2022 05:03:08'
+}
