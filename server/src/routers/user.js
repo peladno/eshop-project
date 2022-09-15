@@ -4,7 +4,7 @@ const passport = require("../utils/passport");
 const User = require("../../model/login.model");
 const { login, verifyToken } = require("../utils/jwt.js");
 const messages = require("../utils/messages");
-const logger = require("../logger/logger")
+const logger = require("../logger/logger");
 
 //Routes
 
@@ -34,7 +34,7 @@ router.post("/signup", async (req, res) => {
       });
     }
   } catch (err) {
-    logger.err(`Error signing up ${err}`)
+    logger.err(`Error signing up ${err}`);
     throw new Error(`Error signing up ${err}`);
   }
 
@@ -53,8 +53,6 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  /*req.logout();
-  res.redirect();*/
   if (req.user?.username) {
     req.session.destroy((err) => {
       throw new Error(err);

@@ -62,7 +62,6 @@ router.post("/", auth, async (request, resolve) => {
       stock,
       price,
     });
-    console.log(data);
     resolve.send(data);
   } catch (error) {
     resolve.status(500);

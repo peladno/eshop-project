@@ -8,15 +8,20 @@ const APIContextProvider = ({ children }) => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get("https://ecommerce-javierp.herokuapp.com/api/products")
-      .then((response) => {
-        setItem(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
+    const getProducts = async () => {
+      try {
+        const response = await axios.get(
+          "https://ecommerce-javierp.herokuapp.com/api/products"
+        );
+
+        const data = await response.data;
+        setItem(data)
+        setLoading(false)
+      } catch (error) {
+        throw new Error(`Error fetching data ${error}`);
+      }
+    };
+    getProducts()
   }, []);
 
   return (

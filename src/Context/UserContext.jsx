@@ -4,10 +4,10 @@ import React, { useState, createContext, useEffect } from "react";
 export const USERContext = createContext();
 
 const USERContextProvider = ({ children }) => {
-  const [data, seData] = useState(null);
+  const [data, setData] = useState(null);
+  const tokenKey = localStorage.getItem("token");
 
   useEffect(() => {
-    const tokenKey = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${tokenKey}`,
       "Content-Type": "application/json",
@@ -20,14 +20,16 @@ const USERContextProvider = ({ children }) => {
             headers: headers,
           }
         );
-        const data = response.data;
-        seData(data);
+        const data = await response.data;
+        setData(data);
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }
     };
-    getUser();
-  }, []);
+    if (tokenKey !== null) {
+      getUser();
+    }
+  }, [tokenKey]);
 
   return <USERContext.Provider value={data}>{children}</USERContext.Provider>;
 };

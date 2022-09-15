@@ -29,9 +29,10 @@ function AdminForm() {
         method: "POST",
         headers: { admin: "true", "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      });
-
-      setItem((prev) => [...prev, body]);
+      })
+      .then(response => response.json())
+      .then(data => setItem((prev) => [...prev, data]))
+      
     } catch (error) {
       console.log("error");
     }

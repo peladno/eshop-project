@@ -6,7 +6,6 @@ import AdminItemList from "../AdminItemList/index.jsx";
 
 const AdminListProducts = () => {
   const {item, loading } = useContext(APIContext);
-
   return (
     <div className={styles.itemListContainer}>
       <h1 className={styles.itemListTitle}>Nuestros productos</h1>

@@ -15,18 +15,24 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch("https://ecommerce-javierp.herokuapp.com/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      let response = await fetch(
+        "https://ecommerce-javierp.herokuapp.com/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
 
       if (response.status !== 200) {
         throw new Error(response.statusText);
       }
       const { token } = await response.json();
 
-      localStorage.setItem("token", token);
+      if (token !== null) {
+        localStorage.setItem("token", token);
+        window.location.reload();
+      }
     } catch (error) {
       throw new Error(error);
     }
