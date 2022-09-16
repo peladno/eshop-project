@@ -1,11 +1,10 @@
 import React from "react";
 import { Waveform } from "@uiball/loaders";
 import styles from "./itemEditDetail.module.css";
-import { useState} from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 
 function ItemEditDetail({ item, loading }) {
-
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -22,23 +21,30 @@ function ItemEditDetail({ item, loading }) {
     stock: stock,
   };
 
+  const URL = `http://localhost:8080/api/products/${item._id}`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`https://ecommerce-javierp.herokuapp.com/api/products/${item._id}`, {
+      await fetch(URL, {
         method: "PUT",
         headers: { admin: "true", "Content-Type": "application/json" },
         body: JSON.stringify(body),
       })
+      .then(response => console.log(response.json()))
+
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log(URL);
   return (
     <>
       <h1>Edite Su producto</h1>
-      <p>Porfavor tiene que llenar todos los campos antes de anviar la actualizacion</p>
+      <p>
+        Porfavor tiene que llenar todos los campos antes de anviar la
+        actualizacion
+      </p>
       {loading ? (
         <div className={styles.loadingContainer}>
           <Waveform
@@ -109,7 +115,7 @@ function ItemEditDetail({ item, loading }) {
             <li>
               Codigo producto: {item.code}{" "}
               <input
-                type="text"
+                type="number"
                 name="code"
                 value={code}
                 onChange={(e) => {
@@ -132,10 +138,10 @@ function ItemEditDetail({ item, loading }) {
                 required
               />
             </li>
-            <Button variant="contained" type="submit" size="small">
-              Guardar
-            </Button>
           </ul>
+          <Button variant="contained" type="submit" size="small">
+            Guardar
+          </Button>
         </form>
       )}
     </>

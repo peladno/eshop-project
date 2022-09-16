@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://ecommerce-javierp.herokuapp.com/login",
+        "http://localhost:8080/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

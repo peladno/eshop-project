@@ -15,7 +15,7 @@ const USERContextProvider = ({ children }) => {
     const getUser = async () => {
       try {
         const response = await axios.get(
-          "https://ecommerce-javierp.herokuapp.com/login/success",
+          "http://localhost:8080/login/success",
           {
             headers: headers,
           }

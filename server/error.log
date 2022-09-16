@@ -27,3 +27,9 @@
   label: 'Label🏷️',
   timestamp: 'Sep-15-2022 05:03:08'
 }
+{
+  message: 'Error updating 6323f502180e9d8be4229ec2 CastError: Cast to Number failed for value "aaa" (type string) at path "code"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-16-2022 02:51:54'
+}

@@ -11,7 +11,7 @@ function ItemAdmin({ id, name, price, description, photo, stock }) {
   const handleSubmit = async (id) => {
     try {
       await fetch(
-        `https://ecommerce-javierp.herokuapp.com/api/products/${id}`,
+        `http://localhost:8080/api/products/${id}`,
         {
           method: "DELETE",
           headers: { admin: "true", "Content-Type": "application/json" },
@@ -23,7 +23,7 @@ function ItemAdmin({ id, name, price, description, photo, stock }) {
         })
       );
     } catch (error) {
-      console.log("error");
+     throw new Error(error)
     }
   }
 
@@ -52,7 +52,7 @@ function ItemAdmin({ id, name, price, description, photo, stock }) {
           <Button
             variant="contained"
             type="button"
-            onClick={() => handleSubmit(handleSubmit(id))}
+            onClick={() => (handleSubmit(id))}
             size="small"
             color="error"
           >

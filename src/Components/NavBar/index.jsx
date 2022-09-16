@@ -17,10 +17,21 @@ import { Link } from "react-router-dom";
 import logo from "../../images/Nook_Inc.png";
 import styles from "./index.module.css";
 import { USERContext } from "../../Context/UserContext.jsx";
+import axios from "axios";
 
 //NavBar de Materia UI
 
 const ResponsiveAppBar = () => {
+  const API_URL = "http://localhost:8080/";
+
+  const logout = async () => {
+    localStorage.removeItem("token");
+    return await axios.post(API_URL + "logout").then((response) => {
+      window.location.reload();
+      return response.data;
+    });
+  };
+
   const data = React.useContext(USERContext);
 
   const pages = ["admin", "signup"];
@@ -225,13 +236,16 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem
-                onClick={() => {
-                  handleCloseUserMenu();
-                }}
-              >
-                <Typography textAlign="center">logout</Typography>
-              </MenuItem>
+              {data ? (
+                <MenuItem
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    logout();
+                  }}
+                >
+                  <Typography textAlign="center">logout</Typography>
+                </MenuItem>
+              ) : null}
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>

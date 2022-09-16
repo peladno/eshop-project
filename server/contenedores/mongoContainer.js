@@ -9,9 +9,9 @@ class ContainerMongo {
     try {
       const searched = await this.model.find();
       return searched;
-    } catch (err) {
-      logger.err(`Erro to get all elements ${err}`);
-      throw new Error(`Erro to get all elements ${err}`);
+    } catch (error) {
+      logger.error(`Erro to get all elements ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -30,9 +30,9 @@ class ContainerMongo {
       } else {
         return Saved;
       }
-    } catch (err) {
-      logger.err(`Error to save ${err}`);
-      throw new Error(`Error to save ${err}`);
+    } catch (error) {
+      logger.error(`Error to save ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -44,23 +44,23 @@ class ContainerMongo {
       } else {
         return search;
       }
-    } catch (err) {
-      logger.err(`Cannot find id ${id}`);
-      throw new Error(`Cannot find id ${id}`);
+    } catch (error) {
+      logger.error(`Cannot find id ${id} ${error}`);
+      throw new Error(error);
     }
   }
 
   async deleteById(id) {
     try {
-      const deleted = await this.model.deleteOne({ _id: { $eq: id } });
+      const deleted = await this.model.findOneAndDelete({ _id: { $eq: id } });
       if (deleted.length === 0) {
         return { error: "product not found" };
       } else {
         return deleted;
       }
-    } catch (err) {
-      logger.err(`Cannot find id ${id}`);
-      throw new Error(`Cannot find id ${id}`);
+    } catch (error) {
+      logger.error(`Cannot find id ${id} ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -72,9 +72,9 @@ class ContainerMongo {
       } else {
         return deleted;
       }
-    } catch (err) {
-      logger.err(`Error deleting all ${err}`);
-      throw new Error(`Error deleting all ${err}`);
+    } catch (error) {
+      logger.error(`Error deleting all ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -97,9 +97,9 @@ class ContainerMongo {
         }
       );
       return updated;
-    } catch (err) {
-      logger.err(`Error updating ${id}`);
-      throw new Error(`Error updating ${id}`);
+    } catch (error) {
+      logger.error(`Error updating ${id} ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -119,7 +119,8 @@ class ContainerMongo {
         return saved;
       }
     } catch (error) {
-      console.log(error);
+      logger.error(`Error saving cart ${client} ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -133,7 +134,7 @@ class ContainerMongo {
       return updated;
     } catch (err) {
       logger.err(`Error to edit cart ${err}`);
-      throw new Error(`Error to edit cart ${err}`);
+      throw new Error(err);
     }
   }
 
@@ -145,10 +146,10 @@ class ContainerMongo {
         { new: true }
       );
       return updated;
-    } catch (err) {
-      logger.err(`Error to delete product ${idProduct} from cart ${client}`);
+    } catch (error) {
+      logger.error(`Error to delete product ${idProduct} from cart ${client} ${error}`);
       throw new Error(
-        `Error to delete product ${idProduct} from cart ${client}`
+        `Error to delete product ${idProduct} from cart ${client} ${error}`
       );
     }
   }
@@ -159,9 +160,9 @@ class ContainerMongo {
         client: { $eq: client },
       });
       return deleted;
-    } catch (err) {
-      logger.err(`Error deleting ${err}`);
-      throw new Error(`Error deleting ${err}`);
+    } catch (error) {
+      logger.err(`Error deleting ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -174,8 +175,8 @@ class ContainerMongo {
       });
       return buscado;
     } catch (error) {
-      logger.error(`Error no se ecuentra id: ${client}`);
-      throw new Error(`Error no se ecuentra id: ${client}`);
+      logger.error(`Error no se ecuentra id: ${client} ${error}`);
+      throw new Error(error);
     }
   }
 }

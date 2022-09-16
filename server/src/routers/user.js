@@ -52,12 +52,11 @@ router.post("/signup", async (req, res) => {
   messages.gmail(subject, message);
 });
 
-router.get("/logout", (req, res) => {
-  if (req.user?.username) {
-    req.session.destroy((err) => {
-      throw new Error(err);
-    });
-  }
+router.post("/logout", (req, res, next) => {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.send("logout succesfull")
+  });
 });
 
 router.get("/login/success", verifyToken, (req, res) => {

@@ -11,7 +11,7 @@ const APIContextProvider = ({ children }) => {
     const getProducts = async () => {
       try {
         const response = await axios.get(
-          "https://ecommerce-javierp.herokuapp.com/api/products"
+          "http://localhost:8080/api/products"
         );
 
         const data = await response.data;

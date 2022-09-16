@@ -16,8 +16,8 @@ router.get("/", async (request, resolve) => {
     const data = await DAO.getAll();
     resolve.send(data);
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    console.log(error);
+    throw new Error(error);
   }
 });
 
@@ -33,8 +33,9 @@ router.get("/:id", async (request, resolve) => {
       resolve.send(data);
     }
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    console.log(error);
+    throw new Error(error);
+    
   }
 });
 
@@ -45,8 +46,8 @@ router.delete("/:id", auth, async (request, resolve) => {
     const deleted = await DAO.deleteById(id);
     resolve.send({ message: "Product deleted", deleted });
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    console.log(error);
+    throw new Error(error);
   }
 });
 
@@ -64,8 +65,8 @@ router.post("/", auth, async (request, resolve) => {
     });
     resolve.send(data);
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    console.log(error);
+    throw new Error(error);
   }
 });
 
@@ -76,8 +77,8 @@ router.put("/:id", auth, async (request, resolve) => {
     const data = await DAO.updateItems(id, newProduct);
     resolve.send(data);
   } catch (error) {
-    resolve.status(500);
-    resolve.send(error);
+    console.log(error);
+    throw new Error(error);
   }
 });
 
