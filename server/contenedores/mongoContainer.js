@@ -5,7 +5,7 @@ class ContainerMongo {
     this.model = model;
   }
 
-  async getAll() {
+  getAll = async () => {
     try {
       const searched = await this.model.find();
       return searched;
@@ -13,9 +13,9 @@ class ContainerMongo {
       logger.error(`Erro to get all elements ${error}`);
       throw new Error(error);
     }
-  }
+  };
 
-  async save(obj) {
+  save = async (obj) => {
     try {
       const date = new Date();
       const timeStamp = date.toLocaleString();
@@ -34,12 +34,12 @@ class ContainerMongo {
       logger.error(`Error to save ${error}`);
       throw new Error(error);
     }
-  }
+  };
 
   async getByID(id) {
     try {
       const search = await this.model.findOne({ _id: { $eq: id } });
-      if (search.length === 0) {
+      if (!search) {
         return { error: "product not found" };
       } else {
         return search;
@@ -125,16 +125,37 @@ class ContainerMongo {
   }
 
   async editCart(obj, client) {
+    const date = new Date();
+    const timeStamp = date.toLocaleString();
     try {
-      const updated = await this.model.updateOne(
-        { client: client },
-        { $push: { products: obj } },
-        { new: true }
-      );
-      return updated;
-    } catch (err) {
-      logger.err(`Error to edit cart ${err}`);
-      throw new Error(err);
+      const cart = await this.model.findOne({ client: { $eq: client } });
+
+      if (cart) {
+        const itemFound = cart.products.findIndex(
+          (item) => item._id === obj._id
+        );
+        if (itemFound !== -1) {
+          let product = cart.products[itemFound];
+          product.quantity += obj.quantity;
+          const saved = await cart.save();
+          return saved;
+        } else {
+          cart.products.push(obj);
+          const saved = await cart.save();
+          return saved;
+        }
+      } else {
+        const newCart = new this.model({
+          products: obj,
+          timeStamp: timeStamp,
+          client: client,
+        });
+        const saved = await newCart.save();
+        return saved;
+      }
+    } catch (error) {
+      logger.error(`Error to edit cart ${error}`);
+      throw new Error(error);
     }
   }
 
@@ -147,10 +168,10 @@ class ContainerMongo {
       );
       return updated;
     } catch (error) {
-      logger.error(`Error to delete product ${idProduct} from cart ${client} ${error}`);
-      throw new Error(
+      logger.error(
         `Error to delete product ${idProduct} from cart ${client} ${error}`
       );
+      throw new Error(error);
     }
   }
 
@@ -166,10 +187,10 @@ class ContainerMongo {
     }
   }
 
-  async getByCart(client) {
+  async getIdByCart(client) {
     try {
       const buscado = await this.model.findOne({
-        cliente: {
+        client: {
           $eq: client,
         },
       });

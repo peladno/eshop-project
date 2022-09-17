@@ -12,7 +12,7 @@ const CartSchema = new Schema({
   },
   products: [
     {
-      id: {
+      _id: {
         type: String,
         required: true,
       },
@@ -39,12 +39,10 @@ const CartSchema = new Schema({
       price: {
         type: Number,
         required: true,
-        default: 0,
       },
-      stock: {
+      quantity: {
         type: Number,
         required: true,
-        default: 1,
       },
     },
   ],

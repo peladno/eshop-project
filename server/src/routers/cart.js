@@ -44,8 +44,8 @@ router.get("/:id/products", async (request, resolve) => {
   const id = request.params.id;
 
   try {
-    const data = await DAO.getByCart(id);
-    if (data === undefined) {
+    const data = await DAO.getIdByCart(id);
+    if (!data) {
       resolve.send({ error: "cart not found" });
     } else {
       resolve.send(data);
@@ -62,7 +62,7 @@ router.post("/:id/products", async (request, resolve) => {
 
   try {
     const data = await DAO.editCart(newData, id);
-    resolve.send({ message: "Products Saved in cart", data });
+    resolve.send(data);
   } catch (error) {
     throw new Error(error);
   }

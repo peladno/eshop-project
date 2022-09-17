@@ -33,3 +33,195 @@
   label: 'Label🏷️',
   timestamp: 'Sep-16-2022 02:51:54'
 }
+{
+  message: 'Cannot find id 1 CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "carts"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:01:20'
+}
+{
+  message: "Cannot find id 631fe0e4a2b3ecb20744cbdc TypeError: Cannot read properties of null (reading 'length')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:05:07'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of undefined (reading 'findOne')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:06:02'
+}
+{
+  message: 'Error to edit cart TypeError: this.gfindOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:08:56'
+}
+{
+  message: 'Error to edit cart TypeError: this.findOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:09:07'
+}
+{
+  message: 'Error to edit cart TypeError: this.model.getByID is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:09:45'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of null (reading 'products')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:10:14'
+}
+{
+  message: 'Error to edit cart TypeError: this.model.createCart is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:11:26'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of null (reading 'error')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:14:55'
+}
+{
+  message: "Error to edit cart MongoServerError: E11000 duplicate key error collection: test.carts index: _id_ dup key: { _id: ObjectId('632567e5301eaba71a8a9bfc') }",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:15:33'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.timeStamp: Path `timeStamp` is required., products.0.id: Path `id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:19:15'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.timeStamp: Path `timeStamp` is required., products.0.id: Path `id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:19:49'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.timeStamp: Path `timeStamp` is required., products.0.id: Path `id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:20:46'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.id: Path `id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:22:30'
+}
+{
+  message: 'Error to edit cart TypeError: cartProducts.findOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:26:20'
+}
+{
+  message: 'Error to edit cart TypeError: cart.products.findOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:28:37'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of undefined (reading 'findOne')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:29:32'
+}
+{
+  message: 'Error to edit cart TypeError: cart.products.findOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:32:43'
+}
+{
+  message: 'Error to edit cart TypeError: cart.products[0].findOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:35:10'
+}
+{
+  message: 'Error to edit cart TypeError: cart.products.findOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:38:05'
+}
+{
+  message: 'Error to edit cart TypeError: cart.findOne is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:40:45'
+}
+{
+  message: `Error to edit cart CastError: Cast to string failed for value "{ '$eq': '632567e5301eaba71a8a9bfc' }" (type Object) at path "_id" for model "carts"`,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:45:31'
+}
+{
+  message: `Error to edit cart CastError: Cast to string failed for value "{ '$eq': '632567e5301eaba71a8a9bfc' }" (type Object) at path "_id" for model "carts"`,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:47:02'
+}
+{
+  message: `Error to edit cart CastError: Cast to string failed for value "{ '$eq': '632567e5301eaba71a8a9bfc' }" (type Object) at path "_id" for model "carts"`,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:50:19'
+}
+{
+  message: `Error to edit cart CastError: Cast to string failed for value "{ '$eq': undefined }" (type Object) at path "_id" for model "carts"`,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:52:15'
+}
+{
+  message: `Error to edit cart CastError: Cast to string failed for value "{ '$eq': '632567e5301eaba71a8a9bfc' }" (type Object) at path "_id" for model "carts"`,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:52:33'
+}
+{
+  message: 'Error to edit cart TypeError: itemFound.update is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:56:40'
+}
+{
+  message: 'Error to edit cart TypeError: cart.products.update is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 05:58:55'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of undefined (reading 'apply')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 06:00:26'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of undefined (reading 'apply')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 06:01:48'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 06:12:11'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of undefined (reading 'findIndex')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-17-2022 06:37:58'
+}
