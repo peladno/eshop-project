@@ -53,9 +53,11 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/logout", (req, res, next) => {
-  req.logout(function(err) {
-    if (err) { return next(err); }
-    res.send("logout succesfull")
+  req.logOut(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.send("logout succesfully");
   });
 });
 

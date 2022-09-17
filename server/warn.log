@@ -387,3 +387,15 @@
   label: 'Label🏷️',
   timestamp: 'Sep-16-2022 02:51:54'
 }
+{
+  message: 'Error -2 - Ruta /, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-16-2022 03:54:59'
+}
+{
+  message: 'Error -2 - Ruta /logout, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-16-2022 04:04:58'
+}
