@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import styles from "./adminForm.module.css";
 import { APIContext } from "../../Context/ApiContext";
+import ApiServices from "../../Services/ApiServices";
 
 function AdminForm() {
   const { setItem } = useContext(APIContext);
@@ -25,14 +26,9 @@ function AdminForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:8080/api/products", {
-        method: "POST",
-        headers: { admin: "true", "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      })
-      .then(response => response.json())
-      .then(data => setItem((prev) => [...prev, data]))
-      
+      const response = await ApiServices.saveProduct(body);
+      const data = response.data;
+      setItem((prev) => [...prev, data]);
     } catch (error) {
       console.log("error");
     }
@@ -101,7 +97,7 @@ function AdminForm() {
         <div className={styles.inputGroup}>
           <input
             className={styles.input}
-            type="text"
+            type="number"
             name="code"
             value={code}
             onChange={(e) => {

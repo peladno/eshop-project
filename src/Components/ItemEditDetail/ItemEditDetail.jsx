@@ -3,6 +3,7 @@ import { Waveform } from "@uiball/loaders";
 import styles from "./itemEditDetail.module.css";
 import { useState } from "react";
 import { Button } from "@mui/material";
+import ApiServices from "../../Services/ApiServices";
 
 function ItemEditDetail({ item, loading }) {
   const [name, setName] = useState("");
@@ -21,18 +22,11 @@ function ItemEditDetail({ item, loading }) {
     stock: stock,
   };
 
-  const URL = `http://localhost:8080/api/products/${item._id}`;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(URL, {
-        method: "PUT",
-        headers: { admin: "true", "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      })
-      .then(response => console.log(response.json()))
-
+     const response = await ApiServices.updateProducts(item._id, body)
+     console.log(response);
     } catch (error) {
       console.log(error);
     }

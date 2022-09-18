@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import axios from "axios";
+import ApiServices from "../Services/ApiServices";
 export const APIContext = createContext();
 
 const APIContextProvider = ({ children }) => {
@@ -10,18 +10,15 @@ const APIContextProvider = ({ children }) => {
     setLoading(true);
     const getProducts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/api/products"
-        );
-
+        const response = await ApiServices.getAllProducts();
         const data = await response.data;
-        setItem(data)
-        setLoading(false)
+        setItem(data);
+        setLoading(false);
       } catch (error) {
         throw new Error(`Error fetching data ${error}`);
       }
     };
-    getProducts()
+    getProducts();
   }, []);
 
   return (

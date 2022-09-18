@@ -4,32 +4,27 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { APIContext } from "../../Context/ApiContext";
 import styles from "./itemAdmin.module.css";
+import ApiServices from "../../Services/ApiServices";
 
 function ItemAdmin({ id, name, price, description, photo, stock }) {
   const { item, setItem } = useContext(APIContext);
 
   const handleSubmit = async (id) => {
     try {
-      await fetch(
-        `http://localhost:8080/api/products/${id}`,
-        {
-          method: "DELETE",
-          headers: { admin: "true", "Content-Type": "application/json" },
-        }
-      );
+      await ApiServices.deleteProduct(id);
       setItem(
         item.filter((items) => {
           return items._id !== id;
         })
       );
     } catch (error) {
-     throw new Error(error)
+      throw new Error(error);
     }
-  }
+  };
 
   return (
     <div key={id}>
-      <ul className={styles.itemList} >
+      <ul className={styles.itemList}>
         <li>{name}</li>
         <li>{price}</li>
         <li>{description}</li>
@@ -52,7 +47,7 @@ function ItemAdmin({ id, name, price, description, photo, stock }) {
           <Button
             variant="contained"
             type="button"
-            onClick={() => (handleSubmit(id))}
+            onClick={() => handleSubmit(id)}
             size="small"
             color="error"
           >

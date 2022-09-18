@@ -597,3 +597,57 @@
   label: 'Label🏷️',
   timestamp: 'Sep-17-2022 06:37:58'
 }
+{
+  message: 'Error -2 - Ruta /api/login/success, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:29:00'
+}
+{
+  message: 'Error -2 - Ruta /api/login/success, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:31:31'
+}
+{
+  message: 'Error -2 - Ruta /api/login/success, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:31:36'
+}
+{
+  message: 'Error -2 - Ruta /api/login/success, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:31:51'
+}
+{
+  message: 'Error -2 - Ruta /api/login/success, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:32:07'
+}
+{
+  message: 'Error -2 - Ruta /api/login/success, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:32:19'
+}
+{
+  message: 'Error -2 - Ruta /api/login/success, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:32:29'
+}
+{
+  message: 'Error -2 - Ruta /api/products/6323f502180e9d8be4229ec2, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:51:04'
+}
+{
+  message: 'Error -2 - Ruta /api/products/6323f502180e9d8be4229ec2, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Sep-18-2022 01:51:29'
+}
