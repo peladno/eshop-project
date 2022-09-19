@@ -136,7 +136,7 @@ class ContainerMongo {
         );
         if (itemFound !== -1) {
           let product = cart.products[itemFound];
-          product.quantity += obj.quantity;
+          product.count += obj.count;
           const saved = await cart.save();
           return saved;
         } else {

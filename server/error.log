@@ -225,3 +225,9 @@
   label: 'Label🏷️',
   timestamp: 'Sep-17-2022 06:37:58'
 }
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-19-2022 02:25:22'
+}

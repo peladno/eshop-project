@@ -2,6 +2,8 @@ const nodemailer = require("nodemailer");
 const config = require("../utils/config.js");
 const logger = require("../logger/logger.js");
 
+//TODO add wsp and msn 
+
 function gmail(subject, message) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -24,7 +26,7 @@ function gmail(subject, message) {
       logger.error(`Error: ${error}`)
       throw new Error(error);
     } else {
-     //logger.info({msg:"mailsent", info})
+     logger.info({msg:"mailsent", info})
     }
   });
 }

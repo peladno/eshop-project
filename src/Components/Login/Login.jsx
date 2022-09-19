@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import styles from "./login.module.css";
+import ApiServices from "../../Services/ApiServices"
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -15,19 +16,12 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch(
-        "http://localhost:8080/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
+      let response = await ApiServices.loginUser(body)
 
       if (response.status !== 200) {
         throw new Error(response.statusText);
       }
-      const { token } = await response.json();
+      const { token } = response.data
 
       if (token !== null) {
         localStorage.setItem("token", token);

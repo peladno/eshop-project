@@ -40,7 +40,7 @@ const CartSchema = new Schema({
         type: Number,
         required: true,
       },
-      quantity: {
+      count: {
         type: Number,
         required: true,
       },

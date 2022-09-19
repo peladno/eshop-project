@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { Link } from "react-router-dom"
 
+//TODO aadding delete prodsucts from cart and clearcart APIREST, delete CartContext
+
 const CartDetail = () => {
 const { cart, removeCart, totalPrice, clearCart} = useContext(CartContext); 
 

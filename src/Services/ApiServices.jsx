@@ -1,8 +1,16 @@
 import { client, clientAdmin, user } from "./AxiosClient";
 
 const getCurrentUser = () => {
-    return user.get("/login/success");
-  };
+  return user.get("/login/success");
+};
+
+const userLogout = () => {
+  return user.post("/logout/");
+};
+
+const loginUser = (data) => {
+  return user.post("/login/", data);
+}
 
 const getAllProducts = () => {
   return client.get("/products/");
@@ -21,7 +29,11 @@ const deleteProduct = (id) => {
 };
 
 const saveProduct = (data) => {
-    return clientAdmin.post("/products/", data)
+  return clientAdmin.post("/products/", data);
+};
+
+const addToCart = (id,data) => {
+  return client.post(`/cart/${id}/products/`, data)
 }
 
 const services = {
@@ -30,7 +42,10 @@ const services = {
   getAllProducts,
   getProductId,
   getCurrentUser,
-  saveProduct
+  saveProduct,
+  userLogout,
+  loginUser,
+  addToCart
 };
 
 export default services;

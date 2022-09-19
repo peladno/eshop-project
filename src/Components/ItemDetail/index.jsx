@@ -2,20 +2,33 @@ import React, { useState, useContext } from "react";
 import ItemCount from "../ItemCount.jsx";
 import Button from "@mui/material/Button";
 import styles from "./itemDetail.module.css";
-import { CartContext } from "../../Context/CartContext.jsx";
 import { Link } from "react-router-dom";
 import { Waveform } from "@uiball/loaders";
+import ApiServices from "../../Services/ApiServices";
+import { USERContext } from "../../Context/UserContext.jsx";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
   const [number, setNumber] = useState(0);
-
-  const { addToCart } = useContext(CartContext);
+  const { user } = useContext(USERContext);
 
   const addCart = (count) => {
     setNumber(count);
-    addToCart({ ...item, count });
+    handleSubmit(count);
   };
+
+  const handleSubmit = async (count) => {
+    try {
+      const response = await ApiServices.addToCart(user._id, {
+        ...item,
+        count,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // TODO add post method (add to cart, including quantity). Delete cartcontext
 
   return (
     <>

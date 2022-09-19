@@ -17,16 +17,16 @@ import { Link } from "react-router-dom";
 import logo from "../../images/Nook_Inc.png";
 import styles from "./index.module.css";
 import { USERContext } from "../../Context/UserContext.jsx";
-import axios from "axios";
+import APiServices from "../../Services/ApiServices"
 
-//NavBar de Materia UI
+//TODO adding axios post and apirest from cart
 
 const ResponsiveAppBar = () => {
-  const API_URL = "http://localhost:8080/";
 
   const logout = async () => {
     localStorage.removeItem("token");
-    return await axios.post(API_URL + "logout").then((response) => {
+    return await APiServices.userLogout()
+    .then((response) => {
       window.location.reload();
       return response.data;
     });

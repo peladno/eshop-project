@@ -30,7 +30,7 @@ function AdminForm() {
       const data = response.data;
       setItem((prev) => [...prev, data]);
     } catch (error) {
-      console.log("error");
+      console.log(error);
     }
   };
 

@@ -2,6 +2,8 @@ import React, { useState, createContext } from 'react'
 
 export const CartContext = createContext();
 
+//TODO change or delete cartcontext
+
 const CartContextProvider = ( { children } ) => {
 
   const [cart, setCart] = useState([]);
