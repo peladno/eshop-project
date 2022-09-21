@@ -187,7 +187,7 @@ class ContainerMongo {
     }
   }
 
-  async getIdByCart(client) {
+  async getCartById(client) {
     try {
       const buscado = await this.model.findOne({
         client: {

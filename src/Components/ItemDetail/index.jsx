@@ -28,8 +28,6 @@ const ItemDetail = ({ item, loading }) => {
     }
   };
 
-  // TODO add post method (add to cart, including quantity). Delete cartcontext
-
   return (
     <>
       {loading ? (

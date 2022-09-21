@@ -1,10 +1,13 @@
 const nodemailer = require("nodemailer");
 const config = require("../utils/config.js");
 const logger = require("../logger/logger.js");
+const accountSid = config.ACCOUNT_SID_TWILIO;
+const authToken = config.AUTH_TOKEN_TWILIO;
+const twilioWhatsapp = config.WHATSAPP;
+const messagingServiceSid = config.MSG_SERVICE_SID;
+const client = require("twilio")(accountSid, authToken);
 
-//TODO add wsp and msn 
-
-function gmail(subject, message) {
+function gmail(subject, message, email) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     port: 857,
@@ -16,19 +19,42 @@ function gmail(subject, message) {
 
   const mailOptions = {
     from: "Ecommerce server",
-    to: config.EMAIL,
+    to: email,
     subject: subject,
     html: message,
   };
 
   transporter.sendMail(mailOptions, async function (error, info) {
     if (error) {
-      logger.error(`Error: ${error}`)
+      logger.error(`Error: ${error}`);
       throw new Error(error);
     } else {
-     logger.info({msg:"mailsent", info})
+      logger.info({ msg: "mailsent", info });
     }
   });
 }
 
-module.exports = { gmail };
+function whatsapp(msg, phone) {
+  const from = "whatsapp:" + twilioWhatsapp;
+  const to = "whatsapp:" + phone;
+  client.messages
+    .create({
+      body: msg,
+      from: from,
+      to: to,
+    })
+    .then((message) => logger.info("Whatsapp sent"));
+}
+
+function sms(msg, to) {
+  client.messages
+    .create({
+      body: msg,
+      messagingServiceSid: messagingServiceSid,
+      to: to,
+    })
+    .then((message) => logger.info("SMS sent."))
+    .done();
+}
+
+module.exports = { gmail, whatsapp, sms };

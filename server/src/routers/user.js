@@ -5,6 +5,7 @@ const User = require("../../model/login.model");
 const { login, verifyToken } = require("../utils/jwt.js");
 const messages = require("../utils/messages");
 const logger = require("../logger/logger");
+const { AlternateEmailSharp } = require("@mui/icons-material");
 
 //Routes
 
@@ -49,7 +50,7 @@ router.post("/signup", async (req, res) => {
         </ul>
         <p>Thank you for register</p>
         `;
-  messages.gmail(subject, message);
+  messages.gmail(subject, message, email);
 });
 
 router.post("/logout", (req, res, next) => {
