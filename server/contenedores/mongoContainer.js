@@ -137,9 +137,15 @@ class ContainerMongo {
         if (itemFound !== -1) {
           let product = cart.products[itemFound];
           product.count += obj.count;
+          cart.total = cart.products.reduce((acc, curr) => {
+            return acc + curr.count * curr.price;
+          }, 0);
           const saved = await cart.save();
           return saved;
         } else {
+          cart.total = cart.products.reduce((acc, curr) => {
+            return acc + curr.count * curr.price;
+          }, 0);
           cart.products.push(obj);
           const saved = await cart.save();
           return saved;
@@ -149,6 +155,7 @@ class ContainerMongo {
           products: obj,
           timeStamp: timeStamp,
           client: client,
+          total: obj.count * obj.price
         });
         const saved = await newCart.save();
         return saved;

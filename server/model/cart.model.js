@@ -10,6 +10,11 @@ const CartSchema = new Schema({
     type: String,
     required: true,
   },
+  total: {
+    type: Number,
+    required: true,
+    default:0
+  },
   products: [
     {
       _id: {
@@ -43,8 +48,9 @@ const CartSchema = new Schema({
       count: {
         type: Number,
         required: true,
-      },
+      }
     },
+    
   ],
 });
 

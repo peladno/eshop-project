@@ -663,3 +663,33 @@
   label: 'Label🏷️',
   timestamp: 'Sep-19-2022 02:25:22'
 }
+{
+  message: 'Error to edit cart ValidationError: products.0.total.count: Path `total.count` is required., products.0.count: Path `count` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-22-2022 00:16:14'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.total.count: Path `total.count` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-22-2022 00:16:54'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.total: Path `total` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-22-2022 00:18:11'
+}
+{
+  message: 'Error to edit cart TypeError: product.reduce is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-22-2022 00:18:50'
+}
+{
+  message: 'Error to edit cart ValidationError: total: Path `total` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Sep-22-2022 00:21:47'
+}
