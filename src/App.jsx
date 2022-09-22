@@ -4,7 +4,6 @@ import ItemListContainer from "./Components/ItemListContainer/index.jsx";
 import ItemDetailContainer from "./Components/ItemDetailContainer/index.jsx";
 import CartDetail from "./Components/CartDetail/index.jsx";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import CartContextProvider from "./Context/CartContext.jsx";
 import Footer from "./Components/Footer/index.jsx";
 import Error404 from "./Components/Error404/index.jsx";
 import AdminPage from "./Components/Adminpage/index.jsx";
@@ -14,6 +13,7 @@ import Signup from "./Components/Singup/SignUp";
 import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
 import ItemEdit from "./Components/ItemEditContainer/ItemEditContainer.jsx";
+import NewCartProvider from "./Context/NewCartContex.jsx";
 
 export default function App() {
   const data = useContext(USERContext);
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <>
       <APIContextProvider>
-        <CartContextProvider>
+        <NewCartProvider>
           <BrowserRouter>
             <NavBar />
             <Routes>
@@ -36,12 +36,16 @@ export default function App() {
               <Route exact path="/*" element={<Error404 />} />
               <Route exact path="/admin" element={<AdminPage />} />
               <Route exact path="/signup" element={<Signup />} />
-              <Route exact path="/login" element={ data? <Navigate to="/" /> : <Login />} />
-              <Route exact path="/itemEdit/:id" element={<ItemEdit/>} />
+              <Route
+                exact
+                path="/login"
+                element={data ? <Navigate to="/" /> : <Login />}
+              />
+              <Route exact path="/itemEdit/:id" element={<ItemEdit />} />
             </Routes>
             <Footer />
           </BrowserRouter>
-        </CartContextProvider>
+        </NewCartProvider>
       </APIContextProvider>
     </>
   );

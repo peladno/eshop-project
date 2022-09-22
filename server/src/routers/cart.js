@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const DAO = require("../../model/cart.model");
 const USERDAO = require("../../model/login.model");
+const logger = require("../logger/logger");
 const messages = require("../utils/messages");
 
 //get all carts
@@ -37,13 +38,8 @@ router.post("/:id", async (request, resolve) => {
 router.delete("/:id/products", async (request, resolve) => {
   try {
     const id = request.params.id;
-    const search = await DAO.getCartById(id);
-    if (!search) {
-      throw new Error("Cart not found");
-    } else {
-      const deleted = await DAO.deleteById(id);
-      resolve.send(deleted);
-    }
+    const deleted = await DAO.deleteById(id);
+    resolve.send(deleted);
   } catch (error) {
     throw new Error(error);
   }
@@ -54,11 +50,7 @@ router.get("/:id/products", async (request, resolve) => {
   try {
     const id = request.params.id;
     const search = await DAO.getCartById(id);
-    if (!search) {
-      throw new Error("Cart not found");
-    } else {
-      resolve.send(search);
-    }
+    resolve.send(search);
   } catch (error) {
     throw new Error(error);
   }

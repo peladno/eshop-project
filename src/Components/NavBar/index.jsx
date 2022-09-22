@@ -17,16 +17,14 @@ import { Link } from "react-router-dom";
 import logo from "../../images/Nook_Inc.png";
 import styles from "./index.module.css";
 import { USERContext } from "../../Context/UserContext.jsx";
-import APiServices from "../../Services/ApiServices"
+import APiServices from "../../Services/ApiServices";
 
 //TODO adding axios post and apirest from cart
 
 const ResponsiveAppBar = () => {
-
   const logout = async () => {
     localStorage.removeItem("token");
-    return await APiServices.userLogout()
-    .then((response) => {
+    return await APiServices.userLogout().then((response) => {
       window.location.reload();
       return response.data;
     });
@@ -35,7 +33,7 @@ const ResponsiveAppBar = () => {
   const data = React.useContext(USERContext);
 
   const pages = ["admin", "signup"];
-  const settings = ["Profile", "Account", "Dashboard"];
+  const settings = ["Profile", "Account"];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -246,11 +244,13 @@ const ResponsiveAppBar = () => {
                   <Typography textAlign="center">logout</Typography>
                 </MenuItem>
               ) : null}
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {data
+                ? settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))
+                : null}
             </Menu>
           </Box>
         </Toolbar>

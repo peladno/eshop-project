@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 import { Waveform } from "@uiball/loaders";
 import ApiServices from "../../Services/ApiServices";
 import { USERContext } from "../../Context/UserContext.jsx";
+import { NewCartContext } from "../../Context/NewCartContex.jsx";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
   const [number, setNumber] = useState(0);
-  const { user } = useContext(USERContext);
+  const data = useContext(USERContext);
+  const { setCart } = useContext(NewCartContext);
 
   const addCart = (count) => {
     setNumber(count);
@@ -19,10 +21,12 @@ const ItemDetail = ({ item, loading }) => {
 
   const handleSubmit = async (count) => {
     try {
-      const response = await ApiServices.addToCart(user._id, {
+      const response = await ApiServices.addToCart(data.user._id, {
         ...item,
         count,
       });
+      const cartData = await response.data;
+      setCart(() => [...cartData.products]);
     } catch (error) {
       console.log(error);
     }

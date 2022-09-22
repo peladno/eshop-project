@@ -36,6 +36,18 @@ const addToCart = (id,data) => {
   return client.post(`/cart/${id}/products/`, data)
 }
 
+const getCart = (id) => {
+  return client.get(`/cart/${id}/products/`)
+}
+
+const deleteCart = (id) => {
+  return client.delete(`/cart/${id}/products`)
+}
+
+const deleteProductFromCart = (id, id_prod) => {
+  return client.delete(`/cart/${id}/products/${id_prod}`)
+}
+
 const services = {
   deleteProduct,
   updateProducts,
@@ -45,7 +57,10 @@ const services = {
   saveProduct,
   userLogout,
   loginUser,
-  addToCart
+  addToCart,
+  getCart,
+  deleteCart,
+  deleteProductFromCart
 };
 
 export default services;
