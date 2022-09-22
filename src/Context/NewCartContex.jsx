@@ -26,9 +26,13 @@ const NewCartProvider = ({ children }) => {
   }, [tokenKey, data]);
 
   const totalCart = cart?.reduce((total, item) => total + item.count, 0);
+  const totalPrice = cart?.reduce(
+    (total, item) => total + item.price * item.count,
+    0
+  );
 
   return (
-    <NewCartContext.Provider value={{ cart, setCart, totalCart }}>
+    <NewCartContext.Provider value={{ cart, setCart, totalCart, totalPrice }}>
       {children}
     </NewCartContext.Provider>
   );

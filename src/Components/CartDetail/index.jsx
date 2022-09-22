@@ -40,7 +40,7 @@ const CartDetail = () => {
         )}
         <div className={styles.cartTotalSection}>
           <h3>SubTotal</h3>
-          <p>$ {/*totalPrice*/}</p>
+          <p>$ {totalPrice}</p>
 
           {/*Si el carrito esta vacio el boton no se puede utilizar*/}
           {cart?.length === 0 ? (

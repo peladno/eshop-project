@@ -88,21 +88,16 @@ router.post("/:id/shop", async (request, resolve) => {
   try {
     const client = request.params.id;
     const search = await DAO.getByID(client);
-    if (!search) {
-      throw new Error("Cart not found");
-    } else {
-      const { name, email, phone } = await USERDAO.getById(client);
-
-      const subject = "Your order...";
-      const messageOrder = `${name} Your order is in process`;
-      messages.sms(messageOrder, phone);
-      messages.whatsapp(messageOrder, phone);
-      messages.gmail(subject, messageOrder, email);
-      await DAO.deleteByCart(client).then((resolve) => {
-        resolve.json(`Carrito ${client}: Se borró con éxito.`);
-      });
-      resolve.send({ message: "Product in process", search });
-    }
+    const { name, email, phone } = await USERDAO.getById(client);
+    const subject = "Your order...";
+    const messageOrder = `${name} Your order is in process`;
+    messages.sms(messageOrder, phone);
+    messages.whatsapp(messageOrder, phone);
+    messages.gmail(subject, messageOrder, email);
+    await DAO.deleteByCart(client).then((resolve) => {
+      resolve.json(`Carrito ${client}: Se borró con éxito.`);
+    });
+    resolve.send({ message: "Product in process", search });
   } catch (error) {
     throw new Error(error);
   }
