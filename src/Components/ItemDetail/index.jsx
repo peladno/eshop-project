@@ -26,7 +26,7 @@ const ItemDetail = ({ item, loading }) => {
         count,
       });
       const cartData = await response.data;
-      setCart(() => [...cartData.products]);
+      setCart(() => cartData);
     } catch (error) {
       console.log(error);
     }

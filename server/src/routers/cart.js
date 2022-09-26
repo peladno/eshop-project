@@ -38,7 +38,7 @@ router.post("/:id", async (request, resolve) => {
 router.delete("/:id/products", async (request, resolve) => {
   try {
     const id = request.params.id;
-    const deleted = await DAO.deleteById(id);
+    const deleted = await DAO.deleteCart(id);
     resolve.send(deleted);
   } catch (error) {
     throw new Error(error);

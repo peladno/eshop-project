@@ -17,8 +17,8 @@ const CartDetail = () => {
       <div className={styles.cartList}>
         <h1 className={styles.cartTitle}>Tus productos</h1>
         {/*Mapeo de productos en carrito*/}
-        {cart?.length > 0 ? (
-          cart?.map((item) => (
+        {cart.products?.length > 0 ? (
+          cart.products?.map((item) => (
             <div className={styles.cartItem} key={item._id}>
               <img src={item.image_url} alt={item.name} />
               <h2>{item.name}</h2>
@@ -43,7 +43,7 @@ const CartDetail = () => {
           <p>$ {totalPrice}</p>
 
           {/*Si el carrito esta vacio el boton no se puede utilizar*/}
-          {cart?.length === 0 ? (
+          {cart.products?.length === 0 ? (
             <Button variant="contained" disabled>
               Comprar
             </Button>
@@ -55,7 +55,12 @@ const CartDetail = () => {
           <Link to={"/"} style={{ textDecoration: "none" }}>
             <Button variant="contained">Seguir Comprando</Button>
           </Link>
-          {/*<Button variant="contained" onClick={()=>clearCart()}>Vaciar Carro</Button>*/}
+          {
+           
+            <Button variant="contained" onClick={() => clearCart(cart.client)}>
+              Vaciar Carro
+            </Button>
+          }
         </div>
       </div>
     </div>

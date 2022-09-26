@@ -15,7 +15,7 @@ const NewCartProvider = ({ children }) => {
       try {
         const response = await ApiServices.getCart(data.user._id);
         const dataCart = await response.data;
-        setCart(dataCart.products);
+        setCart(dataCart);
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }
@@ -25,14 +25,25 @@ const NewCartProvider = ({ children }) => {
     }
   }, [tokenKey, data]);
 
-  const totalCart = cart?.reduce((total, item) => total + item.count, 0);
-  const totalPrice = cart?.reduce(
+  const totalCart = cart.products?.reduce((total, item) => total + item.count, 0);
+
+  const totalPrice = cart.products?.reduce(
     (total, item) => total + item.price * item.count,
     0
   );
 
+  const clearCart = async(cart_id) => {
+    try {
+      const response = await ApiServices.deleteCart(cart_id);
+      const dataCart = await response.data
+      setCart([])
+    }catch(error) {
+      throw new Error(error)
+    }
+  }
+
   return (
-    <NewCartContext.Provider value={{ cart, setCart, totalCart, totalPrice }}>
+    <NewCartContext.Provider value={{ cart, setCart, totalCart, totalPrice, clearCart }}>
       {children}
     </NewCartContext.Provider>
   );
