@@ -5,7 +5,6 @@ const User = require("../../model/login.model");
 const { login, verifyToken } = require("../utils/jwt.js");
 const messages = require("../utils/messages");
 const logger = require("../logger/logger");
-const { AlternateEmailSharp } = require("@mui/icons-material");
 
 //Routes
 

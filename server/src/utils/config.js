@@ -9,6 +9,7 @@ module.exports = {
   AUTH_TOKEN_TWILIO: process.env.AUTH_TOKEN_TWILIO,
   MSG_SERVICE_SID: process.env.MSG_SERVICE_SID,
   WHATSAPP: process.env.WHATSAPP,
+  TYPE_DB:  process.argv[2] || process.env.TYPE_DB,
   mongoLocal: {
     client: "mongodb",
     URL: `mongodb+srv://peladno:${process.env.PASS}@coderhouseproject.zgltv4f.mongodb.net/?retryWrites=true&w=majority`,
