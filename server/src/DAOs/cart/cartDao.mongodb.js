@@ -11,6 +11,17 @@ class CartDAOMongoDB extends DAO {
     this.connection = new MongoDBClient();
     CartDAOMongoDB.instancia = this;
   }
+
+  async getAll() {
+    try {
+      const searched = await this.model.find();
+      return searched;
+    } catch (error) {
+      logger.error(`Error to get all elements ${error}`);
+      throw new Error(error);
+    }
+  }
+
   async createCart(client, obj) {
     const date = new Date();
     const timeStamp = date.toLocaleString();

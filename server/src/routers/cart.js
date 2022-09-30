@@ -87,8 +87,8 @@ router.delete("/:id/products/:id_prod", async (request, resolve) => {
 router.post("/:id/shop", async (request, resolve) => {
   try {
     const client = request.params.id;
-    const search = await DAO.getByID(client);
-    const { name, email, phone } = await USERDAO.getById(client);
+    const search = await DAO.getCartById(client);
+    const { name, email, phone } = await USERDAO.getByID(client);
     const subject = "Your order...";
     const messageOrder = `${name} Your order is in process`;
     messages.sms(messageOrder, phone);

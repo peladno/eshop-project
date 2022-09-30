@@ -16,7 +16,7 @@ class ProductDAOMongoDB extends DAO {
       const searched = await this.model.find();
       return searched;
     } catch (error) {
-      logger.error(`Erro to get all elements ${error}`);
+      logger.error(`Error to get all elements ${error}`);
       throw new Error(error);
     }
   }

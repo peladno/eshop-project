@@ -1,4 +1,5 @@
 const config = require("../../utils/config")
+const UserDAOMongoDB = require("../user/userDAO.mongodb")
 
 class UserDAOFactory {
     static get() {
