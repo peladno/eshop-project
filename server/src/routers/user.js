@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("../utils/passport");
-const User = require("../../model/login.model");
 const { login, verifyToken } = require("../utils/jwt.js");
 const messages = require("../utils/messages");
 const logger = require("../logger/logger");
+const factoryUser = require("../DAOs/factoryDAO/UserDAOfactory.class");
+const DAO = factoryUser.get();
 
 //Routes
 
@@ -13,7 +14,7 @@ router.post("/login", passport.authenticate("login"), login);
 router.post("/signup", async (req, res) => {
   const { username, email, name, address, phone, photo, password } = req.body;
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await DAO.getUser(username);
     if (user) {
       res.send({ message: "User already exists" });
     } else {
@@ -26,7 +27,7 @@ router.post("/signup", async (req, res) => {
         photo,
         password,
       };
-      await User.create(newUser);
+      await DAO.saveUser(newUser);
       res.status(200).json({
         success: true,
         message: "success",

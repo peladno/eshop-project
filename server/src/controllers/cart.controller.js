@@ -116,6 +116,19 @@ async function orderProcess(req, res) {
   }
 }
 
+async function deleteCartById(req, res) {
+  try {
+    const client = req.params.id;
+    const deleted = await DAO.deleteCart(client);
+    const info = "Cart deleted";
+    logger.info(info);
+    res.status(200).json({ message: info, data: deleted });
+  } catch (error) {
+    logger.error(error);
+    throw new Error(error);
+  }
+}
+
 module.exports = {
   getAll,
   getCartById,
@@ -123,4 +136,5 @@ module.exports = {
   addProductToCart,
   deleteProductCart,
   orderProcess,
+  deleteCartById,
 };

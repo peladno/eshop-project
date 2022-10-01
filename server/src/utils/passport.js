@@ -1,7 +1,7 @@
 const { model } = require("mongoose");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("../../model/login.model");
+const User = require("../models/user.model");
 const logger = require("../logger/logger");
 
 passport.use(

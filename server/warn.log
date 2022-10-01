@@ -735,3 +735,18 @@
   label: 'Label🏷️',
   timestamp: 'Sep-26-2022 02:31:58'
 }
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 02:18:35'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 02:26:44'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 02:30:03'
+}

@@ -22,7 +22,7 @@ async function getAll(req, res) {
           item.price,
           item.code,
           item.description,
-          item.timestamp,
+          item.timeStamp,
           item.stock
         );
       });
@@ -44,7 +44,7 @@ async function getByID(req, res) {
         error_description: error,
       });
     } else {
-      const productDTO = product.map((item) => {
+      /*const productDTO = product.map((item) => {
         return new ProductDTO(
           item.id,
           item.name,
@@ -56,7 +56,8 @@ async function getByID(req, res) {
           item.stock
         );
       });
-      res.status(200).json(productDTO[0]);
+      res.status(200).json(productDTO[0]);*/
+      res.status(200).json(product);
     }
   } catch (error) {
     logger.error(error);
@@ -109,7 +110,7 @@ async function updateById(req, res) {
   try {
     const id = req.params.id;
     const newProduct = req.body;
-    const updatedProduct = await DAO.update(id, newProduct);
+    const updatedProduct = await DAO.updateItems(id, newProduct);
     const info = `Product updated`;
     logger.info(info);
     res.status(200).json({
