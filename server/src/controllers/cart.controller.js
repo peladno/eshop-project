@@ -7,7 +7,7 @@ const messages = require("../utils/messages");
 
 async function getAll(req, res) {
   try {
-    const allCarts = DAO.getAll();
+    const allCarts = await DAO.getAll();
     if (!allCarts) {
       const error = `No carts`;
       res.status(404).json({
@@ -17,6 +17,7 @@ async function getAll(req, res) {
       const info = "Carts found";
       logger.info(info);
       res.status(200).json({
+        message: info,
         allCarts,
       });
     }
@@ -50,10 +51,18 @@ async function getCartById(req, res) {
     const id = req.params.id;
     const cart = await DAO.getCartById(id);
     const info = "Cart found";
+    const error = "Cart not found";
     logger.info(info);
-    res.status(200).json({
-      cart,
-    });
+    if (!cart) {
+      res.status(400).json({
+        error_message: error,
+      });
+    } else {
+      res.status(200).json({
+        message: info,
+        cart,
+      });
+    }
   } catch (error) {
     logger.error(error);
     throw new Error(error);
@@ -69,7 +78,7 @@ async function addProductToCart(req, res) {
     logger.info(info);
     res.status(200).json({
       message: info,
-      data: saved,
+      saved,
     });
   } catch (error) {
     logger.error(error);
@@ -80,15 +89,15 @@ async function addProductToCart(req, res) {
 async function deleteProductCart(req, res) {
   try {
     const { id, id_product } = req.params;
-    const cartID = id;
+    const clientID = id;
     const prodID = id_product;
 
-    const deleteProduct = await DAO.deleteProduct(cartID, prodID);
+    const deleteProduct = await DAO.deleteProduct(clientID, prodID);
     const info = "Product deleted";
     logger.info(info);
     res.status(200).json({
       message: info,
-      data: deleteProduct,
+      deleteProduct,
     });
   } catch (error) {
     logger.error(error);

@@ -318,3 +318,111 @@
   label: 'Label🏷️',
   timestamp: 'Oct-01-2022 02:30:03'
 }
+{
+  message: 'Error to delete product undefined from cart 631fe0e4a2b3ecb20744cbdc MongooseError: Callback must be a function, got [object Object]',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:08:20'
+}
+{
+  message: 'Error to delete product undefined from cart 631fe0e4a2b3ecb20744cbdc MongooseError: Callback must be a function, got [object Object]',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:09:08'
+}
+{
+  message: 'Error to edit cart ValidationError: total: Cast to Number failed for value "NaN" (type number) at path "total", products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:45:48'
+}
+{
+  message: 'Error to edit cart ValidationError: total: Cast to Number failed for value "NaN" (type number) at path "total", products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:46:45'
+}
+{
+  message: 'Error to edit cart ValidationError: total: Cast to Number failed for value "NaN" (type number) at path "total", products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:48:27'
+}
+{
+  message: 'Error to edit cart ValidationError: total: Cast to Number failed for value "NaN" (type number) at path "total", products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:50:46'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:53:19'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:55:17'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:57:57'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:58:52'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 03:59:00'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Cast to Number failed for value "NaN" (type number) at path "count", products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 04:01:36'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Cast to Number failed for value "NaN" (type number) at path "count", products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 04:01:44'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Cast to Number failed for value "NaN" (type number) at path "count", products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 04:02:48'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 04:03:08'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 04:03:37'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.price: Path `price` is required., products.0.photo: Path `photo` is required., products.0.code: Path `code` is required., products.0.description: Path `description` is required., products.0.name: Path `name` is required., products.0.timeStamp: Path `timeStamp` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 04:07:25'
+}
+{
+  message: "Error to delete product undefined from cart 631fe0e4a2b3ecb20744cbdc TypeError: Cannot read properties of undefined (reading 'splice')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-01-2022 04:38:20'
+}

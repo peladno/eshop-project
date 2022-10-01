@@ -98,7 +98,7 @@ async function save(req, res) {
     logger.info(info);
     return res.status(201).json({
       message: info,
-      data: data,
+      data,
     });
   } catch (error) {
     logger.error(error);
@@ -115,7 +115,7 @@ async function updateById(req, res) {
     logger.info(info);
     res.status(200).json({
       message: info,
-      data: updatedProduct,
+      updatedProduct,
     });
   } catch (error) {
     logger.error(error);

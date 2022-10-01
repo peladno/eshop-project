@@ -44,7 +44,6 @@ class CartDAOMongoDB extends DAO {
     const timeStamp = date.toLocaleString();
     try {
       const cart = await this.model.findOne({ client: { $eq: client } });
-
       if (cart) {
         const itemFound = cart.products.findIndex(
           (item) => item._id === obj._id
@@ -83,12 +82,23 @@ class CartDAOMongoDB extends DAO {
 
   async deleteProduct(client, idProduct) {
     try {
-      const updated = await this.model.updateOne(
-        { client: client },
-        { $pull: { products: { _id: idProduct } } },
-        { new: true }
+      const cart = await this.model.findOne({ client: { $eq: client } });
+      const itemFound = cart.products.findIndex(
+        (item) => item._id === idProduct
       );
-      return updated;
+      if (itemFound !== -1) {
+        let product = cart.products[itemFound];
+        cart.total -= product.count * product.price;
+      }
+      if (cart.total < 0) {
+        cart.bill = 0;
+      }
+      cart.products.splice(itemFound, 1);
+      cart.total = cart.products.reduce((acc, curr) => {
+        return acc + curr.count * curr.price;
+      }, 0);
+      const saved = await cart.save();
+      return saved;
     } catch (error) {
       logger.error(
         `Error to delete product ${idProduct} from cart ${client} ${error}`
