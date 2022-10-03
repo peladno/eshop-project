@@ -16,7 +16,7 @@ async function getAll(req, res) {
     } else {
       const productsDTO = products.map((item) => {
         return new ProductDTO(
-          item.id,
+          item._id,
           item.name,
           item.photo,
           item.price,
@@ -75,7 +75,7 @@ async function deleteById(req, res) {
         error_description: error,
       });
     } else {
-      res.status(200).json({ message: "Product deleted", deleted });
+      res.status(200).json(deleted);
     }
   } catch (error) {
     logger.error(error);
@@ -96,10 +96,7 @@ async function save(req, res) {
     });
     const info = `Product ${name} was saved`;
     logger.info(info);
-    return res.status(201).json({
-      message: info,
-      data,
-    });
+    return res.status(201).json(data);
   } catch (error) {
     logger.error(error);
     throw new Error(error);
@@ -113,10 +110,7 @@ async function updateById(req, res) {
     const updatedProduct = await DAO.updateItems(id, newProduct);
     const info = `Product updated`;
     logger.info(info);
-    res.status(200).json({
-      message: info,
-      updatedProduct,
-    });
+    res.status(200).json(updatedProduct);
   } catch (error) {
     logger.error(error);
     throw new Error(error);

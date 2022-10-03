@@ -16,10 +16,7 @@ async function getAll(req, res) {
     } else {
       const info = "Carts found";
       logger.info(info);
-      res.status(200).json({
-        message: info,
-        allCarts,
-      });
+      res.status(200).json(allCarts);
     }
   } catch (error) {
     logger.error(error);
@@ -36,10 +33,7 @@ async function saveCart(req, res) {
     const saved = await DAO.createCart(id, cart);
     const info = "Cart Saved";
     logger.info(info);
-    res.status(200).json({
-      message: info,
-      data: saved,
-    });
+    res.status(200).json(saved);
   } catch (error) {
     logger.error(error);
     throw new Error(error);
@@ -58,10 +52,7 @@ async function getCartById(req, res) {
         error_message: error,
       });
     } else {
-      res.status(200).json({
-        message: info,
-        cart,
-      });
+      res.status(200).json(cart);
     }
   } catch (error) {
     logger.error(error);
@@ -76,10 +67,7 @@ async function addProductToCart(req, res) {
     const saved = await DAO.editCart(newProduct, id);
     const info = "Product saved";
     logger.info(info);
-    res.status(200).json({
-      message: info,
-      saved,
-    });
+    res.status(200).json(saved);
   } catch (error) {
     logger.error(error);
     throw new Error(error);
@@ -95,10 +83,7 @@ async function deleteProductCart(req, res) {
     const deleteProduct = await DAO.deleteProduct(clientID, prodID);
     const info = "Product deleted";
     logger.info(info);
-    res.status(200).json({
-      message: info,
-      deleteProduct,
-    });
+    res.status(200).json(deleteProduct);
   } catch (error) {
     logger.error(error);
     throw new Error(error);
@@ -131,7 +116,7 @@ async function deleteCartById(req, res) {
     const deleted = await DAO.deleteCart(client);
     const info = "Cart deleted";
     logger.info(info);
-    res.status(200).json({ message: info, data: deleted });
+    res.status(200).json(deleted);
   } catch (error) {
     logger.error(error);
     throw new Error(error);

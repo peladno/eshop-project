@@ -3,7 +3,7 @@ import axios from "axios";
 const tokenKey = localStorage.getItem("token");
 
 export const user = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: process.env.REACT_APP_URL,
   headers: {
     Authorization: `Bearer ${tokenKey}`,
     "Content-type": "application/json",
@@ -11,7 +11,7 @@ export const user = axios.create({
 });
 
 export const clientAdmin = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: process.env.REACT_APP_URL + "api",
   headers: {
     admin: true,
     "Content-type": "application/json",
@@ -19,7 +19,7 @@ export const clientAdmin = axios.create({
 });
 
 export const client = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: process.env.REACT_APP_URL + "api",
   headers: {
     "Content-type": "application/json",
   },
