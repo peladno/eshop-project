@@ -19,8 +19,6 @@ import styles from "./index.module.css";
 import { USERContext } from "../../Context/UserContext.jsx";
 import APiServices from "../../Services/ApiServices";
 
-//TODO adding axios post and apirest from cart
-
 const ResponsiveAppBar = () => {
   const logout = async () => {
     localStorage.removeItem("token");

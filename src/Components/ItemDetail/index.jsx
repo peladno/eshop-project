@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Waveform } from "@uiball/loaders";
 import ApiServices from "../../Services/ApiServices";
 import { USERContext } from "../../Context/UserContext.jsx";
-import { NewCartContext } from "../../Context/NewCartContex.jsx";
+import { NewCartContext } from "../../Context/NewCartContext.jsx";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {

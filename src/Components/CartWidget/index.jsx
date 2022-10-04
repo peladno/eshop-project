@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom"
 import IconButton from '@mui/material/IconButton';
-import {NewCartContext} from "../../Context/NewCartContex"
+import {NewCartContext} from "../../Context/NewCartContext"
 
 
 export default function CartWidget() {

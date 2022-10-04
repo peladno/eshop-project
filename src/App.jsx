@@ -13,7 +13,7 @@ import Signup from "./Components/Singup/SignUp";
 import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
 import ItemEdit from "./Components/ItemEditContainer/ItemEditContainer.jsx";
-import NewCartProvider from "./Context/NewCartContex.jsx";
+import NewCartProvider from "./Context/NewCartContext.jsx";
 
 export default function App() {
   const data = useContext(USERContext);

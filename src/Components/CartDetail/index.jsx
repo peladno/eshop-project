@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NewCartContext } from "../../Context/NewCartContex";
+import { NewCartContext } from "../../Context/NewCartContext";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import styles from "./cartDetail.module.css";
 import Button from "@mui/material/Button";
@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
 import { USERContext } from "../../Context/UserContext";
 
-//TODO aadding delete prodsucts from cart, delete CartContext
+//TODO buy products
 
 const CartDetail = () => {
   const { cart, removeFromCart, totalPrice, clearCart } =
