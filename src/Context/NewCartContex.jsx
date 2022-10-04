@@ -25,17 +25,30 @@ const NewCartProvider = ({ children }) => {
     }
   }, [tokenKey, data]);
 
-  const clearCart = async(cart_id) => {
+  const clearCart = async (cart_id) => {
     try {
       const response = await ApiServices.deleteCart(cart_id);
-      const dataCart = await response.data
-      setCart([])
-    }catch(error) {
-      throw new Error(error)
+      const dataCart = await response.data;
+      setCart([]);
+    } catch (error) {
+      throw new Error(error);
     }
-  }
+  };
 
-  const totalCart = cart.products?.reduce((total, item) => total + item.count, 0);
+  const removeFromCart = async (id, id_prod) => {
+    try {
+      const response = await ApiServices.deleteProductFromCart(id, id_prod);
+      const removedData = await response.data;
+      setCart(() => removedData);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  const totalCart = cart.products?.reduce(
+    (total, item) => total + item.count,
+    0
+  );
 
   const totalPrice = cart.products?.reduce(
     (total, item) => total + item.price * item.count,
@@ -43,7 +56,16 @@ const NewCartProvider = ({ children }) => {
   );
 
   return (
-    <NewCartContext.Provider value={{ cart, setCart, totalCart, totalPrice, clearCart }}>
+    <NewCartContext.Provider
+      value={{
+        cart,
+        setCart,
+        totalCart,
+        totalPrice,
+        clearCart,
+        removeFromCart,
+      }}
+    >
       {children}
     </NewCartContext.Provider>
   );

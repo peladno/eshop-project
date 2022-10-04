@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  //llamada a producto segun cambia el id
+  //TODO llamada a producto segun cambia el id
   useEffect(() => {
     setLoading(true);
     

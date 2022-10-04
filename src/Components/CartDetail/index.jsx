@@ -5,12 +5,14 @@ import styles from "./cartDetail.module.css";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
+import { USERContext } from "../../Context/UserContext";
 
 //TODO aadding delete prodsucts from cart, delete CartContext
 
 const CartDetail = () => {
-  const { cart, removeCart, totalPrice, clearCart } =
+  const { cart, removeFromCart, totalPrice, clearCart } =
     useContext(NewCartContext);
+  const data = useContext(USERContext);
 
   return (
     <>
@@ -31,7 +33,12 @@ const CartDetail = () => {
                   <h3>Precio</h3>
                   <p>${item.price * item.count}</p>
                 </div>
-                {/*<IconButton onClick={()=>removeCart(item.id)}><DeleteForeverIcon className={styles.delete} style={{color: "red"}} /></IconButton>*/}
+                <IconButton onClick={() => removeFromCart(data.user._id,item.id)}>
+                  <DeleteForeverIcon
+                    className={styles.delete}
+                    style={{ color: "red" }}
+                  />
+                </IconButton>
               </div>
             ))
           ) : (
