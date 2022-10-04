@@ -93,17 +93,15 @@ async function deleteProductCart(req, res) {
 async function orderProcess(req, res) {
   try {
     const client = req.params.id;
-    const search = await DAO.getCartById(client);
+    const cart = await DAO.getCartById(client);
     const { name, email, phone } = await UserDao.getUser(client);
-    const subject = "Your order...";
-    const messageOrder = `${name} Your order is in process`;
-    messages.sms(messageOrder, phone);
-    messages.whatsapp(messageOrder, phone);
-    messages.gmail(subject, messageOrder, email);
+    messages.smsOrder(name, phone, cart);
+    messages.whatsappOrder(name, phone, cart);
+    messages.orderMail(name, email, cart);
     await DAO.deleteCart(client).then((res) => {
       res.status(200).json(`Carrito ${client}: Se borró con éxito.`);
     });
-    res.status(200).json({ message: "Product in process", search });
+    res.status(200).json({ message: "Product in process", cart });
   } catch (error) {
     logger.error(error);
     throw new Error(error);

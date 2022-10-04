@@ -8,6 +8,9 @@ const factoryUser = require("../DAOs/factoryDAO/UserDAOfactory.class");
 const DAO = factoryUser.get();
 
 //Routes
+router.get("/", (req, res) => {
+  res.send({ message: "ok" });
+});
 
 router.post("/login", passport.authenticate("login"), login);
 
@@ -39,18 +42,7 @@ router.post("/signup", async (req, res) => {
     throw new Error(`Error signing up ${err}`);
   }
 
-  const subject = "New User";
-  const message = `<h2>Ecommerce mail:</h2>
-        <ul>
-            <li>Nombre: ${name}</li>
-            <li>Email: ${email}</li>
-            <li>Dirección: ${address}</li>
-            <li>Teléfono Celular: ${phone}</li>
-            <li>Foto url: ${phone}</li>
-        </ul>
-        <p>Thank you for register</p>
-        `;
-  messages.gmail(subject, message, email);
+  messages.newUserEmail(name, email);
 });
 
 router.post("/logout", (req, res, next) => {

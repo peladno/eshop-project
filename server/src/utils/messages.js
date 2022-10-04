@@ -6,55 +6,111 @@ const authToken = config.AUTH_TOKEN_TWILIO;
 const twilioWhatsapp = config.WHATSAPP;
 const messagingServiceSid = config.MSG_SERVICE_SID;
 const client = require("twilio")(accountSid, authToken);
+const ejs = require("ejs");
+const path = require("path");
 
-function gmail(subject, message, email) {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    port: 857,
-    auth: {
-      user: config.EMAIL,
-      pass: config.EMAILPASS,
-    },
-  });
+const Email = nodemailer.createTransport({
+  service: "gmail",
+  port: 857,
+  auth: {
+    user: config.EMAIL,
+    pass: config.EMAILPASS,
+  },
+});
 
-  const mailOptions = {
-    from: "Ecommerce server",
-    to: email,
-    subject: subject,
-    html: message,
-  };
+function newUserEmail(name, email) {
+  ejs.renderFile(
+    path.join(process.cwd(), "../../public/views/emailNewUser.ejs"),
+    { name, email },
+    (err, data) => {
+      if (err) {
+        logger.error(err);
+      } else {
+        const mailOptions = {
+          from: `Eshop 📩`,
+          to: `${email}`,
+          subject: "New User",
+          html: data,
+        };
 
-  transporter.sendMail(mailOptions, async function (error, info) {
-    if (error) {
-      logger.error(`Error: ${error}`);
-      throw new Error(error);
-    } else {
-      logger.info({ msg: "mailsent", info });
+        Email.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            return logger.error(error);
+          }
+          logger.info("Message sent: %s", info.messageId);
+        });
+      }
     }
-  });
+  );
 }
 
-function whatsapp(msg, phone) {
+function orderMail(name, email, cart) {
+  ejs.renderFile(
+    path.join(process.cwd(), "../../public/views/emailOrder.ejs"),
+    { name, email, cart },
+    (err, data) => {
+      if (err) {
+        logger.error(err);
+      } else {
+        const mailOptions = {
+          from: `Eshop 📩`,
+          to: `${email}`,
+          subject: `Order N° ${cart._id}`,
+          html: data,
+        };
+
+        Email.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            return logger.error(error);
+          }
+          logger.info("Message sent: %s", info.messageId);
+        });
+      }
+    }
+  );
+}
+//TODO hacer ejs para mandar ordenes de compra
+function whatsappOrder(name, phone, cart) {
   const from = "whatsapp:" + twilioWhatsapp;
   const to = "whatsapp:" + phone;
-  client.messages
-    .create({
-      body: msg,
-      from: from,
-      to: to,
-    })
-    .then((message) => logger.info("Whatsapp sent"));
+  ejs.renderFile(
+    path.join(process.cwd(), "../../public/views/emailOrder.ejs"),
+    { name, phone, cart },
+    (err, data) => {
+      if (err) {
+        logger.error(err);
+      } else {
+        client.messages
+          .create({
+            body: data,
+            from: from,
+            to: to,
+          })
+          .then((message) => logger.info("Whatsapp sent"));
+      }
+    }
+  );
 }
 
-function sms(msg, to) {
-  client.messages
-    .create({
-      body: msg,
-      messagingServiceSid: messagingServiceSid,
-      to: to,
-    })
-    .then((message) => logger.info("SMS sent."))
-    .done();
+function smsOrder(name, phone, cart) {
+  ejs.renderFile(
+    path.join(process.cwd(), "../../public/views/emailOrder.ejs"),
+    { name, phone, cart },
+    (err, data) => {
+      if (err) {
+        logger.error(err);
+      } else {
+        client.messages
+          .create({
+            body: data,
+            messagingServiceSid: messagingServiceSid,
+            to: phone,
+          })
+          .then((message) => logger.info("SMS sent."))
+          .done();
+      }
+    }
+  );
 }
 
-module.exports = { gmail, whatsapp, sms };
+module.exports = { newUserEmail, whatsappOrder, smsOrder, orderMail };
