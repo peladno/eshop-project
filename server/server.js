@@ -116,7 +116,7 @@ if (mode === "CLUSTER") {
   //fork default mode
   const connectedServer = httpServer.listen(port, function () {
     console.log(
-      `websocket listen PORT ${
+      `webServer listen PORT ${
         connectedServer.address().port
       }, mode: ${mode} - PID: ${process.pid}`
     );
