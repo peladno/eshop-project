@@ -1,4 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body></body>
+  <body>
+    <h1>Order N° <%= cart._id %></h1>
+    <p>
+      Hello<%= name %>, your order is in process<br />
+      Your products are:
+    </p>
+    <ul>
+      <% cart.products.map((item)=>{%>
+      <li><%= item.name %></li>
+      <%}) %>
+    </ul>
+    <p>Will let you know when the products are dispatch.</p>
+  </body>
 </html>

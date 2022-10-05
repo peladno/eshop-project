@@ -69,7 +69,7 @@ function orderMail(name, email, cart) {
     }
   );
 }
-//TODO hacer ejs para mandar ordenes de compra
+
 function whatsappOrder(name, phone, cart) {
   const from = "whatsapp:" + twilioWhatsapp;
   const to = "whatsapp:" + phone;
