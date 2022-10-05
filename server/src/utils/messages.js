@@ -19,12 +19,15 @@ const Email = nodemailer.createTransport({
 });
 
 function newUserEmail(name, email) {
+  console.log(name);
+  console.log(email);
   ejs.renderFile(
-    path.join(process.cwd(), "../../public/views/emailNewUser.ejs"),
+    path.join(process.cwd(), "/public/views/emailNewUser.ejs"),
     { name, email },
     (err, data) => {
       if (err) {
         logger.error(err);
+        throw new Error(err)
       } else {
         const mailOptions = {
           from: `Eshop 📩`,
@@ -46,7 +49,7 @@ function newUserEmail(name, email) {
 
 function orderMail(name, email, cart) {
   ejs.renderFile(
-    path.join(process.cwd(), "../../public/views/emailOrder.ejs"),
+    path.join(process.cwd(), "/public/views/emailOrder.ejs"),
     { name, email, cart },
     (err, data) => {
       if (err) {
@@ -74,7 +77,7 @@ function whatsappOrder(name, phone, cart) {
   const from = "whatsapp:" + twilioWhatsapp;
   const to = "whatsapp:" + phone;
   ejs.renderFile(
-    path.join(process.cwd(), "../../public/views/emailOrder.ejs"),
+    path.join(process.cwd(), "/public/views/emailOrder.ejs"),
     { name, phone, cart },
     (err, data) => {
       if (err) {
@@ -94,7 +97,7 @@ function whatsappOrder(name, phone, cart) {
 
 function smsOrder(name, phone, cart) {
   ejs.renderFile(
-    path.join(process.cwd(), "../../public/views/emailOrder.ejs"),
+    path.join(process.cwd(), "/public/views/emailOrder.ejs"),
     { name, phone, cart },
     (err, data) => {
       if (err) {

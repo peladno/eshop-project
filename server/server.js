@@ -38,11 +38,6 @@ mongoose
     logger.error(`mongoose error ${error}`);
   });
 
-//directories
-app.use("/", express.static(__dirname + "/public"));
-app.set("view engine", "ejs");
-app.set("views", "./public/views");
-
 //config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -110,9 +105,9 @@ if (mode === "CLUSTER") {
   } else {
     const connectedServer = httpServer.listen(port, function () {
       console.log(
-        `listen PORT ${
-          connectedServer.address().port
-        }, mode: ${mode} - PID: ${process.pid}`
+        `listen PORT ${connectedServer.address().port}, mode: ${mode} - PID: ${
+          process.pid
+        }`
       );
     });
     connectedServer.on("error", (error) => logger.error(`error ${error}`));

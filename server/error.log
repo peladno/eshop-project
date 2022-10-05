@@ -438,3 +438,147 @@
   label: 'Label🏷️',
   timestamp: 'Oct-03-2022 18:19:32'
 }
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 00:32:10'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 00:33:54'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 00:37:45'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:19:46'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:25:34'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:30:26'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:34:19'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:35:00'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:41:39'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/ecommerce/server/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:43:47'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/ecommerce/server/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:44:17'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/ecommerce/server/home/javier/Documentos/Projects/ecommerce/server/src/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:48:00'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/ecommerce/server/src/utils../../public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:48:42'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '../../public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:49:36'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:50:53'
+}
+{
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/javier/Documentos/Projects/public/views/emailNewUser.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-05-2022 01:53:01'
+}
