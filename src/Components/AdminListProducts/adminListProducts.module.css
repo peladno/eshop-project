@@ -1,3 +1,11 @@
 .itemListTitle {
-    text-align: center;
+  text-align: center;
 }
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 0.2fr));
+  margin: 5rem;
+}
+
+

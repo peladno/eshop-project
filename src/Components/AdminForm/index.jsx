@@ -48,7 +48,7 @@ function AdminForm() {
               setName(e.currentTarget.value);
             }}
             required
-            maxLength={100}
+            maxlength="100"
           />
           <label className={styles.userLabel}>Name</label>
         </div>
@@ -62,7 +62,7 @@ function AdminForm() {
               setPrice(e.currentTarget.value);
             }}
             required
-            maxLength={100}
+            maxlength="100"
           />
           <label className={styles.userLabel}>Price</label>
         </div>
@@ -76,7 +76,7 @@ function AdminForm() {
               setDescription(e.currentTarget.value);
             }}
             required
-            maxLength={100}
+            maxlength="100"
           />
           <label className={styles.userLabel}>description</label>
         </div>
@@ -90,7 +90,7 @@ function AdminForm() {
               setPhoto(e.currentTarget.value);
             }}
             required
-            maxLength={100}
+            maxlength="100"
           />
           <label className={styles.userLabel}>Photo</label>
         </div>
@@ -104,7 +104,8 @@ function AdminForm() {
               setCode(e.currentTarget.value);
             }}
             required
-            maxLength={100}
+            maxlength="100"
+            min="1"
           />
           <label className={styles.userLabel}>Code</label>
         </div>
@@ -118,7 +119,9 @@ function AdminForm() {
               setStock(e.currentTarget.value);
             }}
             required
-            maxLength={100}
+            maxlength="3"
+            min="1"
+            max="100"
           />
           <label className={styles.userLabel}>Stock</label>
         </div>

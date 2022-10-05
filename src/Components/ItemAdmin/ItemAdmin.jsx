@@ -25,13 +25,13 @@ function ItemAdmin({ id, name, price, description, photo, stock }) {
   return (
     <div key={id}>
       <ul className={styles.itemList}>
-        <li>{name}</li>
-        <li>{price}</li>
-        <li>{description}</li>
+        <li>Name: {name}</li>
+        <li>Price: {price}</li>
+        <li>Description: {description}</li>
         <li>
           <img src={photo} alt={name} />
         </li>
-        <li>{stock}</li>
+        <li>Stock: {stock}</li>
         <div className={styles.buttonBox}>
           <Link style={{ textDecoration: "none" }} to={`/itemEdit/${id}`}>
             <Button

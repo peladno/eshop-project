@@ -10,6 +10,7 @@ function AdminItemList({ products }) {
       name={products.name}
       price={products.price}
       description={products.description}
+      stock={products.stock}
     />
   ));
 }
