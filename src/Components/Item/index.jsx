@@ -21,7 +21,7 @@ function Item({ id, photo, name, price }) {
         </CardContent>
         <CardActions>
           <Link style={{ textDecoration: "none" }} to={`/item/${id}`}>
-            <Button>Ver producto</Button>
+            <Button>See product</Button>
           </Link>
         </CardActions>
       </Card>

@@ -28,7 +28,7 @@ function ItemCount({stock, initial, addCart}) {
           <p className={styles.count}>{count}</p>
           <Button variant="contained" size="small" onClick={incrementCount}><AddIcon/></Button>
         </div>
-        <Button className={styles.addCart} variant="contained" onClick={() => addCart(count)}>Agregar al carrito</Button>
+        <Button className={styles.addCart} variant="contained" onClick={() => addCart(count)}>Add to cart</Button>
       </div>
     </>
   )

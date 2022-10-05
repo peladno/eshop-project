@@ -119,9 +119,8 @@ function AdminForm() {
               setStock(e.currentTarget.value);
             }}
             required
-            maxlength="3"
+            maxlength="100"
             min="1"
-            max="100"
           />
           <label className={styles.userLabel}>Stock</label>
         </div>

@@ -50,7 +50,7 @@ const ItemDetail = ({ item, loading }) => {
           <div className={styles.itemDescription}>
             <h1>{item.name}</h1>
             <ul>
-              <li>Precio: ${item.price}</li>
+              <li>Price: ${item.price}</li>
               <li> {item.description}</li>
               <li>Stock: {item.stock}</li>
             </ul>
@@ -59,7 +59,7 @@ const ItemDetail = ({ item, loading }) => {
               {number > 0 ? (
                 <Link to={"/cart"} style={{ textDecoration: "none" }}>
                   <Button className={styles.cartButton} variant="contained">
-                    Ir al carrito
+                   To the cart
                   </Button>
                 </Link>
               ) : (
@@ -71,7 +71,7 @@ const ItemDetail = ({ item, loading }) => {
                 style={{ textDecoration: "none" }}
               >
                 <Button className={styles.continueButton} variant="contained">
-                  Seguir Comprando
+                  Continue shopping
                 </Button>
               </Link>
             </div>

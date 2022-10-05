@@ -18,22 +18,24 @@ const CartDetail = () => {
     <>
       <div className={styles.cartContainer}>
         <div className={styles.cartList}>
-          <h1 className={styles.cartTitle}>Tus productos</h1>
+          <h1 className={styles.cartTitle}>Your products</h1>
           {/*Mapeo de productos en carrito*/}
           {cart.products?.length > 0 ? (
             cart.products?.map((item) => (
               <div className={styles.cartItem} key={item._id}>
-                <img src={item.image_url} alt={item.name} />
+                <img src={item.photo} alt={item.name} />
                 <h2>{item.name}</h2>
                 <div className={styles.quantityItem}>
-                  <h3>Cantidad</h3>
+                  <h3>Quantity</h3>
                   <p>{item.count}</p>
                 </div>
                 <div className={styles.priceItem}>
-                  <h3>Precio</h3>
+                  <h3>Price</h3>
                   <p>${item.price * item.count}</p>
                 </div>
-                <IconButton onClick={() => removeFromCart(data.user._id,item.id)}>
+                <IconButton
+                  onClick={() => removeFromCart(data.user._id, item.id)}
+                >
                   <DeleteForeverIcon
                     className={styles.delete}
                     style={{ color: "red" }}
@@ -42,9 +44,7 @@ const CartDetail = () => {
               </div>
             ))
           ) : (
-            <p className={styles.cartNotification}>
-              No hay productos en tu carrito
-            </p>
+            <p className={styles.cartNotification}>No products in your cart</p>
           )}
           <div className={styles.cartTotalSection}>
             <h3>SubTotal</h3>
@@ -53,22 +53,22 @@ const CartDetail = () => {
             {/*Si el carrito esta vacio el boton no se puede utilizar*/}
             {cart.products?.length === 0 ? (
               <Button variant="contained" disabled>
-                Comprar
+                Buy
               </Button>
             ) : (
               <Link to={"/checkOut"} style={{ textDecoration: "none" }}>
-                <Button variant="contained">Comprar</Button>
+                <Button variant="contained">Buy</Button>
               </Link>
             )}
             <Link to={"/"} style={{ textDecoration: "none" }}>
-              <Button variant="contained">Seguir Comprando</Button>
+              <Button variant="contained">Continue shopping</Button>
             </Link>
             {
               <Button
                 variant="contained"
                 onClick={() => clearCart(cart.client)}
               >
-                Vaciar Carro
+                Clear cart
               </Button>
             }
           </div>

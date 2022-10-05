@@ -25,20 +25,15 @@ function ItemEditDetail({ item, loading }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     const response = await ApiServices.updateProducts(item._id, body)
-     console.log(response);
+      const response = await ApiServices.updateProducts(item._id, body);
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
-  console.log(URL);
   return (
-    <>
-      <h1>Edite Su producto</h1>
-      <p>
-        Porfavor tiene que llenar todos los campos antes de anviar la
-        actualizacion
-      </p>
+    <div className={styles.formContainer}>
+      <h1 className={styles.titleForm}>Your product</h1>
+
       {loading ? (
         <div className={styles.loadingContainer}>
           <Waveform
@@ -50,95 +45,114 @@ function ItemEditDetail({ item, loading }) {
           />
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <ul>
-            <li>ID: {item._id}</li>
-            <li>
-              Nombre: {item.name}{" "}
-              <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => {
-                  setName(e.currentTarget.value);
-                }}
-                maxLength={100}
-                required
-              />
-            </li>
-            <li>
-              Precio {item.price}{" "}
-              <input
-                className={styles.input}
-                type="number"
-                name="price"
-                value={price}
-                onChange={(e) => {
-                  setPrice(e.currentTarget.value);
-                }}
-                maxLength={100}
-                required
-              />
-            </li>
-            <li>
-              Descripcion: {item.description}{" "}
-              <input
-                type="text"
-                name="description"
-                value={description}
-                onChange={(e) => {
-                  setDescription(e.currentTarget.value);
-                }}
-                maxLength={100}
-                required
-              />
-            </li>
-            <li>
-              Photo Url: {item.photo}{" "}
-              <input
-                type="text"
-                name="photo"
-                value={photo}
-                onChange={(e) => {
-                  setPhoto(e.currentTarget.value);
-                }}
-                maxLength={100}
-                required
-              />
-            </li>
-            <li>
-              Codigo producto: {item.code}{" "}
-              <input
-                type="number"
-                name="code"
-                value={code}
-                onChange={(e) => {
-                  setCode(e.currentTarget.value);
-                }}
-                maxLength={100}
-                required
-              />
-            </li>
-            <li>
-              Stock: {item.stock}{" "}
-              <input
-                type="number"
-                name="stock"
-                value={stock}
-                onChange={(e) => {
-                  setStock(e.currentTarget.value);
-                }}
-                maxLength={100}
-                required
-              />
-            </li>
-          </ul>
-          <Button variant="contained" type="submit" size="small">
-            Guardar
-          </Button>
-        </form>
+        <ul className={styles.item}>
+          <li>ID: {item._id}</li>
+          <li>Name: {item.name}</li>
+          <li>Price: {item.price}</li>
+          <li>Description: {item.description}</li>
+          <li>Code: {item.code}</li>
+          <li>Stock: {item.stock}</li>
+          <li>
+            <img src={item.photo} alt={item.name} />
+          </li>
+        </ul>
       )}
-    </>
+
+      <form className={styles.adminForm} onSubmit={handleSubmit}>
+        <h2>Edit your product</h2>
+        <p>Please fill all the form before submit.</p>
+
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => {
+              setName(e.currentTarget.value);
+            }}
+            required
+            maxlength="100"
+          />
+          <label className={styles.userLabel}>Name</label>
+        </div>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="number"
+            name="price"
+            value={price}
+            onChange={(e) => {
+              setPrice(e.currentTarget.value);
+            }}
+            required
+            maxlength="100"
+          />
+          <label className={styles.userLabel}>Price</label>
+        </div>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="text"
+            name="description"
+            value={description}
+            onChange={(e) => {
+              setDescription(e.currentTarget.value);
+            }}
+            required
+            maxlength="100"
+          />
+          <label className={styles.userLabel}>description</label>
+        </div>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="text"
+            name="photo"
+            value={photo}
+            onChange={(e) => {
+              setPhoto(e.currentTarget.value);
+            }}
+            required
+            maxlength="100"
+          />
+          <label className={styles.userLabel}>Photo</label>
+        </div>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="number"
+            name="code"
+            value={code}
+            onChange={(e) => {
+              setCode(e.currentTarget.value);
+            }}
+            required
+            maxlength="100"
+            min="1"
+          />
+          <label className={styles.userLabel}>Code</label>
+        </div>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="number"
+            name="stock"
+            value={stock}
+            onChange={(e) => {
+              setStock(e.currentTarget.value);
+            }}
+            required
+            maxlength="100"
+            min="1"
+          />
+          <label className={styles.userLabel}>Stock</label>
+        </div>
+        <Button variant="contained" type="submit">
+          Submit
+        </Button>
+      </form>
+    </div>
   );
 }
 
