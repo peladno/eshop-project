@@ -1,4 +1,3 @@
-//TODO new cart context, using APIREST, and localStorage
 import { useContext, createContext, useEffect, useState } from "react";
 import { USERContext } from "./UserContext";
 import ApiServices from "../Services/ApiServices";

@@ -7,12 +7,14 @@ import { Waveform } from "@uiball/loaders";
 import ApiServices from "../../Services/ApiServices";
 import { USERContext } from "../../Context/UserContext.jsx";
 import { NewCartContext } from "../../Context/NewCartContext.jsx";
+import { NotificationContext } from "../../Context/NotificationContext.jsx";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
   const [number, setNumber] = useState(0);
   const data = useContext(USERContext);
   const { setCart } = useContext(NewCartContext);
+  const { getError, getSuccess } = useContext(NotificationContext);
 
   const addCart = (count) => {
     setNumber(count);
@@ -27,6 +29,9 @@ const ItemDetail = ({ item, loading }) => {
       });
       const cartData = await response.data;
       setCart(() => cartData);
+      cartData
+        ? getSuccess("Product Added to Cart")
+        : getError("Error adding to cart");
     } catch (error) {
       console.log(error);
     }
@@ -56,15 +61,7 @@ const ItemDetail = ({ item, loading }) => {
             </ul>
 
             <div className={styles.shoppingButtons}>
-              {number > 0 ? (
-                <Link to={"/cart"} style={{ textDecoration: "none" }}>
-                  <Button className={styles.cartButton} variant="contained">
-                   To the cart
-                  </Button>
-                </Link>
-              ) : (
-                <ItemCount stock={item.stock} initial={1} addCart={addCart} />
-              )}
+              <ItemCount stock={item.stock} initial={1} addCart={addCart} />
               <Link
                 className={styles.continue}
                 to={"/"}
@@ -74,6 +71,17 @@ const ItemDetail = ({ item, loading }) => {
                   Continue shopping
                 </Button>
               </Link>
+              {number > 0 ? (
+                <Link to={"/cart"} style={{ textDecoration: "none" }}>
+                  <Button variant="contained">
+                    To the cart
+                  </Button>
+                </Link>
+              ) : (
+                <Button variant="contained" disabled>
+                  To the cart
+                </Button>
+              )}
             </div>
           </div>
         </div>

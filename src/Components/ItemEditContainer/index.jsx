@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./itemEditContainer.module.css";
 import { useParams } from "react-router-dom";
-import ItemEditDetail from "../ItemEditDetail/ItemEditDetail";
+import ItemEditDetail from "../ItemEditDetail";
 
 function ItemEditContainer() {
   const [item, setItem] = useState([]);

@@ -82,14 +82,14 @@
   background-color:#a84a62 !important;
 }
 
-.cartButton {
+.shoppingButtons Button {
   width: 200px;
   border-radius: 3rem !important;
-  background-color: #AF1B3F !important;
+  background-color: #AF1B3F ;
 }
 
-.cartButton:hover {
-  background-color:#a84a62 !important;
+.shoppingButtons Button:hover {
+  background-color:#a84a62 ;
 }
 
 @media (min-width: 1200px) {

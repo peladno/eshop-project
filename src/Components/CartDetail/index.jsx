@@ -51,7 +51,7 @@ const CartDetail = () => {
             <p>$ {totalPrice}</p>
 
             {/*Si el carrito esta vacio el boton no se puede utilizar*/}
-            {cart.products?.length === 0 ? (
+            {cart.products?.length === 0 || !cart.products ? (
               <Button variant="contained" disabled>
                 Buy
               </Button>

@@ -12,7 +12,7 @@ import Login from "./Components/Login/Login";
 import Signup from "./Components/Singup/SignUp";
 import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
-import ItemEdit from "./Components/ItemEditContainer/ItemEditContainer.jsx";
+import ItemEdit from "./Components/ItemEditContainer/index.jsx";
 import NewCartProvider from "./Context/NewCartContext.jsx";
 
 export default function App() {
