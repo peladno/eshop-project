@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
 import { USERContext } from "../../Context/UserContext";
+import { NotificationContext } from "../../Context/NotificationContext.jsx";
 
 //TODO buy products
 
@@ -13,13 +14,25 @@ const CartDetail = () => {
   const { cart, removeFromCart, totalPrice, clearCart } =
     useContext(NewCartContext);
   const data = useContext(USERContext);
+  const { getError, getSuccess } = useContext(NotificationContext);
+
+  const handleRemoveProduct = async (idUser, idItem, itemName) => {
+    try {
+      await removeFromCart(idUser, idItem).then(() => {
+        getSuccess(`${itemName} was deleted from the cart`);
+      });
+    } catch (error) {
+      getError("Error deleting product from cart");
+      console.log(error);
+    }
+  };
 
   return (
     <>
       <div className={styles.cartContainer}>
         <div className={styles.cartList}>
           <h1 className={styles.cartTitle}>Your products</h1>
-          {/*Mapeo de productos en carrito*/}
+
           {cart.products?.length > 0 ? (
             cart.products?.map((item) => (
               <div className={styles.cartItem} key={item._id}>
@@ -34,7 +47,9 @@ const CartDetail = () => {
                   <p>${item.price * item.count}</p>
                 </div>
                 <IconButton
-                  onClick={() => removeFromCart(data.user._id, item.id)}
+                  onClick={() =>
+                    handleRemoveProduct(data.user._id, item._id, item.name)
+                  }
                 >
                   <DeleteForeverIcon
                     className={styles.delete}
@@ -50,7 +65,6 @@ const CartDetail = () => {
             <h3>SubTotal</h3>
             <p>$ {totalPrice}</p>
 
-            {/*Si el carrito esta vacio el boton no se puede utilizar*/}
             {cart.products?.length === 0 || !cart.products ? (
               <Button variant="contained" disabled>
                 Buy

@@ -10,7 +10,7 @@ const userLogout = () => {
 
 const loginUser = (data) => {
   return user.post("/login/", data);
-}
+};
 
 const getAllProducts = () => {
   return client.get("/products/");
@@ -32,21 +32,21 @@ const saveProduct = (data) => {
   return clientAdmin.post("/products/", data);
 };
 
-const addToCart = (id,data) => {
-  return client.post(`/cart/${id}/products/`, data)
-}
+const addToCart = (id, data) => {
+  return client.post(`/cart/${id}/products/`, data);
+};
 
 const getCart = (id) => {
-  return client.get(`/cart/${id}/products/`)
-}
+  return client.get(`/cart/${id}/products/`);
+};
 
 const deleteCart = (id) => {
-  return client.delete(`/cart/${id}/products`)
-}
+  return client.delete(`/cart/${id}/products`);
+};
 
-const deleteProductFromCart = (id, id_prod) => {
-  return client.delete(`/cart/${id}/products/${id_prod}`)
-}
+const deleteProductFromCart = (id, id_product) => {
+  return client.delete(`/cart/${id}/products/${id_product}`);
+};
 
 const services = {
   deleteProduct,
@@ -60,7 +60,7 @@ const services = {
   addToCart,
   getCart,
   deleteCart,
-  deleteProductFromCart
+  deleteProductFromCart,
 };
 
 export default services;

@@ -76,10 +76,8 @@ async function addProductToCart(req, res) {
 
 async function deleteProductCart(req, res) {
   try {
-    const { id, id_product } = req.params;
-    const clientID = id;
-    const prodID = id_product;
-
+    const clientID = req.params.id;
+    const prodID = req.params.id_product;
     const deleteProduct = await DAO.deleteProduct(clientID, prodID);
     const info = "Product deleted";
     logger.info(info);

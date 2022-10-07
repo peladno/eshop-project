@@ -79,26 +79,28 @@ class CartDAOMongoDB extends DAO {
       throw new Error(error);
     }
   }
-
+  //TODO mejorar logica
   async deleteProduct(client, idProduct) {
     try {
       const cart = await this.model.findOne({ client: { $eq: client } });
       const itemFound = cart.products.findIndex(
         (item) => item._id === idProduct
       );
-      if (itemFound !== -1) {
-        let product = cart.products[itemFound];
-        cart.total -= product.count * product.price;
-      }
       if (cart.total < 0) {
         cart.bill = 0;
       }
-      cart.products.splice(itemFound, 1);
-      cart.total = cart.products.reduce((acc, curr) => {
-        return acc + curr.count * curr.price;
-      }, 0);
-      const saved = await cart.save();
-      return saved;
+      if (itemFound === -1) {
+        return { error: "product not found" };
+      } else {
+        let product = cart.products[itemFound];
+        cart.total -= product.count * product.price;
+        cart.products.splice(itemFound, 1);
+        cart.total = cart.products.reduce((acc, curr) => {
+          return acc + curr.count * curr.price;
+        }, 0);
+        const saved = await cart.save();
+        return saved;
+      }
     } catch (error) {
       logger.error(
         `Error to delete product ${idProduct} from cart ${client} ${error}`
