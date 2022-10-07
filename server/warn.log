@@ -1020,3 +1020,21 @@
   label: 'Label🏷️',
   timestamp: 'Oct-05-2022 01:53:01'
 }
+{
+  message: 'Error -2 - Ruta /logout/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Oct-06-2022 20:04:43'
+}
+{
+  message: 'Error -2 - Ruta /favicon.ico, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Oct-06-2022 20:04:43'
+}
+{
+  message: null,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-06-2022 20:12:24'
+}

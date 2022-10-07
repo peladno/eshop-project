@@ -44,19 +44,6 @@ async function getByID(req, res) {
         error_description: error,
       });
     } else {
-      /*const productDTO = product.map((item) => {
-        return new ProductDTO(
-          item.id,
-          item.name,
-          item.photo,
-          item.price,
-          item.code,
-          item.description,
-          item.timestamp,
-          item.stock
-        );
-      });
-      res.status(200).json(productDTO[0]);*/
       res.status(200).json(product);
     }
   } catch (error) {

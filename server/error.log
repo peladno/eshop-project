@@ -582,3 +582,9 @@
   label: 'Label🏷️',
   timestamp: 'Oct-05-2022 01:53:01'
 }
+{
+  message: null,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-06-2022 20:12:24'
+}

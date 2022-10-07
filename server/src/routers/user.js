@@ -50,7 +50,12 @@ router.post("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.send("logout succesfully");
+    req.session.destroy(function (error) {
+      if (error) {
+        return next(error);
+      }
+      res.clearCookie("connect.sid").send("Logout successfully");
+    });
   });
 });
 
