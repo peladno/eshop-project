@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './../Button/index.jsx'
+import Button from '../../Shared/Button/index'
 import { Link } from 'react-router-dom'
 import styles from "./error404.module.css"
 
