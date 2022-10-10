@@ -8,7 +8,7 @@ async function getAll(req, res) {
   try {
     const products = await DAO.getAll();
     if (!products) {
-      const error = "No products found";
+      const error = "Products not found";
       logger.error(error);
       return res.status(404).json({
         error_description: error,
@@ -30,7 +30,6 @@ async function getAll(req, res) {
     }
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -48,7 +47,6 @@ async function getByID(req, res) {
     }
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -57,7 +55,7 @@ async function deleteById(req, res) {
     const id = req.params.id;
     const deleted = await DAO.deleteById(id);
     if (!deleted) {
-      const error = `Product not found ${id}`;
+      const error = `Product not deleted ${id}`;
       res.status(404).json({
         error_description: error,
       });
@@ -66,27 +64,26 @@ async function deleteById(req, res) {
     }
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
 async function save(req, res) {
   try {
-    const { name, code, description, photo, stock, price } = req.body;
-    const data = await DAO.save({
-      name,
-      code,
-      description,
-      photo,
-      stock,
-      price,
-    });
-    const info = `Product ${name} was saved`;
-    logger.info(info);
-    return res.status(201).json(data);
+    const newProduct = req.body;
+    const data = await DAO.save(newProduct);
+    if (!data) {
+      const error = `Product not saved`;
+      res.status(400).json({
+        error_description: error,
+      });
+    } else {
+      const info = `Product was saved`;
+      logger.info(info);
+      return res.status(201).json(data);
+    }
   } catch (error) {
+    res.status(400);
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -95,12 +92,18 @@ async function updateById(req, res) {
     const id = req.params.id;
     const newProduct = req.body;
     const updatedProduct = await DAO.updateItems(id, newProduct);
-    const info = `Product updated`;
-    logger.info(info);
-    res.status(200).json(updatedProduct);
+    if (!updatedProduct) {
+      const error = `Product not found ${id}`;
+      res.status(404).json({
+        error_description: error,
+      });
+    } else {
+      const info = `Product updated`;
+      logger.info(info);
+      res.status(200).json(updatedProduct);
+    }
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 

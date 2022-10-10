@@ -1,0 +1,107 @@
+{
+  message: 'Error to save ValidationError: name: Path `name` is required., description: Path `description` is required., code: Path `code` is required., photo: Path `photo` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 20:57:40'
+}
+{
+  message: 'Error to save ValidationError: name: Path `name` is required., description: Path `description` is required., code: Path `code` is required., photo: Path `photo` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:00:40'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:00:40'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:08:54'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:11:06'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:13:46'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:18:23'
+}
+{
+  message: "Cannot find id 633d14f2f7d14e0103a9017d TypeError: Cannot read properties of null (reading 'length')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:18:23'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:31:58'
+}
+{
+  message: "Cannot find id 633d14f2f7d14e0103a9017d TypeError: Cannot read properties of null (reading 'length')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:31:58'
+}
+{
+  message: 'Cannot find id 632800c14093be3f4acf95 CastError: Cast to ObjectId failed for value "632800c14093be3f4acf95" (type string) at path "_id" for model "products"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:39:24'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-08-2022 21:40:59'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 00:08:27'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 00:09:04'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 00:14:37'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 00:22:54'
+}
+{
+  message: 'Error to save ValidationError: photo: Path `photo` is required., code: Path `code` is required., description: Path `description` is required., name: Path `name` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 00:25:01'
+}
+{
+  message: 'Cannot find id 632800c14093be3f4acf95 CastError: Cast to ObjectId failed for value "632800c14093be3f4acf95" (type string) at path "_id" for model "products"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 00:27:12'
+}

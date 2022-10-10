@@ -17,7 +17,6 @@ class ProductDAOMongoDB extends DAO {
       return searched;
     } catch (error) {
       logger.error(`Error to get all elements ${error}`);
-      throw new Error(error);
     }
   }
 
@@ -31,14 +30,13 @@ class ProductDAOMongoDB extends DAO {
       };
       const newProduct = new this.model(object);
       const Saved = await newProduct.save();
-      if (newProduct.error) {
-        return { error: newProduct.error };
+      if (newProduct.errors) {
+        return { error: newProduct.errors };
       } else {
         return Saved;
       }
     } catch (error) {
       logger.error(`Error to save ${error}`);
-      throw new Error(error);
     }
   }
 
@@ -52,35 +50,28 @@ class ProductDAOMongoDB extends DAO {
       }
     } catch (error) {
       logger.error(`Cannot find id ${id} ${error}`);
-      throw new Error(error);
     }
   }
 
   async deleteById(id) {
     try {
       const deleted = await this.model.findOneAndDelete({ _id: { $eq: id } });
-      if (deleted.length === 0) {
-        return { error: "product not found" };
-      } else {
-        return deleted;
-      }
+      return deleted;
     } catch (error) {
       logger.error(`Cannot find id ${id} ${error}`);
-      throw new Error(error);
     }
   }
 
   async deleteAll() {
     try {
       const deleted = await this.model.deleteMany({});
-      if (deleted.length === 0) {
-        return { error: "product not found" };
+      if (!deleted) {
+        return { error: "products not found" };
       } else {
         return deleted;
       }
     } catch (error) {
       logger.error(`Error deleting all ${error}`);
-      throw new Error(error);
     }
   }
 
@@ -102,10 +93,13 @@ class ProductDAOMongoDB extends DAO {
           },
         }
       );
-      return updated;
+      if (!updated) {
+        return { error: "product not found" };
+      } else {
+        return updated;
+      }
     } catch (error) {
       logger.error(`Error updating ${id} ${error}`);
-      throw new Error(error);
     }
   }
 }
