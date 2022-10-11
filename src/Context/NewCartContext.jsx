@@ -7,7 +7,6 @@ export const NewCartContext = createContext();
 const NewCartProvider = ({ children }) => {
   const tokenKey = localStorage.getItem("token");
   const [cart, setCart] = useState([]);
-  const [articles, setArticles] = useState([]);
   const data = useContext(USERContext);
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const NewCartProvider = ({ children }) => {
   const clearCart = async (cart_id) => {
     try {
       const response = await ApiServices.deleteCart(cart_id);
-      const dataCart = await response.data;
+      await response.data;
       setCart([]);
     } catch (error) {
       throw new Error(error);
@@ -64,7 +63,6 @@ const NewCartProvider = ({ children }) => {
         totalPrice,
         clearCart,
         removeFromCart,
-        articles,
       }}
     >
       {children}

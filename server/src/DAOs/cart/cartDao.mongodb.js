@@ -39,6 +39,23 @@ class CartDAOMongoDB extends DAO {
     }
   }
 
+  async saveEmptyCart(client) {
+    const date = new Date();
+    const timeStamp = date.toLocaleString();
+    try {
+      const cart = new this.model({
+        products: [],
+        timeStamp,
+        client,
+      });
+      const saved = await cart.save();
+      return saved;
+    } catch (error) {
+      logger.error(`Error saving cart ${client} ${error}`);
+      throw new Error(error);
+    }
+  }
+
   async editCart(obj, client) {
     const date = new Date();
     const timeStamp = date.toLocaleString();

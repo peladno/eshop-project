@@ -39,7 +39,7 @@ const CartDetail = () => {
 
           <div className={styles.cartTotalSection}>
             <h3>SubTotal</h3>
-            <p>$ {totalPrice}</p>
+            <p>$ {totalPrice || 0}</p>
 
             {cart.products?.length === 0 || !cart.products ? (
               <Button variant="contained" disabled>
