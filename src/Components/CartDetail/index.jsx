@@ -3,7 +3,7 @@ import { NewCartContext } from "../../Context/NewCartContext";
 import styles from "./cartDetail.module.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import ApiServices from "../../Services/ApiServices";
 import CartDetailItem from "../CartDetailItem";
 
 //TODO buy products
@@ -11,6 +11,16 @@ import CartDetailItem from "../CartDetailItem";
 const CartDetail = () => {
   const { cart, removeFromCart, totalPrice, clearCart } =
     useContext(NewCartContext);
+
+  const handleBuyProduct = async (clientId) => {
+    try {
+      await ApiServices.buyProduct(clientId).then((value) =>
+        clearCart(value.data.cart.client)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -36,9 +46,14 @@ const CartDetail = () => {
                 Buy
               </Button>
             ) : (
-              <Link to={"/checkOut"} style={{ textDecoration: "none" }}>
-                <Button variant="contained">Buy</Button>
-              </Link>
+              //<Link to={"/checkOut"} style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                onClick={() => handleBuyProduct(cart.client)}
+              >
+                Buy
+              </Button>
+              //</Link>
             )}
             <Link to={"/"} style={{ textDecoration: "none" }}>
               <Button variant="contained">Continue shopping</Button>

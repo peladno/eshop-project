@@ -48,6 +48,7 @@ function newUserEmail(name, email) {
 }
 
 function orderMail(name, email, cart) {
+  console.log(cart);
   ejs.renderFile(
     path.join(process.cwd(), "/public/views/emailOrder.ejs"),
     { name, email, cart },

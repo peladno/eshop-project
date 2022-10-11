@@ -7,6 +7,7 @@ export const user = axios.create({
   headers: {
     Authorization: `Bearer ${tokenKey}`,
     "Content-type": "application/json",
+    withCredentials: true,
   },
 });
 

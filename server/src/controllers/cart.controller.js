@@ -92,14 +92,17 @@ async function orderProcess(req, res) {
   try {
     const client = req.params.id;
     const cart = await DAO.getCartById(client);
-    const { name, email, phone } = await UserDao.getUser(client);
-    messages.smsOrder(name, phone, cart);
-    messages.whatsappOrder(name, phone, cart);
-    messages.orderMail(name, email, cart);
-    await DAO.deleteCart(client).then((res) => {
-      res.status(200).json(`Carrito ${client}: Se borró con éxito.`);
-    });
-    res.status(200).json({ message: "Product in process", cart });
+    if (cart) {
+      await UserDao.getUser(client)
+        .then((user) => {
+          messages.orderMail(user.name, user.email, cart);
+        })
+        .then(res.status(200).json({ message: "Product in process", cart }));
+      // messages.smsOrder(user.name, user.phone, user.cart);
+      // messages.whatsappOrder(user.name, user.phone, user.cart);
+    } else {
+      res.send(404).json({ message: "Cart not found" });
+    }
   } catch (error) {
     logger.error(error);
     throw new Error(error);

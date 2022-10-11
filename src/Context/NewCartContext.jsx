@@ -7,6 +7,7 @@ export const NewCartContext = createContext();
 const NewCartProvider = ({ children }) => {
   const tokenKey = localStorage.getItem("token");
   const [cart, setCart] = useState([]);
+  const [articles, setArticles] = useState([]);
   const data = useContext(USERContext);
 
   useEffect(() => {
@@ -63,6 +64,7 @@ const NewCartProvider = ({ children }) => {
         totalPrice,
         clearCart,
         removeFromCart,
+        articles,
       }}
     >
       {children}

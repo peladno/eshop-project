@@ -591,3 +591,163 @@
   label: 'Label🏷️',
   timestamp: 'Oct-10-2022 00:27:12'
 }
+{
+  message: 'Error loging out Error: req#logout requires a callback function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 02:45:35'
+}
+{
+  message: 'Error loging out Error: req#logout requires a callback function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 02:50:46'
+}
+{
+  message: 'Error loging out Error: req#logout requires a callback function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-10-2022 02:56:22'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 01:54:21'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 01:56:01'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:00:06'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:08:21'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:08:21'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:08:21'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:08:21'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:11:23'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:14:47'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:15:14'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:15:14'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:15:14'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:15:14'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:16:01'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:16:01'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:16:01'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:19:31'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:19:31'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:19:31'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:21:58'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:22:42'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:23:01'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:24:46'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:26:00'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-11-2022 02:29:07'
+}

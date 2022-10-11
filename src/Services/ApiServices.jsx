@@ -5,7 +5,7 @@ const getCurrentUser = () => {
 };
 
 const userLogout = () => {
-  return user.post("/logout/");
+  return user.get("/logout/");
 };
 
 const loginUser = (data) => {
@@ -48,6 +48,10 @@ const deleteProductFromCart = (id, id_product) => {
   return client.delete(`/cart/${id}/products/${id_product}`);
 };
 
+const buyProduct = (id) => {
+  return client.post(`/cart/${id}/shop`);
+};
+
 const services = {
   deleteProduct,
   updateProducts,
@@ -61,6 +65,7 @@ const services = {
   getCart,
   deleteCart,
   deleteProductFromCart,
+  buyProduct,
 };
 
 export default services;

@@ -14,7 +14,7 @@ class UserDAOMongoDB extends DAO {
 
   async getUser(id) {
     try {
-      const user = await this.model.findOne({ username: id });
+      const user = await this.model.findOne({ _id: { $eq: id } });
       return user;
     } catch (error) {
       logger.error("Error finding user");

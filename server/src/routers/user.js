@@ -45,18 +45,22 @@ router.post("/signup", async (req, res) => {
   messages.newUserEmail(name, email);
 });
 
-router.post("/logout", (req, res, next) => {
-  req.logOut(function (err) {
-    if (err) {
-      return next(err);
-    }
-    req.session.destroy(function (error) {
-      if (error) {
-        return next(error);
+router.get("/logout", async (req, res, next) => {
+  try {
+    req.logOut(function (err) {
+      if (err) {
+        return next(err);
       }
-      res.clearCookie("connect.sid").send("Logout successfully");
+      req.session.destroy(function (error) {
+        if (error) {
+          return next(error);
+        }
+        res.clearCookie("connect.sid").send("Logout successfully");
+      });
     });
-  });
+  } catch (error) {
+    logger.error(error);
+  }
 });
 
 router.get("/login/success", verifyToken, (req, res) => {
