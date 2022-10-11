@@ -4,8 +4,10 @@ import Button from "@mui/material/Button";
 import styles from "./adminForm.module.css";
 import { APIContext } from "../../Context/ApiContext";
 import ApiServices from "../../Services/ApiServices";
+import { NotificationContext } from "../../Context/NotificationContext.jsx";
 
 function AdminForm() {
+  const { getError, getSuccess } = useContext(NotificationContext);
   const { setItem } = useContext(APIContext);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -26,9 +28,15 @@ function AdminForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await ApiServices.saveProduct(body);
-      const data = response.data;
-      setItem((prev) => [...prev, data]);
+      await ApiServices.saveProduct(body)
+        .then((response) => {
+          const data = response.data;
+          setItem((prev) => [...prev, data]);
+          getSuccess("Your product was added");
+        })
+        .catch((error) => {
+          getError("Error adding your product", error);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +56,7 @@ function AdminForm() {
               setName(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>Name</label>
         </div>
@@ -62,7 +70,7 @@ function AdminForm() {
               setPrice(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>Price</label>
         </div>
@@ -76,7 +84,7 @@ function AdminForm() {
               setDescription(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>description</label>
         </div>
@@ -90,7 +98,7 @@ function AdminForm() {
               setPhoto(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>Photo</label>
         </div>
@@ -104,7 +112,7 @@ function AdminForm() {
               setCode(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
             min="1"
           />
           <label className={styles.userLabel}>Code</label>
@@ -119,7 +127,7 @@ function AdminForm() {
               setStock(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
             min="1"
           />
           <label className={styles.userLabel}>Stock</label>

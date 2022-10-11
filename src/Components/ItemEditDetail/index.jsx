@@ -1,11 +1,13 @@
-import React from "react";
 import { Waveform } from "@uiball/loaders";
 import styles from "./itemEditDetail.module.css";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import ApiServices from "../../Services/ApiServices";
+import { NotificationContext } from "../../Context/NotificationContext";
+import { useContext } from "react";
 
 function ItemEditDetail({ item, loading }) {
+  const { getError, getSuccess } = useContext(NotificationContext);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -25,7 +27,13 @@ function ItemEditDetail({ item, loading }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await ApiServices.updateProducts(item._id, body);
+      await ApiServices.updateProducts(item._id, body)
+        .then(() => {
+          getSuccess("Your item was updated");
+        })
+        .catch((error) => {
+          getError("Error updateing your product", error);
+        });
     } catch (error) {
       throw new Error(error);
     }

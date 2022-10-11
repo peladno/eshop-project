@@ -11,11 +11,15 @@ function CartDetailItem({ products, removeFromCart }) {
 
   const handleRemoveProduct = async (idUser, idItem, itemName) => {
     try {
-      await removeFromCart(idUser, idItem).then(() => {
-        getSuccess(`${itemName} was deleted from the cart`);
-      });
+      await removeFromCart(idUser, idItem)
+        .then(() => {
+          getSuccess(`${itemName} was deleted from the cart`);
+        })
+        .catch((error) => {
+          getError("Error deleting product from cart", error);
+        });
     } catch (error) {
-      getError("Error deleting product from cart");
+      getError("Error deleting product from cart", error);
       console.log(error);
     }
   };

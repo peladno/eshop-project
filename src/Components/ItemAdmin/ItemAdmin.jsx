@@ -5,13 +5,21 @@ import { Link } from "react-router-dom";
 import { APIContext } from "../../Context/ApiContext";
 import styles from "./itemAdmin.module.css";
 import ApiServices from "../../Services/ApiServices";
+import { NotificationContext } from "../../Context/NotificationContext.jsx";
 
 function ItemAdmin({ id, name, price, description, photo, stock }) {
   const { item, setItem } = useContext(APIContext);
+  const { getError, getSuccess } = useContext(NotificationContext);
 
   const handleSubmit = async (id) => {
     try {
-      await ApiServices.deleteProduct(id);
+      await ApiServices.deleteProduct(id)
+        .then(() => {
+          getSuccess("Your product was deleted");
+        })
+        .catch((error) => {
+          getError("Error deleting product", error);
+        });
       setItem(
         item.filter((items) => {
           return items._id !== id;

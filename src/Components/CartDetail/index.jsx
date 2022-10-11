@@ -5,19 +5,25 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import ApiServices from "../../Services/ApiServices";
 import CartDetailItem from "../CartDetailItem";
-
-//TODO buy products
+import { NotificationContext } from "../../Context/NotificationContext.jsx";
 
 const CartDetail = () => {
   const { cart, removeFromCart, totalPrice, clearCart } =
     useContext(NewCartContext);
+  const { getError, getSuccess } = useContext(NotificationContext);
 
   const handleBuyProduct = async (clientId) => {
     try {
-      await ApiServices.buyProduct(clientId).then((value) =>
-        clearCart(value.data.cart.client)
-      );
+      await ApiServices.buyProduct(clientId)
+        .then((value) => clearCart(value.data.cart.client))
+        .then(() => {
+          getSuccess("Your order is in process");
+        })
+        .catch((error) => {
+          getError("Error accure in your order", error);
+        });
     } catch (error) {
+      getError("Error accure in your order");
       console.log(error);
     }
   };
@@ -46,14 +52,12 @@ const CartDetail = () => {
                 Buy
               </Button>
             ) : (
-              //<Link to={"/checkOut"} style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 onClick={() => handleBuyProduct(cart.client)}
               >
                 Buy
               </Button>
-              //</Link>
             )}
             <Link to={"/"} style={{ textDecoration: "none" }}>
               <Button variant="contained">Continue shopping</Button>
