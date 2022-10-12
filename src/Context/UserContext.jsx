@@ -17,7 +17,7 @@ const USERContextProvider = ({ children }) => {
         throw new Error(`error fetching data ${error}`);
       }
     };
-    if (tokenKey !== null) {
+    if (tokenKey) {
       getUser();
     }
   }, [tokenKey]);

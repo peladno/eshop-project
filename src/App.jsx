@@ -11,7 +11,7 @@ import Login from "./Components/Login/Login";
 import Signup from "./Components/Singup/SignUp";
 import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
-import ItemEdit from "./Components/ItemEditContainer/index.jsx";
+import ItemEdit from "./Components/ItemEditContainer/index";
 
 export default function App() {
   const data = useContext(USERContext);

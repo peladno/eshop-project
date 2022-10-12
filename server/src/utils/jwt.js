@@ -15,18 +15,18 @@ const login = async (req, res, next) => {
         if (err) {
           res.send(err);
         }
-        const body = { _id: user._id, username: user.username };
-        const token = jwt.sign({ user: body }, "secret", );
+        const body = { _id: user._id, username: user.username, role: user.role };
+        const token = jwt.sign({ user: body }, "secret");
+        logger.info(token)
         return res.json({ user, token });
       });
     } catch (error) {
       logger.error(`error login error ${error}`);
-      throw new Error(error);
     }
   })(req, res, next);
 };
 
-const verifyToken = async (req, res, next) => {
+const adminAuth = async (req, res, next) => {
   const headers = req.headers["authorization"];
   const token = headers.split(" ")[1];
   if (!token) {
@@ -36,14 +36,40 @@ const verifyToken = async (req, res, next) => {
   }
   jwt.verify(token, "secret", (err, decoded) => {
     if (err) {
-      return res.status(401).json({
-        message: "Invalid token",
-      });
+      return res.status(401).json({ message: "Not authorized" });
+    } else {
+      if (decoded.user.role !== "admin") {
+        return res.status(401).json({ message: "Not authorized" });
+      } else {
+        next();
+      }
     }
-    req.user = decoded.user;
-    next();
+  });
+};
+
+const userAuth = async (req, res, next) => {
+  const headers = req.headers["authorization"];
+  const token = headers.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({
+      message: "No token provided",
+    });
+  }
+  jwt.verify(token, "secret", (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "Not authorized" });
+    } else {
+      if (decoded.user.role !== "basic") {
+        logger.info(decoded);
+        return res.status(401).json({ message: "Not authorized" });
+      } else {
+        req.user = decoded.user;
+        next();
+      }
+    }
   });
 };
 
 exports.login = login;
-exports.verifyToken = verifyToken;
+exports.adminAuth = adminAuth;
+exports.userAuth = userAuth;

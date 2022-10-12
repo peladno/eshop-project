@@ -18,7 +18,6 @@ class UserDAOMongoDB extends DAO {
       return user;
     } catch (error) {
       logger.error("Error finding user");
-      throw new Error(error);
     }
   }
 
@@ -28,7 +27,6 @@ class UserDAOMongoDB extends DAO {
       return newUser;
     } catch (error) {
       logger.error("Error saving user");
-      throw new Error(error);
     }
   }
 }
