@@ -38,8 +38,8 @@ router.post("/signup", async (req, res) => {
       });
     }
   } catch (err) {
-    logger.err(`Error signing up ${err}`);
-    throw new Error(`Error signing up ${err}`);
+    logger.error(`Error signing up ${err}`);
+   
   }
 
   messages.newUserEmail(name, email);

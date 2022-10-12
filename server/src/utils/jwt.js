@@ -16,12 +16,11 @@ const login = async (req, res, next) => {
           res.send(err);
         }
         const body = { _id: user._id, username: user.username };
-        const token = jwt.sign({ user: body }, "secret", );
+        const token = jwt.sign({ user: body }, "secret");
         return res.json({ user, token });
       });
     } catch (error) {
       logger.error(`error login error ${error}`);
-      throw new Error(error);
     }
   })(req, res, next);
 };

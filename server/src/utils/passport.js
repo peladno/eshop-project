@@ -20,7 +20,6 @@ passport.use(
       }
     } catch (error) {
       logger.error(`Error login ${error}`);
-      throw new Error(`Error login ${error}`)
     }
   })
 );
