@@ -40,10 +40,6 @@ router.post("/signup", async (req, res) => {
     }
   } catch (err) {
     logger.error(`Error signing up ${err}`);
-<<<<<<< HEAD
-   
-=======
->>>>>>> adminFeature
   }
 
   messages.newUserEmail(name, email);

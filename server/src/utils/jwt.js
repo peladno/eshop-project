@@ -15,15 +15,11 @@ const login = async (req, res, next) => {
         if (err) {
           res.send(err);
         }
-<<<<<<< HEAD
-        const body = { _id: user._id, username: user.username };
-=======
         const body = {
           _id: user._id,
           username: user.username,
           role: user.role,
         };
->>>>>>> adminFeature
         const token = jwt.sign({ user: body }, "secret");
         return res.json({ user, token });
       });
