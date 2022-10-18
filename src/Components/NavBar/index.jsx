@@ -29,9 +29,10 @@ const ResponsiveAppBar = () => {
   };
 
   const data = React.useContext(USERContext);
+  console.log(data);
 
-  const pages = ["admin", "signup"];
-  const settings = ["Profile", "Account"];
+  const pages = ["Login", "Signup"];
+  const settings = ["Profile"];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -108,7 +109,6 @@ const ResponsiveAppBar = () => {
                     style={{
                       textDecoration: "none",
                       color: "black",
-                      textTransform: "uppercase",
                     }}
                     to={"/"}
                   >
@@ -116,39 +116,6 @@ const ResponsiveAppBar = () => {
                   </Link>
                 </Typography>
               </MenuItem>
-
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link
-                      style={{
-                        textDecoration: "none",
-                        color: "black",
-                        textTransform: "uppercase",
-                      }}
-                      to={`/${page}`}
-                    >
-                      {page}
-                    </Link>
-                  </Typography>
-                </MenuItem>
-              ))}
-              {data ? null : (
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link
-                      style={{
-                        textDecoration: "none",
-                        color: "black",
-                        textTransform: "uppercase",
-                      }}
-                      to={"/login"}
-                    >
-                      login
-                    </Link>
-                  </Typography>
-                </MenuItem>
-              )}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -179,37 +146,10 @@ const ResponsiveAppBar = () => {
                 Inicio
               </Link>
             </Button>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to={`/${page}`}
-                >
-                  {page}
-                </Link>
-              </Button>
-            ))}
-            {data ? null : (
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to={"login"}
-                >
-                  Login
-                </Link>
-              </Button>
-            )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {!data ? "" : `Hola ${data.user.username}`}
+            {data && `Hola ${data.user.username}`}
             <CartWidget />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -233,22 +173,54 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {data ? (
-                <MenuItem
-                  onClick={() => {
-                    handleCloseUserMenu();
-                    logout();
-                  }}
-                >
-                  <Typography textAlign="center">logout</Typography>
-                </MenuItem>
-              ) : null}
-              {data
-                ? settings.map((setting) => (
+                <>
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseUserMenu();
+                      logout();
+                    }}
+                  >
+                    <Typography textAlign="center">logout</Typography>
+                  </MenuItem>
+                  {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                      <Typography textAlign="center">
+                        <Link
+                          style={{ textDecoration: "none", color: "black" }}
+                          to={`/${setting}`}
+                        >
+                          {setting}
+                        </Link>
+                      </Typography>
                     </MenuItem>
-                  ))
-                : null}
+                  ))}
+                </>
+              ) : (
+                pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to={`/${page}`}
+                      >
+                        {page}
+                      </Link>
+                    </Typography>
+                  </MenuItem>
+                ))
+              )}
+              {data?.user.role === "admin" && (
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={"/admin"}
+                    >
+                      Admin
+                    </Link>
+                  </Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>
