@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const parseArgs = require("minimist");
 const cluster = require("cluster");
 var cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 //numero de cpus
 const numCPUs = require("os").cpus().length;
@@ -70,6 +71,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser());
 
 //logger
 app.use((req, res, next) => {

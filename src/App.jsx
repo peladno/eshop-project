@@ -11,7 +11,8 @@ import Login from "./Components/Login/Login";
 import Signup from "./Components/Singup/SignUp";
 import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
-import ItemEdit from "./Components/ItemEditContainer/index.jsx";
+import ItemEdit from "./Components/ItemEditContainer/index";
+//TODO hacer la redireccion como corresponde con el admin
 
 export default function App() {
   const data = useContext(USERContext);
@@ -30,7 +31,13 @@ export default function App() {
           <Route exact path="/item/:id" element={<ItemDetailContainer />} />
           <Route exact path="/cart" element={<CartDetail />} />
           <Route exact path="/*" element={<Error404 />} />
-          <Route exact path="/admin" element={<AdminPage />} />
+          <Route
+            exact
+            path="/admin"
+            element={
+              data?.user.role !== "admin" ? <Navigate to="/" /> : <AdminPage />
+            }
+          />
           <Route exact path="/signup" element={<Signup />} />
           <Route
             exact

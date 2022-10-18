@@ -45,7 +45,6 @@ async function getCartById(req, res) {
     const id = req.params.id;
     const cart = await DAO.getCartById(id);
     const info = "Cart found";
-    const error = "Cart not found";
     logger.info(info);
     if (!cart) {
       const newCart = await DAO.saveEmptyCart(id);

@@ -15,7 +15,15 @@ const login = async (req, res, next) => {
         if (err) {
           res.send(err);
         }
+<<<<<<< HEAD
         const body = { _id: user._id, username: user.username };
+=======
+        const body = {
+          _id: user._id,
+          username: user.username,
+          role: user.role,
+        };
+>>>>>>> adminFeature
         const token = jwt.sign({ user: body }, "secret");
         return res.json({ user, token });
       });
@@ -25,7 +33,28 @@ const login = async (req, res, next) => {
   })(req, res, next);
 };
 
-const verifyToken = async (req, res, next) => {
+const adminAuth = async (req, res, next) => {
+  const headers = req.headers["authorization"];
+  const token = headers.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({
+      message: "No token provided",
+    });
+  }
+  jwt.verify(token, "secret", (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "Not authorized" });
+    } else {
+      if (decoded.user.role !== "admin") {
+        return res.status(401).json({ message: "Not authorized" });
+      } else {
+        next();
+      }
+    }
+  });
+};
+
+const userAuth = async (req, res, next) => {
   const headers = req.headers["authorization"];
   const token = headers.split(" ")[1];
   if (!token) {
@@ -45,4 +74,5 @@ const verifyToken = async (req, res, next) => {
 };
 
 exports.login = login;
-exports.verifyToken = verifyToken;
+exports.adminAuth = adminAuth;
+exports.userAuth = userAuth;

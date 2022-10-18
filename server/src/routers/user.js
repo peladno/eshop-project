@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("../utils/passport");
-const { login, verifyToken } = require("../utils/jwt.js");
+const { login, userAuth } = require("../utils/jwt.js");
 const messages = require("../utils/messages");
 const logger = require("../logger/logger");
 const factoryUser = require("../DAOs/factoryDAO/UserDAOfactory.class");
@@ -30,6 +30,7 @@ router.post("/signup", async (req, res) => {
         photo,
         password,
       };
+      console.log(newUser);
       await DAO.saveUser(newUser);
       res.status(200).json({
         success: true,
@@ -39,7 +40,10 @@ router.post("/signup", async (req, res) => {
     }
   } catch (err) {
     logger.error(`Error signing up ${err}`);
+<<<<<<< HEAD
    
+=======
+>>>>>>> adminFeature
   }
 
   messages.newUserEmail(name, email);
@@ -63,14 +67,13 @@ router.get("/logout", async (req, res, next) => {
   }
 });
 
-router.get("/login/success", verifyToken, (req, res) => {
+router.get("/login/success", userAuth, (req, res) => {
   if (req.user) {
     res.status(200).json({
       auth: true,
       message: "success user",
       user: req.user,
     });
-    console.log(req.user);
   } else {
     res.status(401).json({
       auth: false,
