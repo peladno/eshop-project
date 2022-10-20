@@ -29,7 +29,6 @@ const ResponsiveAppBar = () => {
   };
 
   const data = React.useContext(USERContext);
-  console.log(data);
 
   const pages = ["Login", "Signup"];
   const settings = ["Profile"];

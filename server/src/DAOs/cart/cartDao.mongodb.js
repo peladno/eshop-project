@@ -140,12 +140,12 @@ class CartDAOMongoDB extends DAO {
 
   async getCartById(client) {
     try {
-      const buscado = await this.model.findOne({
+      const searched = await this.model.findOne({
         client: {
           $eq: client,
         },
       });
-      return buscado;
+      return searched;
     } catch (error) {
       logger.error(`Error no se ecuentra id: ${client} ${error}`);
       throw new Error(error);

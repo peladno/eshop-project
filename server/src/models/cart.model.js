@@ -1,3 +1,5 @@
+//TODO cambiar modelo para solo guardar el id del producto
+
 const mongoose = require("mongoose");
 
 const CartSchema = mongoose.Schema({
