@@ -1,5 +1,7 @@
 const cartFactory = require("../DAOs/factoryDAO/CartDAOfactory.class");
+const orderFactory = require("../DAOs/factoryDAO/orderDAOfactory.class");
 const DAO = cartFactory.get();
+const OrderDao = orderFactory.get();
 const userFactory = require("../DAOs/factoryDAO/UserDAOfactory.class");
 const UserDao = userFactory.get();
 const logger = require("../logger/logger");
@@ -89,7 +91,9 @@ async function deleteProductCart(req, res) {
 async function orderProcess(req, res) {
   try {
     const client = req.params.id;
-    const cart = await DAO.getCartById(client);
+    const searchCart = await DAO.getCartById(client);
+    const cart = await OrderDao.newOrder(searchCart);
+    logger.info(cart)
     if (cart) {
       await UserDao.getUser(client)
         .then((user) => {
