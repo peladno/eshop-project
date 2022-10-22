@@ -62,10 +62,10 @@ class CartDAOMongoDB extends DAO {
     const timeStamp = date.toLocaleString();
     try {
       const cart = await this.model.findOne({ user: { $eq: user } });
-      
+
       if (cart) {
         const itemFound = cart.products.findIndex(
-          (item) => item._id === new ObjectId(obj._id)
+          (item) => item._id.toString() === obj._id.toString()
         );
         if (itemFound !== -1) {
           let product = cart.products[itemFound];
@@ -104,7 +104,6 @@ class CartDAOMongoDB extends DAO {
       console.log(err);
     }
   }
-
 
   async deleteCart(user) {
     try {
