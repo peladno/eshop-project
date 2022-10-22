@@ -22,7 +22,6 @@ async function getAll(req, res) {
     }
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -38,7 +37,6 @@ async function saveCart(req, res) {
     res.status(200).json(saved);
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -56,7 +54,6 @@ async function getCartById(req, res) {
     }
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -70,7 +67,6 @@ async function addProductToCart(req, res) {
     res.status(200).json(saved);
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -84,16 +80,14 @@ async function deleteProductCart(req, res) {
     res.status(200).json(deleteProduct);
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
 async function orderProcess(req, res) {
   try {
     const client = req.params.id;
-    const searchCart = await DAO.getCartById(client);
-    const cart = await OrderDao.newOrder(searchCart);
-    logger.info(cart)
+    const cart = await OrderDao.newOrder(client);
+    logger.info(cart);
     if (cart) {
       await UserDao.getUser(client)
         .then((user) => {
@@ -107,7 +101,6 @@ async function orderProcess(req, res) {
     }
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 
@@ -120,7 +113,6 @@ async function deleteCartById(req, res) {
     res.status(200).json(deleted);
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
   }
 }
 

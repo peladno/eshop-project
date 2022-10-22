@@ -50,7 +50,7 @@ const NewCartProvider = ({ children }) => {
   );
 
   const totalPrice = cart.products?.reduce(
-    (total, item) => total + item.price * item.count,
+    (total, item) => total + item._id.price * item.count,
     0
   );
 

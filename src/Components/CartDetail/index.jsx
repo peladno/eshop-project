@@ -28,6 +28,8 @@ const CartDetail = () => {
     }
   };
 
+  console.log(cart);
+
   return (
     <>
       <div className={styles.cartContainer}>
@@ -65,7 +67,7 @@ const CartDetail = () => {
             {
               <Button
                 variant="contained"
-                onClick={() => clearCart(cart.client)}
+                onClick={() => clearCart(cart.user._id)}
               >
                 Clear cart
               </Button>

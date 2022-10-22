@@ -19,27 +19,16 @@ const OrderSchema = mongoose.Schema({
   products: [
     {
       _id: {
-        type: String,
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      photo: {
-        type: String,
-        required: true,
-      },
-      price: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "products",
         required: true,
       },
       count: {
         type: Number,
         required: true,
-      }
+        min: 1,
+      },
     },
-    
   ],
 });
 

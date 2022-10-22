@@ -1,6 +1,6 @@
 const logger = require("../../logger/logger");
 const OrderModel = require("../../models/order.model");
-const MongoDBClient = require("../clientDB.class");
+const MongoDBuser = require("../clientDB.class");
 const DAO = require("../DAO.class");
 
 class CartDAOMongoDB extends DAO {
@@ -8,14 +8,22 @@ class CartDAOMongoDB extends DAO {
     super();
     if (CartDAOMongoDB.instancia) return CartDAOMongoDB.instancia;
     this.model = OrderModel;
-    this.connection = new MongoDBClient();
+    this.connection = new MongoDBuser();
     CartDAOMongoDB.instancia = this;
   }
 
-  async newOrder(cart) {
+  async newOrder(user) {
     try {
       const date = new Date();
       const timeStamp = date.toLocaleString();
+      const cart = await this.model
+        .findOne({
+          user: {
+            $eq: user,
+          },
+        })
+        .populate("user")
+        .populate("products._id");
 
       const cartTotal = cart.products.reduce((acc, curr) => {
         return acc + curr.count * curr.price;
@@ -23,7 +31,7 @@ class CartDAOMongoDB extends DAO {
       const order = new this.model({
         products: cart.products,
         timeStamp: timeStamp,
-        client: cart.client,
+        user: cart.user,
         total: cartTotal,
       });
       const saved = await order.save();
@@ -33,8 +41,21 @@ class CartDAOMongoDB extends DAO {
     }
   }
 
-  async findAllOrdersByClient(client) {
-    
+  async findAllOrdersByUser(user) {
+    try {
+      const cart = await this.model
+        .find({
+          user: {
+            $eq: user,
+          },
+        })
+        .populate("user")
+        .populate("products._id");
+
+      return cart;
+    } catch (error) {
+      logger.error(error);
+    }
   }
 }
 

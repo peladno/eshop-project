@@ -361,3 +361,159 @@
   label: 'Label🏷️',
   timestamp: 'Oct-12-2022 03:11:24'
 }
+{
+  message: 'Error to edit cart ValidationError: products: Cast to embedded failed for value "632567c8786af803d1506889" (type string) at path "products" because of "ObjectParameterError"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 16:58:55'
+}
+{
+  message: 'Error to edit cart ValidationError: products: Cast to embedded failed for value "632567c8786af803d1506889" (type string) at path "products" because of "ObjectParameterError"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:02:43'
+}
+{
+  message: 'Error to edit cart ValidationError: products: Cast to embedded failed for value "632567c8786af803d1506889" (type string) at path "products" because of "ObjectParameterError"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:03:03'
+}
+{
+  message: 'Error to edit cart ValidationError: products: Cast to embedded failed for value "632567c8786af803d1506889" (type string) at path "products" because of "ObjectParameterError"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:04:37'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of null (reading '_id')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:06:01'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of null (reading '_id')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:06:17'
+}
+{
+  message: 'Error no se ecuentra id: 631fe0e4a2b3ecb20744cbdc MongooseError: Cannot populate path `user` because it is not in your schema. Set the `strictPopulate` option to false to override.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:14:25'
+}
+{
+  message: 'Error no se ecuentra id: 631fe0e4a2b3ecb20744cbdc MongooseError: Cannot populate path `product` because it is not in your schema. Set the `strictPopulate` option to false to override.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:32:39'
+}
+{
+  message: 'Error no se ecuentra id: 631fe0e4a2b3ecb20744cbdc MongooseError: Cannot populate path `product` because it is not in your schema. Set the `strictPopulate` option to false to override.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 17:51:22'
+}
+{
+  message: 'Error no se ecuentra id: 631fe0e4a2b3ecb20744cbdc MongooseError: Cannot populate path `products.products` because it is not in your schema. Set the `strictPopulate` option to false to override.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 18:06:44'
+}
+{
+  message: 'Error no se ecuentra id: 631fe0e4a2b3ecb20744cbdc MongooseError: Cannot populate path `product.products` because it is not in your schema. Set the `strictPopulate` option to false to override.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 18:07:08'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0.product: Path `product` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 18:18:30'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.product: Path `product` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 18:19:26'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.product: Path `product` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 18:21:41'
+}
+{
+  message: 'Error no se ecuentra id: 631fe0e4a2b3ecb20744cbdc MongooseError: Cannot populate path `products.product` because it is not in your schema. Set the `strictPopulate` option to false to override.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 18:23:17'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.product: Path `product` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 18:50:38'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 19:03:32'
+}
+{
+  message: 'Error to delete product 6343908d518fb819498b79f6 from cart 63465a8cf39e903134405eb2 TypeError: console.type is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 19:39:16'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 19:39:16'
+}
+{
+  message: 'Error to delete product 6343908d518fb819498b79f6 from cart 63465a8cf39e903134405eb2 TypeError: console.type is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 19:39:17'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 19:39:17'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of null (reading 'products')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 20:49:05'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 20:49:05'
+}
+{
+  message: 'Error to edit cart CastError: Cast to ObjectId failed for value "{ user: new ObjectId("63465a8cf39e903134405eb2") }" (type Object) at path "_id" for model "cart"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 21:11:55'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 21:11:55'
+}
+{
+  message: `Error to edit cart CastError: Cast to ObjectId failed for value "{ user: '63465a8cf39e903134405eb2' }" (type Object) at path "_id" for model "cart"`,
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 21:13:21'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-21-2022 21:13:21'
+}

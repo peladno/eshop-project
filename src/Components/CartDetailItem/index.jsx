@@ -25,19 +25,19 @@ function CartDetailItem({ products, removeFromCart }) {
   };
 
   return products.map((item) => (
-    <div className={styles.cartItem} key={item._id}>
-      <img src={item.photo} alt={item.name} />
-      <h2>{item.name}</h2>
+    <div className={styles.cartItem} key={item._id._id}>
+      <img src={item._id.photo} alt={item._id.name} />
+      <h2>{item._id.name}</h2>
       <div className={styles.quantityItem}>
         <h3>Quantity</h3>
         <p>{item.count}</p>
       </div>
       <div className={styles.priceItem}>
         <h3>Price</h3>
-        <p>${item.price * item.count}</p>
+        <p>${item._id.price * item.count}</p>
       </div>
       <IconButton
-        onClick={() => handleRemoveProduct(data.user._id, item._id, item.name)}
+        onClick={() => handleRemoveProduct(data.user._id, item._id._id, item._id.name)}
       >
         <DeleteForeverIcon className={styles.delete} style={{ color: "red" }} />
       </IconButton>
