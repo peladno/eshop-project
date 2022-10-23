@@ -517,3 +517,80 @@
   label: 'Label🏷️',
   timestamp: 'Oct-21-2022 21:13:21'
 }
+{
+  message: 'Error no se ecuentra id: 63465a8cf39e903134405eb2 TypeError: searched.populate(...).populate is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:56:58'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:56:58'
+}
+{
+  message: 'Error no se ecuentra id: 63465a8cf39e903134405eb2 TypeError: searched.populate(...).populate is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:57:12'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:57:12'
+}
+{
+  message: 'Error no se ecuentra id: 63465a8cf39e903134405eb2 TypeError: searched.populate(...).populate is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:57:15'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:57:15'
+}
+{
+  message: 'Error no se ecuentra id: 63465a8cf39e903134405eb2 TypeError: searched.populate(...).populate is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:57:30'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 21:57:30'
+}
+{
+  message: 'Error no se ecuentra id: 63465a8cf39e903134405eb2 TypeError: result.populate(...).populate is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 23:56:37'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 23:56:37'
+}
+{
+  message: 'Error no se ecuentra id: 63465a8cf39e903134405eb2 TypeError: result.populate(...).populate is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 23:56:43'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-22-2022 23:56:43'
+}
+{
+  message: 'Error no se ecuentra id: 63465a8cf39e903134405eb2 TypeError: this.model.findOne(...).exec(...).populate is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-23-2022 00:02:19'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-23-2022 00:02:19'
+}
