@@ -1,28 +1,10 @@
-import { useContext, createContext, useEffect, useState } from "react";
-import { USERContext } from "./UserContext";
+import { createContext,useState } from "react";
 import ApiServices from "../Services/ApiServices";
 
 export const NewCartContext = createContext();
 
 const NewCartProvider = ({ children }) => {
-  const tokenKey = localStorage.getItem("token");
   const [cart, setCart] = useState([]);
-  const data = useContext(USERContext);
-
-  useEffect(() => {
-    const getCart = async () => {
-      try {
-        const response = await ApiServices.getCart(data.user._id);
-        const dataCart = await response.data;
-        setCart(dataCart);
-      } catch (error) {
-        throw new Error(`error fetching data ${error}`);
-      }
-    };
-    if (tokenKey && data !== null) {
-      getCart();
-    }
-  }, [tokenKey, data]);
 
   const clearCart = async (cart_id) => {
     try {
@@ -50,7 +32,7 @@ const NewCartProvider = ({ children }) => {
   );
 
   const totalPrice = cart.products?.reduce(
-    (total, item) => total + item.price * item.count,
+    (total, item) => total + item._id.price * item.count,
     0
   );
 

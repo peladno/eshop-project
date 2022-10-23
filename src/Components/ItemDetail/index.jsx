@@ -28,7 +28,7 @@ const ItemDetail = ({ item, loading }) => {
         count,
       });
       const cartData = await response.data;
-      setCart(() => cartData);
+      
       cartData
         ? getSuccess("Product Added to Cart")
         : getError("Error adding to cart");
