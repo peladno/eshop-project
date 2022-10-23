@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NewCartContext } from "../../Context/NewCartContext";
 import styles from "./cartDetail.module.css";
 import Button from "@mui/material/Button";
@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 import ApiServices from "../../Services/ApiServices";
 import CartDetailItem from "../CartDetailItem";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";
+import { USERContext } from "../../Context/UserContext";
 
 const CartDetail = () => {
-  const { cart, removeFromCart, totalPrice, clearCart } =
+  const { cart, setCart, removeFromCart, totalPrice, clearCart } =
     useContext(NewCartContext);
   const { getError, getSuccess } = useContext(NotificationContext);
+  const data = useContext(USERContext);
+  const tokenKey = localStorage.getItem("token");
 
   const handleBuyProduct = async (clientId) => {
     try {
@@ -28,7 +31,20 @@ const CartDetail = () => {
     }
   };
 
-  console.log(cart);
+  useEffect(() => {
+    const getCart = async () => {
+      try {
+        const response = await ApiServices.getCart(data.user._id);
+        const dataCart = await response.data;
+        setCart(dataCart);
+      } catch (error) {
+        throw new Error(`error fetching data ${error}`);
+      }
+    };
+    if (tokenKey && data !== null) {
+      getCart();
+    }
+  }, [tokenKey, data, setCart]);
 
   return (
     <>
@@ -67,7 +83,7 @@ const CartDetail = () => {
             {
               <Button
                 variant="contained"
-                onClick={() => clearCart(cart.user._id)}
+                onClick={() => clearCart(cart.client)}
               >
                 Clear cart
               </Button>
