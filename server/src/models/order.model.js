@@ -7,14 +7,15 @@ const OrderSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  client: {
-    type: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
     required: true,
   },
   total: {
     type: Number,
     required: true,
-    default:0
+    default: 0,
   },
   products: [
     {

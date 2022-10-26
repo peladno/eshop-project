@@ -20,9 +20,10 @@ const { ruteNotFound } = require("./src/utils/middlewares");
 const logger = require("./src/logger/logger");
 
 //adding url routers
-const userRouter = require("./src/routers/user");
-const products = require("./src/routers/products");
-const cart = require("./src/routers/cart");
+const userRouter = require("./src/routers/user.router");
+const productsRouter = require("./src/routers/products.router");
+const cartRouter = require("./src/routers/cart.router");
+const orderRouter = require("./src/routers/order.router");
 
 //minimist
 const options = { default: { port: config.PORT, mode: "FORK" } };
@@ -81,8 +82,9 @@ app.use((req, res, next) => {
 
 //routes
 app.use("/", userRouter);
-app.use("/api/products", products);
-app.use("/api/cart", cart);
+app.use("/api/products", productsRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/orders", orderRouter);
 app.use(ruteNotFound);
 
 if (mode === "CLUSTER") {

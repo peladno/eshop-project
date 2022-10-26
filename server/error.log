@@ -594,3 +594,178 @@
   label: 'Label🏷️',
   timestamp: 'Oct-23-2022 00:02:19'
 }
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:38:42'
+}
+{
+  code: 'ERR_HTTP_HEADERS_SENT',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:38:42'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:39:49'
+}
+{
+  code: 'ERR_HTTP_HEADERS_SENT',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:39:49'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:41:27'
+}
+{
+  code: 'ERR_HTTP_HEADERS_SENT',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:41:27'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:43:16'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:49:55'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:50:44'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:52:39'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:53:34'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:54:11'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:56:28'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 01:59:11'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:19:51'
+}
+{
+  errors: {
+    total: CastError: Cast to Number failed for value "NaN" (type number) at path "total"
+        at SchemaNumber.cast (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schema/number.js:378:11)
+        at SchemaNumber.SchemaType.applySetters (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1192:12)
+        at model.$set (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:1364:22)
+        at model.$set (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:1089:16)
+        at model.Document (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:166:12)
+        at model.Model (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/model.js:119:12)
+        at new model (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/model.js:4900:15)
+        at CartDAOMongoDB.newOrder (/home/javier/Documentos/Projects/ecommerce/server/src/DAOs/orders/orderDAO.mongodb.js:23:21)
+        at orderProcess (/home/javier/Documentos/Projects/ecommerce/server/src/controllers/cart.controller.js:90:33)
+        at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+      stringValue: '"NaN"',
+      messageFormat: undefined,
+      kind: 'Number',
+      value: NaN,
+      path: 'total',
+      reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+      
+        assert.ok(!isNaN(val))
+      
+          at castNumber (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/cast/number.js:27:10)
+          at SchemaNumber.cast (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schema/number.js:376:12)
+          at SchemaNumber.SchemaType.applySetters (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1192:12)
+          at model.$set (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:1364:22)
+          at model.$set (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:1089:16)
+          at model.Document (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:166:12)
+          at model.Model (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/model.js:119:12)
+          at new model (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/model.js:4900:15)
+          at CartDAOMongoDB.newOrder (/home/javier/Documentos/Projects/ecommerce/server/src/DAOs/orders/orderDAO.mongodb.js:23:21)
+          at orderProcess (/home/javier/Documentos/Projects/ecommerce/server/src/controllers/cart.controller.js:90:33) {
+        generatedMessage: true,
+        code: 'ERR_ASSERTION',
+        actual: false,
+        expected: true,
+        operator: '=='
+      },
+      valueType: 'number'
+    }
+  },
+  _message: 'order validation failed',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:21:02'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:26:44'
+}
+{
+  errors: {
+    user: ValidatorError: Path `user` is required.
+        at validate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1337:13)
+        at ObjectId.SchemaType.doValidate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1321:7)
+        at /home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:2830:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user` is required.',
+        type: 'required',
+        path: 'user',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'order validation failed',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:27:26'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:28:07'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:28:43'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:38:27'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-26-2022 02:39:53'
+}

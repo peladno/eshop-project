@@ -42,12 +42,12 @@ async function saveCart(req, res) {
 
 async function getCartById(req, res) {
   try {
-    const id = req.params.id;
-    const cart = await DAO.getCartById(id);
+    const cartID = req.params.id;
+    const cart = await DAO.getCartById(cartID);
     const info = "Cart found";
     logger.info(info);
     if (!cart) {
-      const newCart = await DAO.saveEmptyCart(id);
+      const newCart = await DAO.saveEmptyCart(cartID);
       res.status(200).json(newCart);
     } else {
       res.status(200).json(cart);
@@ -59,9 +59,9 @@ async function getCartById(req, res) {
 
 async function addProductToCart(req, res) {
   try {
-    const id = req.params.id;
+    const cartID = req.params.id;
     const newProduct = req.body;
-    const saved = await DAO.editCart(newProduct, id);
+    const saved = await DAO.editCart(newProduct, cartID);
     const info = "Product saved";
     logger.info(info);
     res.status(200).json(saved);
@@ -72,9 +72,9 @@ async function addProductToCart(req, res) {
 
 async function deleteProductCart(req, res) {
   try {
-    const clientID = req.params.id;
+    const userID = req.params.id;
     const prodID = req.params.id_product;
-    const deleteProduct = await DAO.deleteProduct(clientID, prodID);
+    const deleteProduct = await DAO.deleteProduct(userID, prodID);
     const info = "Product deleted";
     logger.info(info);
     res.status(200).json(deleteProduct);
@@ -83,31 +83,10 @@ async function deleteProductCart(req, res) {
   }
 }
 
-async function orderProcess(req, res) {
-  try {
-    const client = req.params.id;
-    const cart = await OrderDao.newOrder(client);
-    logger.info(cart);
-    if (cart) {
-      await UserDao.getUser(client)
-        .then((user) => {
-          messages.orderMail(user.name, user.email, cart);
-        })
-        .then(res.status(200).json({ message: "Product in process", cart }));
-      // messages.smsOrder(user.name, user.phone, user.cart);
-      // messages.whatsappOrder(user.name, user.phone, user.cart);
-    } else {
-      res.send(404).json({ message: "Cart not found" });
-    }
-  } catch (error) {
-    logger.error(error);
-  }
-}
-
 async function deleteCartById(req, res) {
   try {
-    const client = req.params.id;
-    const deleted = await DAO.deleteCart(client);
+    const userID = req.params.id;
+    const deleted = await DAO.deleteCart(userID);
     const info = "Cart deleted";
     logger.info(info);
     res.status(200).json(deleted);
@@ -122,6 +101,5 @@ module.exports = {
   saveCart,
   addProductToCart,
   deleteProductCart,
-  orderProcess,
   deleteCartById,
 };

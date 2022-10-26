@@ -30,7 +30,6 @@ router.post("/signup", async (req, res) => {
         photo,
         password,
       };
-      console.log(newUser);
       await DAO.saveUser(newUser);
       res.status(200).json({
         success: true,

@@ -12,21 +12,13 @@ class CartDAOMongoDB extends DAO {
     CartDAOMongoDB.instancia = this;
   }
 
-  async newOrder(user) {
+  async newOrder(cart) {
     try {
       const date = new Date();
       const timeStamp = date.toLocaleString();
-      const cart = await this.model
-        .findOne({
-          user: {
-            $eq: user,
-          },
-        })
-        .populate("user")
-        .populate("products._id");
 
       const cartTotal = cart.products.reduce((acc, curr) => {
-        return acc + curr.count * curr.price;
+        return acc + curr.count * curr._id.price;
       }, 0);
       const order = new this.model({
         products: cart.products,
@@ -35,6 +27,7 @@ class CartDAOMongoDB extends DAO {
         total: cartTotal,
       });
       const saved = await order.save();
+      console.log(saved);
       return saved;
     } catch (error) {
       logger.error(error);

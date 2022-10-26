@@ -19,15 +19,13 @@ const Email = nodemailer.createTransport({
 });
 
 function newUserEmail(name, email) {
-  console.log(name);
-  console.log(email);
   ejs.renderFile(
     path.join(process.cwd(), "/public/views/emailNewUser.ejs"),
     { name, email },
     (err, data) => {
       if (err) {
         logger.error(err);
-        throw new Error(err)
+        throw new Error(err);
       } else {
         const mailOptions = {
           from: `Eshop 📩`,
@@ -47,19 +45,18 @@ function newUserEmail(name, email) {
   );
 }
 
-function orderMail(name, email, cart) {
-  console.log(cart);
+function orderMail(order) {
   ejs.renderFile(
     path.join(process.cwd(), "/public/views/emailOrder.ejs"),
-    { name, email, cart },
+    { order },
     (err, data) => {
       if (err) {
         logger.error(err);
       } else {
         const mailOptions = {
           from: `Eshop 📩`,
-          to: `${email}`,
-          subject: `Order N° ${cart._id}`,
+          to: `${order.user.email}`,
+          subject: `Order N° ${order._id}`,
           html: data,
         };
 
