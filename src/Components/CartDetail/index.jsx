@@ -18,7 +18,7 @@ const CartDetail = () => {
   const handleBuyProduct = async (clientId) => {
     try {
       await ApiServices.buyProduct(clientId)
-        .then((value) => clearCart(value.data.cart.client))
+        .then((value) => clearCart(value.data.cart.user._id))
         .then(() => {
           getSuccess("Your order is in process");
         })
@@ -72,7 +72,7 @@ const CartDetail = () => {
             ) : (
               <Button
                 variant="contained"
-                onClick={() => handleBuyProduct(cart.client)}
+                onClick={() => handleBuyProduct(cart.user._id)}
               >
                 Buy
               </Button>
@@ -83,7 +83,7 @@ const CartDetail = () => {
             {
               <Button
                 variant="contained"
-                onClick={() => clearCart(cart.client)}
+                onClick={() => clearCart(cart.user._id)}
               >
                 Clear cart
               </Button>

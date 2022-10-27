@@ -1,14 +1,15 @@
 const logger = require("../../logger/logger");
 const CartModel = require("../../models/cart.model");
-const MongoDBClient = require("../clientDB.class");
+const MongoDBuser = require("../clientDB.class");
 const DAO = require("../DAO.class");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 class CartDAOMongoDB extends DAO {
   constructor() {
     super();
     if (CartDAOMongoDB.instancia) return CartDAOMongoDB.instancia;
     this.model = CartModel;
-    this.connection = new MongoDBClient();
+    this.connection = new MongoDBuser();
     CartDAOMongoDB.instancia = this;
   }
 
@@ -22,61 +23,56 @@ class CartDAOMongoDB extends DAO {
     }
   }
 
-  async createCart(client, obj) {
+  async createCart(user, obj) {
     const date = new Date();
     const timeStamp = date.toLocaleString();
     try {
       const cart = new this.model({
         ...obj,
         timeStamp,
-        client,
+        user,
       });
       const saved = await cart.save();
       return saved;
     } catch (error) {
-      logger.error(`Error saving cart ${client} ${error}`);
+      logger.error(`Error saving cart ${user} ${error}`);
       throw new Error(error);
     }
   }
 
-  async saveEmptyCart(client) {
+  async saveEmptyCart(user) {
     const date = new Date();
     const timeStamp = date.toLocaleString();
     try {
       const cart = new this.model({
         products: [],
         timeStamp,
-        client,
+        user,
       });
       const saved = await cart.save();
       return saved;
     } catch (error) {
-      logger.error(`Error saving cart ${client} ${error}`);
+      logger.error(`Error saving cart ${user} ${error}`);
       throw new Error(error);
     }
   }
 
-  async editCart(obj, client) {
+  async editCart(obj, user) {
     const date = new Date();
     const timeStamp = date.toLocaleString();
     try {
-      const cart = await this.model.findOne({ client: { $eq: client } });
+      const cart = await this.model.findOne({ user: { $eq: user } });
+
       if (cart) {
         const itemFound = cart.products.findIndex(
-          (item) => item._id === obj._id
+          (item) => item._id.toString() === obj._id.toString()
         );
         if (itemFound !== -1) {
           let product = cart.products[itemFound];
           product.count += obj.count;
-          cart.total = cart.products.reduce((acc, curr) => {
-            return acc + curr.count * curr.price;
-          }, 0);
           const saved = await cart.save();
           return saved;
         } else {
-          cart.total = cart.products.reduce((acc, curr) => {
-            return acc + curr.count * curr.price;
-          }, 0);
           cart.products.push(obj);
           const saved = await cart.save();
           return saved;
@@ -85,8 +81,7 @@ class CartDAOMongoDB extends DAO {
         const newCart = new this.model({
           products: obj,
           timeStamp: timeStamp,
-          client: client,
-          total: obj.count * obj.price,
+          user: user,
         });
         const saved = await newCart.save();
         return saved;
@@ -96,40 +91,33 @@ class CartDAOMongoDB extends DAO {
       throw new Error(error);
     }
   }
-  //TODO mejorar logica
-  async deleteProduct(client, idProduct) {
+
+  async deleteProduct(user, idProduct) {
     try {
-      const cart = await this.model.findOne({ client: { $eq: client } });
+      const cart = await this.model.findOne({ user: { $eq: user } });
       const itemFound = cart.products.findIndex(
-        (item) => item._id === idProduct
+        (item) => item._id.toString() === idProduct.toString()
       );
-      if (cart.total < 0) {
-        cart.bill = 0;
-      }
+
       if (itemFound === -1) {
         return { error: "product not found" };
       } else {
-        let product = cart.products[itemFound];
-        cart.total -= product.count * product.price;
         cart.products.splice(itemFound, 1);
-        cart.total = cart.products.reduce((acc, curr) => {
-          return acc + curr.count * curr.price;
-        }, 0);
         const saved = await cart.save();
         return saved;
       }
     } catch (error) {
       logger.error(
-        `Error to delete product ${idProduct} from cart ${client} ${error}`
+        `Error to delete product ${idProduct} from cart ${user} ${error}`
       );
       throw new Error(error);
     }
   }
 
-  async deleteCart(client) {
+  async deleteCart(user) {
     try {
       const deleted = await this.model.deleteOne({
-        client: { $eq: client },
+        user: { $eq: user },
       });
       return deleted;
     } catch (error) {
@@ -138,16 +126,19 @@ class CartDAOMongoDB extends DAO {
     }
   }
 
-  async getCartById(client) {
+  async getCartById(user) {
     try {
-      const buscado = await this.model.findOne({
-        client: {
-          $eq: client,
-        },
-      });
-      return buscado;
+      const searched = await this.model
+        .findOne({
+          user: {
+            $eq: user,
+          },
+        })
+        .populate("user")
+        .populate("products._id");
+      return searched;
     } catch (error) {
-      logger.error(`Error no se ecuentra id: ${client} ${error}`);
+      logger.error(`Error no se ecuentra id: ${user} ${error}`);
       throw new Error(error);
     }
   }

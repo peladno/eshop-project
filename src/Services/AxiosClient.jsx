@@ -14,7 +14,7 @@ export const user = axios.create({
 export const clientAdmin = axios.create({
   baseURL: process.env.REACT_APP_URL + "api",
   headers: {
-    admin: true,
+    Authorization: `Bearer ${tokenKey}`,
     "Content-type": "application/json",
   },
 });

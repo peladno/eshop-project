@@ -49,7 +49,7 @@ const deleteProductFromCart = (id, id_product) => {
 };
 
 const buyProduct = (id) => {
-  return client.post(`/cart/${id}/shop`);
+  return client.post(`/orders/${id}/shop`);
 };
 
 const services = {
