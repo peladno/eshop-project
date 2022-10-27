@@ -2,7 +2,6 @@ const logger = require("../../logger/logger");
 const CartModel = require("../../models/cart.model");
 const MongoDBuser = require("../clientDB.class");
 const DAO = require("../DAO.class");
-const ObjectId = require("mongoose").Types.ObjectId;
 
 class CartDAOMongoDB extends DAO {
   constructor() {

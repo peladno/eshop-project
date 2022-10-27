@@ -1,11 +1,6 @@
 const cartFactory = require("../DAOs/factoryDAO/CartDAOfactory.class");
-const orderFactory = require("../DAOs/factoryDAO/orderDAOfactory.class");
 const DAO = cartFactory.get();
-const OrderDao = orderFactory.get();
-const userFactory = require("../DAOs/factoryDAO/UserDAOfactory.class");
-const UserDao = userFactory.get();
 const logger = require("../logger/logger");
-const messages = require("../utils/messages");
 
 async function getAll(req, res) {
   try {

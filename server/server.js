@@ -13,17 +13,24 @@ const numCPUs = require("os").cpus().length;
 //config server
 const config = require("./src/utils/config");
 const { URL } = config.mongoLocal;
-const http = require("http");
 const app = express();
-const httpServer = http.createServer(app);
 const { ruteNotFound } = require("./src/utils/middlewares");
 const logger = require("./src/logger/logger");
+const { Server: HttpServer } = require("http");
+const { Server: IOServer } = require("socket.io");
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer, {
+  cors: {
+    origin: config.WEB,
+  },
+});
 
 //adding url routers
 const userRouter = require("./src/routers/user.router");
 const productsRouter = require("./src/routers/products.router");
 const cartRouter = require("./src/routers/cart.router");
 const orderRouter = require("./src/routers/order.router");
+const messageRouter = require("./src/routers/message.router");
 
 //minimist
 const options = { default: { port: config.PORT, mode: "FORK" } };
@@ -45,13 +52,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "*",
+    origin: config.WEB,
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
 );
 
 ////////////////////////////////End config/////////////////////////////////////
+
+//websocket
+const webSocket = require("./src/utils/websocket");
+const onConnection = (socket) => {
+  webSocket(io, socket);
+};
+io.on("connection", onConnection);
 
 //session
 app.use(
@@ -85,6 +99,7 @@ app.use("/", userRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/messages", messageRouter);
 app.use(ruteNotFound);
 
 if (mode === "CLUSTER") {
@@ -125,6 +140,7 @@ if (mode === "CLUSTER") {
       }, mode: ${mode} - PID: ${process.pid}`
     );
   });
+
   connectedServer.on("error", (error) => logger.error(`error ${error}`));
   process.on("exit", (code) => {
     console.log("Exit code -> ", code);
