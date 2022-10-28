@@ -1255,3 +1255,79 @@
   label: 'Label🏷️',
   timestamp: 'Oct-26-2022 02:39:53'
 }
+{
+  message: 'Error -2 - Ruta /favicon.ico, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 02:28:18'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:36:45'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:36:56'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:37:04'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:37:16'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:38:13'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:38:47'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:39:51'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:39:51'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:39:59'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:40:00'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:40:02'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 03:40:58'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 04:15:53'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-28-2022 04:15:56'
+}

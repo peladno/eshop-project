@@ -3,7 +3,7 @@ import axios from "axios";
 const tokenKey = localStorage.getItem("token");
 
 export const user = axios.create({
-  baseURL: process.env.REACT_APP_URL,
+  baseURL: process.env.REACT_APP_SERVER,
   headers: {
     Authorization: `Bearer ${tokenKey}`,
     "Content-type": "application/json",
@@ -12,7 +12,7 @@ export const user = axios.create({
 });
 
 export const clientAdmin = axios.create({
-  baseURL: process.env.REACT_APP_URL + "api",
+  baseURL: process.env.REACT_APP_SERVER + "api",
   headers: {
     Authorization: `Bearer ${tokenKey}`,
     "Content-type": "application/json",
@@ -20,7 +20,7 @@ export const clientAdmin = axios.create({
 });
 
 export const client = axios.create({
-  baseURL: process.env.REACT_APP_URL + "api",
+  baseURL: process.env.REACT_APP_SERVER + "api",
   headers: {
     "Content-type": "application/json",
   },

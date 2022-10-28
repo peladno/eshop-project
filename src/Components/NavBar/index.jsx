@@ -172,7 +172,7 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {data ? (
-                <>
+                <div>
                   <MenuItem
                     onClick={() => {
                       handleCloseUserMenu();
@@ -193,7 +193,7 @@ const ResponsiveAppBar = () => {
                       </Typography>
                     </MenuItem>
                   ))}
-                </>
+                </div>
               ) : (
                 pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseUserMenu}>

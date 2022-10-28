@@ -4,7 +4,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const parseArgs = require("minimist");
 const cluster = require("cluster");
-var cors = require("cors");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 //numero de cpus
@@ -17,13 +17,8 @@ const app = express();
 const { ruteNotFound } = require("./src/utils/middlewares");
 const logger = require("./src/logger/logger");
 const { Server: HttpServer } = require("http");
-const { Server: IOServer } = require("socket.io");
+const { Server: SocketServer } = require("socket.io");
 const httpServer = new HttpServer(app);
-const io = new IOServer(httpServer, {
-  cors: {
-    origin: config.WEB,
-  },
-});
 
 //adding url routers
 const userRouter = require("./src/routers/user.router");
@@ -52,7 +47,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: config.WEB,
+    origin: "*",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -61,11 +56,18 @@ app.use(
 ////////////////////////////////End config/////////////////////////////////////
 
 //websocket
-const webSocket = require("./src/utils/websocket");
-const onConnection = (socket) => {
-  webSocket(io, socket);
-};
-io.on("connection", onConnection);
+const io = new SocketServer(httpServer, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
+
+io.on("connection", (socket) => {
+  logger.info(`${socket.id} User connected`);
+  socket.on("message", (message) => {
+    socket.broadcast.emit("message", message);
+  });
+});
 
 //session
 app.use(
