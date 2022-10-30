@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import styles from "./chatContainer.module.css";
 import Button from "@mui/material/Button";
-
+//TODO conectar con base de dato y mostrar usuario en chat
 const socket = io(process.env.REACT_APP_SERVER);
 
 function ChatContainer() {

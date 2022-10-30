@@ -6,7 +6,6 @@ import {NewCartContext} from "../../Context/NewCartContext"
 
 
 export default function CartWidget() {
-  //Se trae usContext con total del carrito
   const { totalCart } = useContext(NewCartContext);
 
   return (

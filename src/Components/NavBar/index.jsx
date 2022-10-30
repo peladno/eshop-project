@@ -31,7 +31,7 @@ const ResponsiveAppBar = () => {
   const data = React.useContext(USERContext);
 
   const pages = ["Login", "Signup"];
-  const settings = ["Profile"];
+  const settings = ["Profile", "Chat"];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -148,7 +148,7 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {data && `Hola ${data.user.username}`}
+            {data && `Hi! ${data.user.username}`}
             <CartWidget />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -179,7 +179,7 @@ const ResponsiveAppBar = () => {
                       logout();
                     }}
                   >
-                    <Typography textAlign="center">logout</Typography>
+                    <Typography textAlign="center">Logout</Typography>
                   </MenuItem>
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>

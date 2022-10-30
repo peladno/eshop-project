@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/index.jsx";
 import { useParams } from "react-router-dom";
 import styles from "./itemDetailContainer.module.css";
+import ApiServices from "../../Services/ApiServices";
 
 //Componente de llamada de producto especifico por id
 const ItemDetailContainer = () => {
@@ -9,16 +10,13 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  //TODO llamada a producto segun cambia el id
   useEffect(() => {
     setLoading(true);
-    
+
     const fetchData = async () => {
       try {
-        const result = await fetch(
-          "http://localhost:8080/api/products/" + id
-        );
-        const data = await result.json();
+        const result = await ApiServices.getProductId(id);
+        const data = await result.data
         setItem(data);
       } catch (error) {
         console.log(error);

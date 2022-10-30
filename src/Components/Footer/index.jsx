@@ -11,7 +11,7 @@ function Footer() {
     <div className = {styles.footer}>
       <ul className = {styles.links}>
         <Link to={"/"} style={{textDecoration:"none"}} ><li><CottageIcon />Home</li></Link>
-        <Link to={"/cart"} style={{textDecoration:"none"}} ><li><ShoppingCartIcon />Carrito</li></Link>
+        <Link to={"/cart"} style={{textDecoration:"none"}} ><li><ShoppingCartIcon />Cart</li></Link>
       </ul>
       <div className = {styles.icons}>
         <a href='https://github.com/peladno'><GitHubIcon className= {styles.github} fontSize='large' /></a>

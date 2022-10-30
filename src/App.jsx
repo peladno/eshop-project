@@ -13,7 +13,8 @@ import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
 import ItemEdit from "./Components/ItemEditContainer/index";
 import ChatContainer from "./Components/ChatContainer/index.jsx";
-//TODO hacer la redireccion como corresponde con el admin
+
+//TODO hacer ruta protegida como corresponde
 
 export default function App() {
   const data = useContext(USERContext);
@@ -46,7 +47,17 @@ export default function App() {
             element={data ? <Navigate to="/" /> : <Login />}
           />
           <Route exact path="/itemEdit/:id" element={<ItemEdit />} />
-          <Route excat path="/chat" element={<ChatContainer />} />
+          <Route
+            excat
+            path="/chat"
+            element={
+              data?.user.role !== "admin" ? (
+                <Navigate to="/" />
+              ) : (
+                <ChatContainer />
+              )
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
