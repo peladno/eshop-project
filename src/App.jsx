@@ -12,7 +12,7 @@ import Signup from "./Components/Singup/SignUp";
 import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
 import ItemEdit from "./Components/ItemEditContainer/index";
-import ChatContainer from "./Components/ChatContainer/ChatContainer.jsx";
+import ChatContainer from "./Components/ChatContainer/index.jsx";
 //TODO hacer la redireccion como corresponde con el admin
 
 export default function App() {

@@ -62,10 +62,13 @@ const io = new SocketServer(httpServer, {
   },
 });
 
-io.on("connection", (socket) => {
+io.on("connection", (socket) => { 
   logger.info(`${socket.id} User connected`);
   socket.on("message", (message) => {
-    socket.broadcast.emit("message", message);
+    socket.broadcast.emit("message",{
+      body: message,
+      from: "otro",
+    });
   });
 });
 
