@@ -80,7 +80,7 @@ function ItemEditDetail({ item, loading }) {
               setName(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>Name</label>
         </div>
@@ -94,7 +94,7 @@ function ItemEditDetail({ item, loading }) {
               setPrice(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>Price</label>
         </div>
@@ -108,7 +108,7 @@ function ItemEditDetail({ item, loading }) {
               setDescription(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>description</label>
         </div>
@@ -122,7 +122,7 @@ function ItemEditDetail({ item, loading }) {
               setPhoto(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
           />
           <label className={styles.userLabel}>Photo</label>
         </div>
@@ -136,7 +136,7 @@ function ItemEditDetail({ item, loading }) {
               setCode(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
             min="1"
           />
           <label className={styles.userLabel}>Code</label>
@@ -151,7 +151,7 @@ function ItemEditDetail({ item, loading }) {
               setStock(e.currentTarget.value);
             }}
             required
-            maxlength="100"
+            maxLength="100"
             min="1"
           />
           <label className={styles.userLabel}>Stock</label>

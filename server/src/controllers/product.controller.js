@@ -1,12 +1,14 @@
 const productFactory = require("../DAOs/factoryDAO/ProductsDAOfactory.class");
-const ProductDTO = require("../DTO/productDTO.class");
 const logger = require("../logger/logger");
-
+const productModel = require("../models/products.model");
+const ApiFeatures = require("../utils/apiFeatures");
 const DAO = productFactory.get();
 
 async function getAll(req, res) {
   try {
-    const products = await DAO.getAll();
+    const query = req.query;
+    const apiFeatures = new ApiFeatures(productModel.find(), query).search();
+    const products = await apiFeatures.query;
     if (!products) {
       const error = "Products not found";
       logger.error(error);
@@ -14,19 +16,7 @@ async function getAll(req, res) {
         error_description: error,
       });
     } else {
-      const productsDTO = products.map((item) => {
-        return new ProductDTO(
-          item._id,
-          item.name,
-          item.photo,
-          item.price,
-          item.code,
-          item.description,
-          item.timeStamp,
-          item.stock
-        );
-      });
-      res.status(200).json(productsDTO);
+      res.status(200).json(products);
     }
   } catch (error) {
     logger.error(error);

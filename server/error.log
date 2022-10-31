@@ -839,3 +839,187 @@
   label: 'Label🏷️',
   timestamp: 'Oct-28-2022 04:15:56'
 }
+{
+  message: 'Error to get all elements TypeError: (intermediate value).query is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:04:43'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:04:43'
+}
+{
+  message: 'Error to get all elements TypeError: (intermediate value).query is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:07:01'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:07:01'
+}
+{
+  message: 'Error to get all elements TypeError: (intermediate value).query is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:07:53'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:07:53'
+}
+{
+  message: 'Error to get all elements TypeError: (intermediate value).query is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:10:20'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:10:20'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:18:29'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:19:31'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:20:15'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:20:30'
+}
+{
+  message: 'Error to get all elements TypeError: (intermediate value).query is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:23:30'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:23:30'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:25:54'
+}
+{
+  message: "Error to get all elements TypeError: Cannot read properties of undefined (reading 'keyword')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:30:09'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:30:09'
+}
+{
+  message: "Error to get all elements TypeError: Cannot read properties of undefined (reading 'keyword')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:31:00'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:31:00'
+}
+{
+  message: "Error to get all elements TypeError: Cannot read properties of undefined (reading 'keyword')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:32:16'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:32:16'
+}
+{
+  message: "Error to get all elements TypeError: Cannot read properties of undefined (reading 'keyword')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:33:22'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:33:22'
+}
+{
+  message: "Error to get all elements TypeError: Cannot read properties of undefined (reading 'keyword')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:33:26'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:33:26'
+}
+{
+  message: 'Error to get all elements TypeError: #<Object> is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:35:00'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:35:00'
+}
+{
+  message: 'Error to get all elements TypeError: #<Object> is not a function',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:35:55'
+}
+{
+  message: 'Products not found',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:35:55'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:42:11'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:42:33'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 02:44:39'
+}
