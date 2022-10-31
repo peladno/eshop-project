@@ -1515,3 +1515,23 @@
   label: 'Label🏷️',
   timestamp: 'Oct-31-2022 02:44:39'
 }
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 03:21:35'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 03:21:47'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 03:21:58'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Oct-31-2022 03:22:38'
+}

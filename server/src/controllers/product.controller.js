@@ -4,6 +4,7 @@ const productModel = require("../models/products.model");
 const ApiFeatures = require("../utils/apiFeatures");
 const DAO = productFactory.get();
 
+//TODO terminar get all products con paginaiocn y filter
 async function getAll(req, res) {
   try {
     const query = req.query;
