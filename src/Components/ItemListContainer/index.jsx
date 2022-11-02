@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ItemList from "../ItemList/index.jsx";
 import styles from "./itemListContainer.module.css";
 import { Waveform } from "@uiball/loaders";
 import { APIContext } from "../../Context/ApiContext.jsx";
+import SearchBar from "../SearchBar/index.jsx";
 
 //contenedor de todos los productos
 
@@ -12,6 +13,7 @@ const ItemListContainer = () => {
   return (
     <div className={styles.itemListContainer}>
       <h1 className={styles.itemListTitle}>Nuestros productos</h1>
+      <SearchBar/>
       {/*loading que carga hasta que llegen todos los productos*/}
       {loading ? (
         <div className={styles.loadingContainer}>

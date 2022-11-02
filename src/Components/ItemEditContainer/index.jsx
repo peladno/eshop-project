@@ -8,7 +8,7 @@ function ItemEditContainer() {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  //llamada a producto segun cambia el id
+  //TODO cambiar a API services
   useEffect(() => {
     setLoading(true);
 

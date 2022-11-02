@@ -25,6 +25,7 @@ export default function App() {
         <NavBar />
         <Routes>
           <Route exact path="/" element={<ItemListContainer />} />
+          <Route exact path={"/search/:keyword"} element={<ItemListContainer />} />
           <Route
             exact
             path="/category/:category"

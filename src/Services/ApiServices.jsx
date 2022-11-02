@@ -12,8 +12,8 @@ const loginUser = (data) => {
   return user.post("/login/", data);
 };
 
-const getAllProducts = () => {
-  return client.get("/products/");
+const getAllProducts = (keyword) => {
+  return client.get(`/products?keyword=${keyword}`);
 };
 
 const getProductId = (id) => {

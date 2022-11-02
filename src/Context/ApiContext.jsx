@@ -5,12 +5,13 @@ export const APIContext = createContext();
 const APIContextProvider = ({ children }) => {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [keyword, setKeyword] = useState("")
 
   useEffect(() => {
     setLoading(true);
     const getProducts = async () => {
       try {
-        const response = await ApiServices.getAllProducts();
+        const response = await ApiServices.getAllProducts(keyword);
         const data = await response.data;
         setItem(data);
         setLoading(false);
@@ -19,10 +20,10 @@ const APIContextProvider = ({ children }) => {
       }
     };
     getProducts();
-  }, []);
+  }, [keyword]);
 
   return (
-    <APIContext.Provider value={{ loading, item, setItem }}>
+    <APIContext.Provider value={{ loading, item, setItem, setKeyword }}>
       {children}
     </APIContext.Provider>
   );
