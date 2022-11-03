@@ -18,18 +18,20 @@ function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSearch}>
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Enter product name..."
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-        <IconButton type="submit">
-          <SearchIcon />
-        </IconButton>
+    <div className={styles.searchBar}>
+      <div className={styles.formContainer}>
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Enter product name..."
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <IconButton type="submit">
+            <SearchIcon />
+          </IconButton>
+        </form>
       </div>
-    </form>
+    </div>
   );
 }
 
