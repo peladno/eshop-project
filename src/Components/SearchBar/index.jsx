@@ -1,23 +1,30 @@
-import { useContext } from "react";
+import { useState } from "react";
 import styles from "./searchBar.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
-import { APIContext } from "../../Context/ApiContext";
-import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
-  const { setKeyword } = useContext(APIContext);
-  const inputRef = useRef(null);
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+
   const handleSearch = (e) => {
     e.preventDefault();
-    const search = inputRef.current.value.trim();
-    setKeyword(search);
+    if (keyword.trim()) {
+      navigate(`/search/products/${keyword}`);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
     <form onSubmit={handleSearch}>
       <div className={styles.searchBar}>
-        <input type="text" placeholder="Enter product name..." ref={inputRef} />
+        <input
+          type="text"
+          placeholder="Enter product name..."
+          onChange={(e) => setKeyword(e.target.value)}
+        />
         <IconButton type="submit">
           <SearchIcon />
         </IconButton>

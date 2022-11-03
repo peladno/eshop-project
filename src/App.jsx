@@ -18,38 +18,35 @@ import ChatContainer from "./Components/ChatContainer/index.jsx";
 
 export default function App() {
   const data = useContext(USERContext);
+  console.log(data);
 
   return (
     <>
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<ItemListContainer />} />
-          <Route exact path={"/search/:keyword"} element={<ItemListContainer />} />
+          <Route path="/" element={<ItemListContainer />} />
           <Route
-            exact
-            path="/category/:category"
+            path="/search/products/:keyword"
             element={<ItemListContainer />}
           />
-          <Route exact path="/item/:id" element={<ItemDetailContainer />} />
-          <Route exact path="/cart" element={<CartDetail />} />
-          <Route exact path="/*" element={<Error404 />} />
+          <Route path="/category/:category" element={<ItemListContainer />} />
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/cart" element={<CartDetail />} />
+          <Route path="/*" element={<Error404 />} />
           <Route
-            exact
             path="/admin"
             element={
               data?.user.role !== "admin" ? <Navigate to="/" /> : <AdminPage />
             }
           />
-          <Route exact path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
           <Route
-            exact
             path="/login"
             element={data ? <Navigate to="/" /> : <Login />}
           />
-          <Route exact path="/itemEdit/:id" element={<ItemEdit />} />
+          <Route path="/itemEdit/:id" element={<ItemEdit />} />
           <Route
-            excat
             path="/chat"
             element={
               data?.user.role !== "admin" ? (
