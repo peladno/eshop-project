@@ -1,9 +1,9 @@
 .searchBar {
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding-top: 1.5rem;
 }
 
 .formContainer {
