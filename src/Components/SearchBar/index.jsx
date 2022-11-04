@@ -16,7 +16,7 @@ function SearchBar() {
       navigate("/");
     }
   };
-
+  //TODO usar formik
   return (
     <div className={styles.searchBar}>
       <div className={styles.formContainer}>

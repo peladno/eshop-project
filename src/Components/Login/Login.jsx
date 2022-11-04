@@ -1,27 +1,21 @@
 import React from "react";
-import { useState } from "react";
 import Button from "@mui/material/Button";
 import styles from "./login.module.css";
-import ApiServices from "../../Services/ApiServices"
+import ApiServices from "../../Services/ApiServices";
+import { Form, Formik, Field } from "formik";
 
+
+//TODO falta mensaje de usuario no existe
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const body = {
-    username: username,
-    password: password,
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
-      let response = await ApiServices.loginUser(body)
+      let response = await ApiServices.loginUser(values);
 
       if (response.status !== 200) {
         throw new Error(response.statusText);
       }
-      const { token } = response.data
+      const { token, user } = response.data;
+      console.log(user);
 
       if (token !== null) {
         localStorage.setItem("token", token);
@@ -32,43 +26,63 @@ function Login() {
     }
   };
 
+  const validateForm = (values) => {
+    const errors = {};
+
+    if (!values.username) {
+      errors.username = "User is required";
+    } else if (values.username.length > 15) {
+      errors.username = "Must be 15 characters or less";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required";
+    }
+    return errors;
+  };
+
   return (
     <div className={styles.formContainer}>
-      <form className={styles.adminForm} onSubmit={handleSubmit}>
-        <h1 className={styles.titleForm}>Login</h1>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="text"
-            name="username"
-            value={username}
-            onChange={(e) => {
-              setUsername(e.currentTarget.value);
-            }}
-            required
-            maxLength={100}
-          />
-          <label className={styles.userLabel}>Username</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="text"
-            name="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.currentTarget.value);
-            }}
-            required
-            maxLength={100}
-          />
-          <label className={styles.userLabel}>Password</label>
-        </div>
+      <Formik
+        validate={validateForm}
+        onSubmit={handleSubmit}
+        initialValues={{ username: "", password: "" }}
+      >
+        {(formik) => (
+          <Form className={styles.adminForm}>
+            <h1 className={styles.titleForm}>Login</h1>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="text"
+                name="username"
+                maxLength={20}
+              />
+              <label className={styles.userLabel}>Username</label>
 
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-      </form>
+              {formik.touched.username && formik.errors.username ? (
+                <p>{formik.errors.username}</p>
+              ) : null}
+            </div>
+
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="password"
+                name="password"
+                maxLength={20}
+              />
+              <label className={styles.userLabel}>Password</label>
+              {formik.touched.password && formik.errors.password ? (
+                <p>{formik.errors.password}</p>
+              ) : null}
+            </div>
+            <Button variant="contained" type="submit">
+              Submit
+            </Button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 }

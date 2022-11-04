@@ -28,7 +28,7 @@ form {
   width: 100%;
 }
 
-form input {
+.inputChat {
   width: 100%;
   padding: 1rem;
 }

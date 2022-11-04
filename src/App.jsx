@@ -18,7 +18,6 @@ import ChatContainer from "./Components/ChatContainer/index.jsx";
 
 export default function App() {
   const data = useContext(USERContext);
-  console.log(data);
 
   return (
     <>

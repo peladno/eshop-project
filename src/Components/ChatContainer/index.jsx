@@ -47,6 +47,7 @@ function ChatContainer() {
               type="text"
               onChange={(e) => setMessage(e.target.value)}
               value={message}
+              className={styles.inputChat}
             />
             <Button variant="contained" type="submit">
               Send
