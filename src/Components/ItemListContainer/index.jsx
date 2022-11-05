@@ -7,7 +7,6 @@ import SearchBar from "../SearchBar/index.jsx";
 import ApiServices from "../../Services/ApiServices";
 import { useParams } from "react-router-dom";
 
-//contenedor de todos los productos
 
 const ItemListContainer = () => {
   const { loading, item, setItem, setLoading } = useContext(APIContext);
@@ -33,9 +32,9 @@ const ItemListContainer = () => {
 
   return (
     <div className={styles.itemListContainer}>
-      <h1 className={styles.itemListTitle}>Nuestros productos</h1>
       <SearchBar />
-      {/*loading que carga hasta que llegen todos los productos*/}
+
+      <h1 className={styles.itemListTitle}>Nuestros productos</h1>
       {loading ? (
         <div className={styles.loadingContainer}>
           <Waveform

@@ -1,28 +1,32 @@
-import React from "react";
+import { useContext } from "react";
 import Button from "@mui/material/Button";
 import styles from "./login.module.css";
 import ApiServices from "../../Services/ApiServices";
 import { Form, Formik, Field } from "formik";
+import { useNavigate } from "react-router-dom";
+import { NotificationContext } from "../../Context/NotificationContext.jsx";
 
 
-//TODO falta mensaje de usuario no existe
 function Login() {
+  const navigate = useNavigate();
+  const { getError, getSuccess } = useContext(NotificationContext);
+
   const handleSubmit = async (values) => {
     try {
-      let response = await ApiServices.loginUser(values);
+      const response = await ApiServices.loginUser(values);
 
-      if (response.status !== 200) {
-        throw new Error(response.statusText);
-      }
-      const { token, user } = response.data;
-      console.log(user);
+      const { token } = response.data;
 
       if (token !== null) {
+        getSuccess("Login succesfully");
         localStorage.setItem("token", token);
+        navigate("/");
         window.location.reload();
       }
     } catch (error) {
-      throw new Error(error);
+      error.response.status === 401
+        ? getError("Username or password incorrect")
+        : getError("Oops something happened", error);
     }
   };
 

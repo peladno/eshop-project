@@ -9,13 +9,16 @@ passport.use(
     try {
       const user = await User.findOne({ username: username });
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        logger.info("Incorrect username");
+        return done(null, false);
       }
       const isMatch = await user.isValidPassword(password);
       if (!isMatch) {
-        return done(null, false, { message: "Incorrect password" });
+        logger.info("Incorrect password");
+        return done(null, false);
       } else {
-        return done(null, user, { message: "Logged in successfully" });
+        logger.info("Logged in successfully");
+        return done(null, user);
       }
     } catch (error) {
       logger.error(`Error login ${error}`);
@@ -33,4 +36,4 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-module.exports = passport
+module.exports = passport;

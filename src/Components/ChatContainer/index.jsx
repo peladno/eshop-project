@@ -39,7 +39,9 @@ function ChatContainer() {
     socket.emit("message", newMessage.body);
   };
   return (
+    
     <div className={styles.mainContainer}>
+      <h1>Chat</h1>
       <div className={styles.chatContainer}>
         <form onSubmit={handleSubmit}>
           <div className={styles.inputContainer}>

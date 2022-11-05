@@ -29,6 +29,7 @@ const ResponsiveAppBar = () => {
   };
 
   const data = React.useContext(USERContext);
+  console.log(data);
 
   const pages = ["Login", "Signup"];
   const settings = ["Profile", "Chat"];
@@ -52,7 +53,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static"  sx={{}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

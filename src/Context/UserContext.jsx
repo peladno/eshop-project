@@ -10,9 +10,9 @@ const USERContextProvider = ({ children }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await ApiServices.getCurrentUser();
-        const data = await response.data;
-        setData(data);
+        await ApiServices.getCurrentUser().then((res)=> {
+          setData(res.data);
+        })
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }

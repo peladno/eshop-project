@@ -12,7 +12,9 @@ router.get("/", (req, res) => {
   res.send({ message: "ok" });
 });
 
-router.post("/login", passport.authenticate("login"), login);
+router.post("/login", passport.authenticate("login"), login, (req,res) => {
+  res.status(401).json("not ok")
+});
 
 router.post("/signup", async (req, res) => {
   const { username, email, name, address, phone, photo, password } = req.body;

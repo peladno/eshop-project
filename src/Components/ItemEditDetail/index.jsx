@@ -1,33 +1,18 @@
 import { Waveform } from "@uiball/loaders";
 import styles from "./itemEditDetail.module.css";
-import { useState } from "react";
 import { Button } from "@mui/material";
 import ApiServices from "../../Services/ApiServices";
 import { NotificationContext } from "../../Context/NotificationContext";
 import { useContext } from "react";
-//TODO usar formik
+import { Form, Formik, Field } from "formik";
+import validator from "validator";
+
 function ItemEditDetail({ item, loading }) {
   const { getError, getSuccess } = useContext(NotificationContext);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [code, setCode] = useState("");
-  const [stock, setStock] = useState("");
 
-  const body = {
-    name: name,
-    price: price,
-    description: description,
-    photo: photo,
-    code: code,
-    stock: stock,
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
-      await ApiServices.updateProducts(item._id, body)
+      await ApiServices.updateProducts(item._id, values)
         .then(() => {
           getSuccess("Your item was updated");
         })
@@ -38,6 +23,49 @@ function ItemEditDetail({ item, loading }) {
       throw new Error(error);
     }
   };
+
+  const validateForm = (values) => {
+    const errors = {};
+
+    if (!values.name) {
+      errors.name = "Name is required";
+    } else if (values.name.length > 15) {
+      errors.name = "Must be 15 characters or less";
+    }
+
+    if (!values.description) {
+      errors.description = "Description is required";
+    } else if (values.description.length < 10) {
+      errors.description = "Must be 10 characters or more";
+    }
+
+    if (!values.price) {
+      errors.price = "Price is required";
+    } else if (!validator.isNumeric(values.price)) {
+      errors.price = "Invalid character";
+    }
+
+    if (!values.code) {
+      errors.code = "Code is required";
+    } else if (!validator.isNumeric(values.code)) {
+      errors.code = "Invalid character";
+    }
+
+    if (!values.stock) {
+      errors.stock = "Stock is required";
+    } else if (!validator.isNumeric(values.stock)) {
+      errors.stock = "Invalid character";
+    }
+
+    if (!values.photo) {
+      errors.photo = "Photo url is required";
+    } else if (!validator.isURL(values.photo, { require_protocol: true })) {
+      errors.code = "Invalid character";
+    }
+
+    return errors;
+  };
+
   return (
     <div className={styles.formContainer}>
       <h1 className={styles.titleForm}>Your product</h1>
@@ -65,101 +93,114 @@ function ItemEditDetail({ item, loading }) {
           </li>
         </ul>
       )}
+      <Formik
+        validate={validateForm}
+        onSubmit={handleSubmit}
+        initialValues={{
+          name: "",
+          price: "",
+          description: "",
+          photo: "",
+          code: "",
+          stock: "",
+        }}
+      >
+        {(formik) => (
+          <Form className={styles.adminForm}>
+            <h1>Edit your product</h1>
 
-      <form className={styles.adminForm} onSubmit={handleSubmit}>
-        <h2>Edit your product</h2>
-        <p>Please fill all the form before submit.</p>
-
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => {
-              setName(e.currentTarget.value);
-            }}
-            required
-            maxLength="100"
-          />
-          <label className={styles.userLabel}>Name</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="number"
-            name="price"
-            value={price}
-            onChange={(e) => {
-              setPrice(e.currentTarget.value);
-            }}
-            required
-            maxLength="100"
-          />
-          <label className={styles.userLabel}>Price</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="text"
-            name="description"
-            value={description}
-            onChange={(e) => {
-              setDescription(e.currentTarget.value);
-            }}
-            required
-            maxLength="100"
-          />
-          <label className={styles.userLabel}>description</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="text"
-            name="photo"
-            value={photo}
-            onChange={(e) => {
-              setPhoto(e.currentTarget.value);
-            }}
-            required
-            maxLength="100"
-          />
-          <label className={styles.userLabel}>Photo</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="number"
-            name="code"
-            value={code}
-            onChange={(e) => {
-              setCode(e.currentTarget.value);
-            }}
-            required
-            maxLength="100"
-            min="1"
-          />
-          <label className={styles.userLabel}>Code</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.input}
-            type="number"
-            name="stock"
-            value={stock}
-            onChange={(e) => {
-              setStock(e.currentTarget.value);
-            }}
-            required
-            maxLength="100"
-            min="1"
-          />
-          <label className={styles.userLabel}>Stock</label>
-        </div>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-      </form>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="text"
+                name="name"
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                maxLength={100}
+              />
+              <label className={styles.userLabel}>Name</label>
+              {formik.touched.name && formik.errors.name ? (
+                <p>{formik.errors.name}</p>
+              ) : null}
+            </div>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="text"
+                name="price"
+                value={formik.values.price}
+                onChange={formik.handleChange}
+                maxLength={100}
+              />
+              <label className={styles.userLabel}>Price</label>
+              {formik.touched.price && formik.errors.price ? (
+                <p>{formik.errors.price}</p>
+              ) : null}
+            </div>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="text"
+                name="description"
+                value={formik.values.description}
+                onChange={formik.handleChange}
+                maxLength={100}
+              />
+              <label className={styles.userLabel}>description</label>
+              {formik.touched.description && formik.errors.description ? (
+                <p>{formik.errors.description}</p>
+              ) : null}
+            </div>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="text"
+                name="photo"
+                value={formik.values.photo}
+                onChange={formik.handleChange}
+                maxLength={100}
+              />
+              <label className={styles.userLabel}>Photo</label>
+              {formik.touched.photo && formik.errors.photo ? (
+                <p>{formik.errors.photo}</p>
+              ) : null}
+            </div>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="text"
+                name="code"
+                value={formik.values.code}
+                onChange={formik.handleChange}
+                maxLength={100}
+                min={1}
+              />
+              <label className={styles.userLabel}>Code</label>
+              {formik.touched.code && formik.errors.code ? (
+                <p>{formik.errors.code}</p>
+              ) : null}
+            </div>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
+                type="text"
+                name="stock"
+                value={formik.values.stock}
+                onChange={formik.handleChange}
+                maxLength={100}
+                min={1}
+              />
+              <label className={styles.userLabel}>Stock</label>
+              {formik.touched.stock && formik.errors.stock ? (
+                <p>{formik.errors.stock}</p>
+              ) : null}
+            </div>
+            <Button variant="contained" type="submit">
+              Submit
+            </Button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 }
