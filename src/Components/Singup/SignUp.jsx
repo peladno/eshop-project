@@ -91,7 +91,7 @@ function SignUp() {
       >
         {(formik) => (
           <Form className={styles.adminForm}>
-            <h1 className={styles.titleForm}>Login</h1>
+            <h1 className={styles.titleForm}>Signup</h1>
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}

@@ -7,12 +7,15 @@ import { Waveform } from "@uiball/loaders";
 import ApiServices from "../../Services/ApiServices";
 import { USERContext } from "../../Context/UserContext.jsx";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";
+import Modal from "../../Shared/Modal/index";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
   const [number, setNumber] = useState(0);
   const data = useContext(USERContext);
   const { getError, getSuccess } = useContext(NotificationContext);
+  const [open, setOpen] = React.useState(false);
+  //const user = useContext(UserContext);
 
   const addCart = (count) => {
     setNumber(count);
@@ -26,7 +29,7 @@ const ItemDetail = ({ item, loading }) => {
         count,
       });
       const cartData = await response.data;
-      
+
       cartData
         ? getSuccess("Product Added to Cart")
         : getError("Error adding to cart");
@@ -34,6 +37,14 @@ const ItemDetail = ({ item, loading }) => {
       console.log(error);
     }
   };
+
+  const content = () => (
+    <div>
+      <p>To add products to the cart please Login</p>
+      <Link to={"/Singup"}>Signup</Link>
+      <Link to={"/Login"}>Login</Link>
+    </div>
+  );
 
   return (
     <>
@@ -59,7 +70,18 @@ const ItemDetail = ({ item, loading }) => {
             </ul>
 
             <div className={styles.shoppingButtons}>
-              <ItemCount stock={item.stock} initial={1} addCart={addCart} />
+              <ItemCount
+                stock={item.stock}
+                initial={1}
+                addCart={addCart}
+                setOpen={setOpen}
+              />
+              <Modal
+                open={open}
+                onClose={() => setOpen(false)}
+                title={"Oops"}
+                body={content()}
+              />
               <Link
                 className={styles.continue}
                 to={"/"}
@@ -71,9 +93,7 @@ const ItemDetail = ({ item, loading }) => {
               </Link>
               {number > 0 ? (
                 <Link to={"/cart"} style={{ textDecoration: "none" }}>
-                  <Button variant="contained">
-                    To the cart
-                  </Button>
+                  <Button variant="contained">To the cart</Button>
                 </Link>
               ) : (
                 <Button variant="contained" disabled>
