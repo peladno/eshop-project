@@ -1,37 +1,36 @@
-import React from "react";
+import { useContext } from "react";
 import Button from "@mui/material/Button";
 import styles from "./signup.module.css";
 import { Form, Formik, Field } from "formik";
 import validator from "validator";
+import ApiServices from "../../Services/ApiServices";
+import { NotificationContext } from "../../Context/NotificationContext.jsx";
 
 function SignUp() {
-  //TODO cambiar apiservices
+  const { getError, getSuccess } = useContext(NotificationContext);
 
   const handleSubmit = async (values) => {
-    console.log(values);
-
     try {
-      let response = await fetch("http://localhost:8080/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+      await ApiServices.signup(values).then(() => {
+        getSuccess("Signup succesfully");
       });
-
-      if (response.status !== 200) {
-        throw new Error(response.statusText);
-      }
-      return await response.json();
     } catch (error) {
-      console.log("error");
+      error.response.status === 409
+        ? getError("User already exist")
+        : getError("Error signing up");
     }
   };
 
   const validateForm = (values) => {
     const errors = {};
 
+    if (!values.name) {
+      errors.username = "User is required";
+    }
+
     if (!values.username) {
       errors.username = "User is required";
-    } else if (values.username.length < 15) {
+    } else if (values.username.length > 15) {
       errors.username = "Must be 15 characters or less";
     }
 
@@ -54,12 +53,12 @@ function SignUp() {
       errors.confirmPassword = "Password does not match";
     }
 
-    if (!values.phoneNo) {
-      errors.phoneNo = "Phone Number is required";
+    if (!values.phone) {
+      errors.phone = "Phone Number is required";
     } else if (
-      !validator.isMobilePhone(values.phoneNo, "es-CL", { strictMode: true })
+      !validator.isMobilePhone(values.phone, "es-CL", { strictMode: true })
     ) {
-      errors.phoneNo = "Invalid Phone Number - +56XXXXXXXX";
+      errors.phone = "Invalid Phone Number - +56XXXXXXXX";
     }
 
     if (!values.address) {
@@ -81,10 +80,12 @@ function SignUp() {
         validate={validateForm}
         onSubmit={handleSubmit}
         initialValues={{
+          name: "",
           username: "",
           password: "",
           email: "",
-          phoneNo: "",
+          photo: "",
+          phone: "",
           address: "",
           confirmPassword: "",
         }}
@@ -110,6 +111,21 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
+                type="text"
+                name="name"
+                maxLength={20}
+                onChange={formik.handleChange}
+                value={formik.values.name}
+              />
+              <label className={styles.userLabel}>Name</label>
+
+              {formik.touched.name && formik.errors.name ? (
+                <p>{formik.errors.name}</p>
+              ) : null}
+            </div>
+            <div className={styles.inputGroup}>
+              <Field
+                className={styles.input}
                 type="email"
                 name="email"
                 maxLength={50}
@@ -127,15 +143,15 @@ function SignUp() {
               <Field
                 className={styles.input}
                 type="text"
-                name="phoneNo"
+                name="phone"
                 maxLength={15}
                 onChange={formik.handleChange}
-                value={formik.values.phoneNo}
+                value={formik.values.phone}
               />
               <label className={styles.userLabel}>Mobile phone</label>
 
-              {formik.touched.phoneNo && formik.errors.phoneNo ? (
-                <p>{formik.errors.phoneNo}</p>
+              {formik.touched.phone && formik.errors.phone ? (
+                <p>{formik.errors.phone}</p>
               ) : null}
             </div>
 
@@ -144,7 +160,7 @@ function SignUp() {
                 className={styles.input}
                 type="text"
                 name="photo"
-                maxLength={15}
+                maxLength={100}
                 onChange={formik.handleChange}
                 value={formik.values.photo}
               />

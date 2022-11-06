@@ -7,7 +7,6 @@ import { NotificationContext } from "../../Context/NotificationContext.jsx";
 import { Form, Formik, Field } from "formik";
 import validator from "validator";
 
-//TODO usar formik
 function AdminForm() {
   const { getError, getSuccess } = useContext(NotificationContext);
   const { setItem } = useContext(APIContext);

@@ -12,12 +12,12 @@ class UserDAOMongoDB extends DAO {
     UserDAOMongoDB.instancia = this;
   }
 
-  async getUser(id) {
+  async getUser(username) {
     try {
-      const user = await this.model.findOne({ _id: { $eq: id } });
+      const user = await this.model.findOne({ username: { $eq: username } });
       return user;
     } catch (error) {
-      logger.error("Error finding user");
+      logger.error("Error finding user", error);
     }
   }
 
@@ -26,7 +26,7 @@ class UserDAOMongoDB extends DAO {
       const newUser = await this.model.create(user);
       return newUser;
     } catch (error) {
-      logger.error("Error saving user");
+      logger.error("Error saving user", error);
     }
   }
 }

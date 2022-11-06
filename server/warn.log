@@ -1547,3 +1547,110 @@
   label: 'Label🏷️',
   timestamp: 'Nov-05-2022 01:46:12'
 }
+{
+  message: 'Error finding user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:35:07'
+}
+{
+  message: 'Error saving user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:35:07'
+}
+{
+  message: 'Error finding user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:39:49'
+}
+{
+  message: 'Error saving user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:39:49'
+}
+{
+  message: 'Error finding user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:41:22'
+}
+{
+  message: 'Error saving user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:41:22'
+}
+{
+  message: 'Error -2 - Ruta /api/signup, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:43:52'
+}
+{
+  message: 'Error -2 - Ruta /api/login/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:45:07'
+}
+{
+  message: 'Error -2 - Ruta /api/login/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:46:53'
+}
+{
+  message: 'Error -2 - Ruta /api/login/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:46:58'
+}
+{
+  message: 'Error -2 - Ruta /api/login/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:47:36'
+}
+{
+  message: 'Error -2 - Ruta /api/login/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:48:33'
+}
+{
+  message: 'Error finding user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:51:04'
+}
+{
+  message: 'Error saving user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:51:04'
+}
+{
+  message: 'Error saving user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:55:13'
+}
+{
+  message: 'Error saving user',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 03:57:59'
+}
+{
+  message: 'Error signing up TypeError: Converting circular structure to JSON\n' +
+    "    --> starting at object with constructor 'DerivedLogger'\n" +
+    "    |     property '_readableState' -> object with constructor 'ReadableState'\n" +
+    "    |     property 'pipes' -> object with constructor 'Array'\n" +
+    "    |     index 0 -> object with constructor 'Console'\n" +
+    "    --- property 'parent' closes the circle",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-06-2022 04:25:15'
+}

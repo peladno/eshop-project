@@ -12,16 +12,18 @@ router.get("/", (req, res) => {
   res.send({ message: "ok" });
 });
 
-router.post("/login", passport.authenticate("login"), login, (req,res) => {
-  res.status(401).json("not ok")
-});
+router.post("/login", passport.authenticate("login"), login);
 
 router.post("/signup", async (req, res) => {
   const { username, email, name, address, phone, photo, password } = req.body;
   try {
     const user = await DAO.getUser(username);
     if (user) {
-      res.send({ message: "User already exists" });
+      res.status(409).json({
+        success: false,
+        message: "User already exist",
+      });
+      logger.info("User already exist");
     } else {
       const newUser = {
         username,
@@ -32,7 +34,9 @@ router.post("/signup", async (req, res) => {
         photo,
         password,
       };
-      await DAO.saveUser(newUser);
+      await DAO.saveUser(newUser).then(() => {
+        messages.newUserEmail(name, email);
+      });
       res.status(200).json({
         success: true,
         message: "success",
@@ -42,8 +46,6 @@ router.post("/signup", async (req, res) => {
   } catch (err) {
     logger.error(`Error signing up ${err}`);
   }
-
-  messages.newUserEmail(name, email);
 });
 
 router.get("/logout", async (req, res, next) => {
