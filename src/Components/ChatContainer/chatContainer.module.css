@@ -20,6 +20,11 @@
   box-shadow: 7px 7px 14px #969696;
   flex-direction: column-reverse;
 }
+.message {
+  font-size: 1.2em;
+  text-align: center;
+  color: #36a936;
+}
 
 .chatContainer form {
   padding: 1rem;

@@ -4,11 +4,13 @@ const productModel = require("../models/products.model");
 const ApiFeatures = require("../utils/apiFeatures");
 const DAO = productFactory.get();
 
-//TODO terminar get all products con paginaiocn y filter
+//TODO terminar get all products con paginacion
 async function getAll(req, res) {
   try {
     const query = req.query;
-    const apiFeatures = new ApiFeatures(productModel.find(), query).search();
+    const apiFeatures = new ApiFeatures(productModel.find(), query)
+      .search()
+      .filter();
     const products = await apiFeatures.query;
     if (!products) {
       const error = "Products not found";

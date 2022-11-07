@@ -17,7 +17,7 @@ function ItemEditDetail({ item, loading }) {
           getSuccess("Your item was updated");
         })
         .catch((error) => {
-          getError("Error updateing your product", error);
+          getError("Error updating your product", error);
         });
     } catch (error) {
       throw new Error(error);
@@ -86,6 +86,7 @@ function ItemEditDetail({ item, loading }) {
           <li>Name: {item.name}</li>
           <li>Price: {item.price}</li>
           <li>Description: {item.description}</li>
+          <li>Category: {item.category || "No category"} </li>
           <li>Code: {item.code}</li>
           <li>Stock: {item.stock}</li>
           <li>
@@ -100,6 +101,7 @@ function ItemEditDetail({ item, loading }) {
           name: "",
           price: "",
           description: "",
+          category: "",
           photo: "",
           code: "",
           stock: "",
@@ -136,6 +138,28 @@ function ItemEditDetail({ item, loading }) {
               {formik.touched.price && formik.errors.price ? (
                 <p>{formik.errors.price}</p>
               ) : null}
+            </div>
+            <div className={styles.inputGroup}>
+              <label className={styles.categoryLabel}>Category:</label>
+              <Field
+                className={styles.input}
+                as="select"
+                name="category"
+                value={formik.values.category}
+              >
+                <option value="Electronics">Electronics</option>
+                <option value="Cameras">Cameras</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Headphones">Headphones</option>
+                <option value="Food">Food</option>
+                <option value="Books">Books</option>
+                <option value="Clothes/Shoes">Clothes/Shoes</option>
+                <option value="Beauty/Health">Beauty/Health</option>
+                <option value="Sports">Sports</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Home">Home</option>
+              </Field>
             </div>
             <div className={styles.inputGroup}>
               <Field

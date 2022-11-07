@@ -14,10 +14,12 @@ function Item({ id, photo, name, price }) {
       <Card className={styles.cardItem} sx={{ maxWidth: 275 }} key={id}>
         <CardContent>
           <img className={styles.imageItem} src={photo} alt={name} />
-          <Typography variant="h5" component="div">
+          <Typography sx={{ textAlign: "center" }} variant="h5" component="div">
             {name}
           </Typography>
-          <Typography variant="body2">${price}</Typography>
+          <Typography sx={{ textAlign: "center" }} variant="h6">
+            ${price}
+          </Typography>
         </CardContent>
         <CardActions>
           <Link style={{ textDecoration: "none" }} to={`/item/${id}`}>

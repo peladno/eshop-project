@@ -37,6 +37,7 @@
 .itemDescription li {
   list-style: none;
   padding-bottom: .5rem;
+  overflow-wrap: break-word;
 }
 
 .itemDescription p {

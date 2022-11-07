@@ -89,6 +89,7 @@ class ProductDAOMongoDB extends DAO {
             photo: product.photo,
             code: product.code,
             stock: product.stock,
+            category: product.category,
             timeStamp,
           },
         }

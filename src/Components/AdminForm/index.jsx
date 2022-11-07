@@ -12,6 +12,7 @@ function AdminForm() {
   const { setItem } = useContext(APIContext);
 
   const handleSubmit = async (values) => {
+    console.log(values);
     try {
       await ApiServices.saveProduct(values)
         .then((response) => {
@@ -62,7 +63,7 @@ function AdminForm() {
 
     if (!values.photo) {
       errors.photo = "Photo url is required";
-    } else if (!validator.isURL(values.photo,{ require_protocol: true })) {
+    } else if (!validator.isURL(values.photo, { require_protocol: true })) {
       errors.code = "Invalid character";
     }
 
@@ -78,6 +79,7 @@ function AdminForm() {
           name: "",
           price: "",
           description: "",
+          category: "Electronics",
           photo: "",
           code: "",
           stock: "",
@@ -115,13 +117,37 @@ function AdminForm() {
               ) : null}
             </div>
             <div className={styles.inputGroup}>
+              <label className={styles.categoryLabel}>
+                Category:
+              </label>
+              <Field
+                className={styles.input}
+                as="select"
+                name="category"
+                value={formik.values.category}
+              >
+                <option value="Electronics">Electronics</option>
+                <option value="Cameras">Cameras</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Headphones">Headphones</option>
+                <option value="Food">Food</option>
+                <option value="Books">Books</option>
+                <option value="Clothes/Shoes">Clothes/Shoes</option>
+                <option value="Beauty/Health">Beauty/Health</option>
+                <option value="Sports">Sports</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Home">Home</option>
+              </Field>
+            </div>
+            <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
                 type="text"
                 name="description"
                 value={formik.values.description}
                 onChange={formik.handleChange}
-                maxLength={100}
+                maxLength={15}
               />
               <label className={styles.userLabel}>description</label>
               {formik.touched.description && formik.errors.description ? (

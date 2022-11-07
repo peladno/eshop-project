@@ -1,4 +1,24 @@
-.itemList li {
-    list-style: none;
-    padding-bottom: .5rem;
+.adminItem {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemList li {
+  list-style: none;
+  padding-bottom: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+

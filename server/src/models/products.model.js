@@ -31,9 +31,27 @@ const ProductSchema = mongoose.Schema({
     required: true,
     default: 1,
   },
+  category: {
+    type: String,
+    enum: {
+      values: [
+        "Electronics",
+        "Cameras",
+        "Laptops",
+        "Accessories",
+        "Headphones",
+        "Food",
+        "Books",
+        "Clothes/Shoes",
+        "Beauty/Health",
+        "Sports",
+        "Outdoor",
+        "Home",
+      ],
+    },
+  },
 });
 
 const productModel = mongoose.model("products", ProductSchema);
-
 
 module.exports = productModel;

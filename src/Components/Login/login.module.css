@@ -52,7 +52,6 @@ input:valid {
   border: 1.5px solid #1a73e8;
 }
 
-/*Transformacion de inputs y label al hacer click en input o al poner datos*/
 .input:focus ~ label,
 input:valid ~ label {
   transform: translateY(-50%) scale(0.8);
