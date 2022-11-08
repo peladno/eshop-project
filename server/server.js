@@ -101,10 +101,10 @@ app.use((req, res, next) => {
 
 //routes
 app.use("/", userRouter);
-app.use("/api/products", productsRouter);
-app.use("/api/cart", cartRouter);
-app.use("/api/orders", orderRouter);
-app.use("/api/messages", messageRouter);
+app.use("/products", productsRouter);
+app.use("/cart", cartRouter);
+app.use("/orders", orderRouter);
+app.use("/messages", messageRouter);
 app.use(ruteNotFound);
 
 if (mode === "CLUSTER") {

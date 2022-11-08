@@ -13,6 +13,8 @@ import { USERContext } from "./Context/UserContext";
 import { useContext } from "react";
 import ItemEdit from "./Components/ItemEditContainer/index";
 import ChatContainer from "./Components/ChatContainer/index.jsx";
+import Profile from "./Components/Profile/index.jsx";
+import Orders from "./Components/Orders/index.jsx";
 
 //TODO hacer ruta protegida como corresponde
 
@@ -36,7 +38,17 @@ export default function App() {
           <Route
             path="/admin"
             element={
-              data?.user.role !== "admin" ? <Navigate to="/" /> : <AdminPage />
+              data?.user.role === "admin" ? <AdminPage /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/profile"
+            element={data ? <Profile /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/orders"
+            element={
+              data?.user.role === "user" ? <Orders /> : <Navigate to="/" />
             }
           />
           <Route path="/signup" element={<Signup />} />
@@ -47,13 +59,7 @@ export default function App() {
           <Route path="/itemEdit/:id" element={<ItemEdit />} />
           <Route
             path="/chat"
-            element={
-              data?.user.role !== "admin" ? (
-                <Navigate to="/" />
-              ) : (
-                <ChatContainer />
-              )
-            }
+            element={data ? <ChatContainer /> : <Navigate to="/" />}
           />
         </Routes>
         <Footer />

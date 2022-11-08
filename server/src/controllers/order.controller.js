@@ -22,6 +22,21 @@ async function orderProcess(req, res) {
   }
 }
 
+async function allOrders(req, res) {
+  const userID = req.params.id;
+  try {
+    const searchOrders = await OrderDao.findAllOrdersByUser(userID);
+    if (searchOrders) {
+      res.status(200).json({ message: "Orders found", searchOrders });
+    } else {
+      res.status(404).json({ message: "No orders found" });
+    }
+  } catch (error) {
+    logger.error(error);
+  }
+}
+
 module.exports = {
   orderProcess,
+  allOrders,
 };

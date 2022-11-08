@@ -12,7 +12,7 @@ function AdminForm() {
   const { setItem } = useContext(APIContext);
 
   const handleSubmit = async (values) => {
-    console.log(values);
+ 
     try {
       await ApiServices.saveProduct(values)
         .then((response) => {

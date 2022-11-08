@@ -11,7 +11,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import CartWidget from "../CartWidget/index.jsx";
 import { Link } from "react-router-dom";
 import logo from "../../images/Nook_Inc.png";
@@ -29,10 +28,9 @@ const ResponsiveAppBar = () => {
   };
 
   const data = React.useContext(USERContext);
-  console.log(data);
 
   const pages = ["Login", "Signup"];
-  const settings = ["Profile", "Chat"];
+  const settings = ["Profile", "Chat", "Orders"];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -53,7 +51,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static"  sx={{}}>
+    <AppBar position="static" sx={{}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

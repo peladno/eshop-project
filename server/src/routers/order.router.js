@@ -4,6 +4,7 @@ const order = require("../controllers/order.controller");
 const { userAuth } = require("../utils/jwt");
 
 //order process
-router.post("/:id/shop",userAuth, order.orderProcess);
+router.post("/:id/shop", userAuth, order.orderProcess);
+router.get("/:id/orders", userAuth, order.allOrders);
 
 module.exports = router;

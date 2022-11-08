@@ -1654,3 +1654,93 @@
   label: 'Label🏷️',
   timestamp: 'Nov-06-2022 04:25:15'
 }
+{
+  message: 'Error -2 - Ruta /cart/63675bb4fdfab1de6d4e8f31/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:23:06'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:32:44'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:33:39'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:34:06'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:35:44'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:36:01'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:37:26'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:37:31'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:39:28'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:39:35'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:40:55'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:43:11'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:43:30'
+}
+{
+  message: 'Error -2 - Ruta /cart/636abc661d86effaddf90ae1/products/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:50:26'
+}
+{
+  message: 'Error -2 - Ruta /favicon.ico, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-08-2022 17:57:13'
+}
