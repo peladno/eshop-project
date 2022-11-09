@@ -3,6 +3,7 @@ import ApiServices from "../../Services/ApiServices";
 import { USERContext } from "../../Context/UserContext";
 import OrdersList from "../OrdersList";
 import Loader from "../../Shared/Loader";
+import styles from "./orders.module.css"
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -25,9 +26,9 @@ function Orders() {
   }, [user._id]);
 
   return (
-    <>
+    <div className={styles.orderContainer}>
       {loading ? <Loader /> : orders.map((item) => <OrdersList item={item} />)}
-    </>
+    </div>
   );
 }
 

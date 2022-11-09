@@ -1,23 +1,23 @@
-import React from "react";
+import styles from "./ordersList.module.css";
 
 function OrdersList({ item }) {
   return (
-    <div>
-      <h2>Your order</h2>
-      <ul>
+    <div className={styles.orderListContainer}>
+      <h2>Order number</h2>
+      <ul className={styles.orderDetail}>
         <li>Date of purchase: {item.timeStamp}</li>
         <li>Number od Order: {item._id}</li>
         <li>Total: {item.total}</li>
-        {item.products.map((product) => (
-          <ul key={product._id}>
-            <h3>Your products:</h3>
-            <li>
-              name: {product._id.name} n° of items: {product.count}
+        <ul>
+          <h3>Your products:</h3>
+          {item.products.map((product) => (
+            <li key={product._id}>
+              name: {product._id.name} - N° of items: {product.count}
             </li>
-          </ul>
-        ))}
+          ))}
+        </ul>
       </ul>
-    </div>
+    </div> 
   );
 }
 

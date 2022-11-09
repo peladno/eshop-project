@@ -1,0 +1,21 @@
+.orderListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 7px 7px 14px #969696;
+  margin-top: 1.5rem;
+  padding: 2rem;
+}
+
+.orderDetail {
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    list-style: none;
+}

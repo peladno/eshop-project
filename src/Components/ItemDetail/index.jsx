@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import ItemCount from "../ItemCount.jsx";
 import Button from "@mui/material/Button";
 import styles from "./itemDetail.module.css";
@@ -8,17 +8,17 @@ import { USERContext } from "../../Context/UserContext.jsx";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";
 import Modal from "../../Shared/Modal/index";
 import Loader from "../../Shared/Loader/index.jsx";
+import { NewCartContext } from "../../Context/NewCartContext";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
   const [number, setNumber] = useState(0);
   const data = useContext(USERContext);
   const { getError, getSuccess } = useContext(NotificationContext);
-  const [open, setOpen] = React.useState(false);
-  //const user = useContext(UserContext);
+  const [open, setOpen] = useState(false);
+  const { setCart, cart } = useContext(NewCartContext);
 
   const addCart = (count) => {
-    setNumber(count);
     handleSubmit(count);
   };
 
@@ -29,7 +29,7 @@ const ItemDetail = ({ item, loading }) => {
         count,
       });
       const cartData = await response.data;
-
+      setCart(cartData);
       cartData
         ? getSuccess("Product Added to Cart")
         : getError("Error adding to cart");
@@ -83,7 +83,8 @@ const ItemDetail = ({ item, loading }) => {
                   Continue shopping
                 </Button>
               </Link>
-              {number > 0 ? (
+
+              {cart.products.length > 0 ? (
                 <Link to={"/cart"} style={{ textDecoration: "none" }}>
                   <Button variant="contained">To the cart</Button>
                 </Link>
