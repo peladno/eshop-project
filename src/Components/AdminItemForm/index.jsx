@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Button from "@mui/material/Button";
 import styles from "./adminItemForm.module.css";
-import { APIContext } from "../../Context/ApiContext";
+import { ProductsContext } from "../../Context/ProductsContext";
 import ApiServices from "../../Services/ApiServices";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";
 import { Form, Formik, Field } from "formik";
@@ -9,7 +9,7 @@ import validator from "validator";
 
 function AdminForm() {
   const { getError, getSuccess } = useContext(NotificationContext);
-  const { setItem } = useContext(APIContext);
+  const { setItem } = useContext(ProductsContext);
 
   const handleSubmit = async (values) => {
  

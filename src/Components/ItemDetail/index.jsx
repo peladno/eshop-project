@@ -12,11 +12,10 @@ import { NewCartContext } from "../../Context/NewCartContext";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
-  const [number, setNumber] = useState(0);
   const data = useContext(USERContext);
   const { getError, getSuccess } = useContext(NotificationContext);
   const [open, setOpen] = useState(false);
-  const { setCart, cart } = useContext(NewCartContext);
+  const { setCart } = useContext(NewCartContext);
 
   const addCart = (count) => {
     handleSubmit(count);
@@ -84,15 +83,9 @@ const ItemDetail = ({ item, loading }) => {
                 </Button>
               </Link>
 
-              {cart.products.length > 0 ? (
-                <Link to={"/cart"} style={{ textDecoration: "none" }}>
-                  <Button variant="contained">To the cart</Button>
-                </Link>
-              ) : (
-                <Button variant="contained" disabled>
-                  To the cart
-                </Button>
-              )}
+              <Link to={"/cart"} style={{ textDecoration: "none" }}>
+                <Button variant="contained">To the cart</Button>
+              </Link>
             </div>
           </div>
         </div>

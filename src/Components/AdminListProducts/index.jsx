@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import styles from "./adminListProducts.module.css";
-import { APIContext } from "../../Context/ApiContext";
+import { ProductsContext } from "../../Context/ProductsContext";
 import AdminItemList from "../AdminItemList/index.jsx";
 import Loader from "../../Shared/Loader/index";
 
 const AdminListProducts = () => {
-  const { item, loading } = useContext(APIContext);
+  const { item, loading } = useContext(ProductsContext);
   return (
     <div className={styles.itemListContainer}>
       <h1 className={styles.itemListTitle}>Nuestros productos</h1>

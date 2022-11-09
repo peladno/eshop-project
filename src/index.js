@@ -5,18 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import USERContextProvider from "./Context/UserContext";
 import NotificationProvider from "./Context/NotificationContext";
-import APIContextProvider from "./Context/ApiContext";
+import ProductsContextProvider from "./Context/ProductsContext";
 import NewCartProvider from "./Context/NewCartContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <NotificationProvider>
       <USERContextProvider>
-        <APIContextProvider>
+        <ProductsContextProvider>
           <NewCartProvider>
             <App />
           </NewCartProvider>
-        </APIContextProvider>
+        </ProductsContextProvider>
       </USERContextProvider>
     </NotificationProvider>
   </React.StrictMode>,

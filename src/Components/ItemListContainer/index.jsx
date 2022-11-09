@@ -1,15 +1,14 @@
 import { useContext, useEffect } from "react";
 import ItemList from "../ItemList/index.jsx";
 import styles from "./itemListContainer.module.css";
-import { Waveform } from "@uiball/loaders";
-import { APIContext } from "../../Context/ApiContext.jsx";
+import { ProductsContext } from "../../Context/ProductsContext";
 import SearchBar from "../SearchBar/index.jsx";
 import ApiServices from "../../Services/ApiServices";
 import { useParams } from "react-router-dom";
 import Loader from "../../Shared/Loader/index.jsx";
 
 const ItemListContainer = () => {
-  const { loading, item, setItem, setLoading } = useContext(APIContext);
+  const { loading, item, setItem, setLoading } = useContext(ProductsContext);
 
   const { keyword } = useParams();
 
