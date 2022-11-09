@@ -45,6 +45,7 @@ function newUserEmail(name, email) {
   );
 }
 
+//TODO chequear order mail
 function orderMail(order) {
   ejs.renderFile(
     path.join(process.cwd(), "/public/views/emailOrder.ejs"),

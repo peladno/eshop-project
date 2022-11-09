@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Button from "@mui/material/Button";
-import styles from "./adminForm.module.css";
+import styles from "./adminItemForm.module.css";
 import { APIContext } from "../../Context/ApiContext";
 import ApiServices from "../../Services/ApiServices";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";

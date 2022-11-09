@@ -1,4 +1,3 @@
-//TODO msg router
 const express = require("express");
 const router = express.Router();
 const messages = require("../controllers/messages.controller");

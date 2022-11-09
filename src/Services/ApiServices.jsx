@@ -56,6 +56,10 @@ const buyProduct = (id) => {
   return user.post(`/orders/${id}/shop`);
 };
 
+const allOrders = (id) => {
+  return user.get(`/orders/${id}/allOrders`);
+};
+
 const services = {
   deleteProduct,
   updateProducts,
@@ -71,6 +75,7 @@ const services = {
   deleteProductFromCart,
   buyProduct,
   signup,
+  allOrders,
 };
 
 export default services;

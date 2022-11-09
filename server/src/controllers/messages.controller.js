@@ -1,4 +1,3 @@
-//TODO msg controller
 const messageFactory = require("../DAOs/factoryDAO/MessageDAOfactory.class");
 const DAO = messageFactory.get();
 const logger = require("../logger/logger");

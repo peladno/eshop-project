@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect } from "react";
 import ApiServices from "../Services/ApiServices";
 
 export const USERContext = createContext();
@@ -10,9 +10,9 @@ const USERContextProvider = ({ children }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        await ApiServices.getCurrentUser().then((res)=> {
+        await ApiServices.getCurrentUser().then((res) => {
           setData(res.data);
-        })
+        });
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }

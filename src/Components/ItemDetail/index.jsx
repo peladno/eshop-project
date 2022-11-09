@@ -3,11 +3,11 @@ import ItemCount from "../ItemCount.jsx";
 import Button from "@mui/material/Button";
 import styles from "./itemDetail.module.css";
 import { Link } from "react-router-dom";
-import { Waveform } from "@uiball/loaders";
 import ApiServices from "../../Services/ApiServices";
 import { USERContext } from "../../Context/UserContext.jsx";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";
 import Modal from "../../Shared/Modal/index";
+import Loader from "../../Shared/Loader/index.jsx";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
@@ -49,15 +49,7 @@ const ItemDetail = ({ item, loading }) => {
   return (
     <>
       {loading ? (
-        <div className={styles.loadingContainer}>
-          <Waveform
-            className={styles.loading}
-            size={80}
-            lineWeight={3.5}
-            speed={1}
-            color="black"
-          />
-        </div>
+        <Loader />
       ) : (
         <div className={styles.itemDetailContainer} key={item._id}>
           <img className={styles.image} src={item.photo} alt={item.name} />

@@ -27,7 +27,7 @@ async function allOrders(req, res) {
   try {
     const searchOrders = await OrderDao.findAllOrdersByUser(userID);
     if (searchOrders) {
-      res.status(200).json({ message: "Orders found", searchOrders });
+      res.status(200).json(searchOrders);
     } else {
       res.status(404).json({ message: "No orders found" });
     }

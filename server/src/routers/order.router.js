@@ -5,6 +5,6 @@ const { userAuth } = require("../utils/jwt");
 
 //order process
 router.post("/:id/shop", userAuth, order.orderProcess);
-router.get("/:id/orders", userAuth, order.allOrders);
+router.get("/:id/allOrders", userAuth, order.allOrders);
 
 module.exports = router;

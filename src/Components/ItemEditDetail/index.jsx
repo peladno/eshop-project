@@ -6,6 +6,7 @@ import { NotificationContext } from "../../Context/NotificationContext";
 import { useContext } from "react";
 import { Form, Formik, Field } from "formik";
 import validator from "validator";
+import Loader from "../../Shared/Loader";
 
 function ItemEditDetail({ item, loading }) {
   const { getError, getSuccess } = useContext(NotificationContext);
@@ -71,15 +72,7 @@ function ItemEditDetail({ item, loading }) {
       <h1 className={styles.titleForm}>Your product</h1>
 
       {loading ? (
-        <div className={styles.loadingContainer}>
-          <Waveform
-            className={styles.loading}
-            size={80}
-            lineWeight={3.5}
-            speed={1}
-            color="black"
-          />
-        </div>
+        <Loader />
       ) : (
         <ul className={styles.item}>
           <li>ID: {item._id}</li>

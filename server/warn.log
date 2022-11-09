@@ -1744,3 +1744,15 @@
   label: 'Label🏷️',
   timestamp: 'Nov-08-2022 17:57:13'
 }
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-09-2022 02:19:57'
+}
+{
+  path: '/home/javier/Documentos/Projects/ecommerce/server/public/views/emailOrder.ejs',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-09-2022 02:29:12'
+}

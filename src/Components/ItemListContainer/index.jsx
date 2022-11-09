@@ -6,7 +6,7 @@ import { APIContext } from "../../Context/ApiContext.jsx";
 import SearchBar from "../SearchBar/index.jsx";
 import ApiServices from "../../Services/ApiServices";
 import { useParams } from "react-router-dom";
-
+import Loader from "../../Shared/Loader/index.jsx";
 
 const ItemListContainer = () => {
   const { loading, item, setItem, setLoading } = useContext(APIContext);
@@ -36,15 +36,7 @@ const ItemListContainer = () => {
 
       <h1 className={styles.itemListTitle}>Nuestros productos</h1>
       {loading ? (
-        <div className={styles.loadingContainer}>
-          <Waveform
-            className={styles.loading}
-            size={80}
-            lineWeight={3.5}
-            speed={1}
-            color="black"
-          />
-        </div>
+        <Loader />
       ) : (
         <div className={styles.items}>
           <ItemList products={item} loading={loading} />
