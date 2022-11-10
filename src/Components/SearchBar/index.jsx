@@ -7,15 +7,16 @@ import { Form, Formik, Field } from "formik";
 function SearchBar() {
   const navigate = useNavigate();
 
-  const handleSearch = (values) => {
+  const handleSearch = (values, { resetForm }) => {
     const keyword = values.keyword.trim();
     if (keyword) {
       navigate(`/search/products/${keyword}`);
     } else {
       navigate("/");
     }
+    resetForm({ values: "" });
   };
- 
+
   return (
     <div className={styles.searchBar}>
       <div className={styles.formContainer}>

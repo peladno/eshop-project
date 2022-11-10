@@ -11,11 +11,12 @@ import Loader from "../../Shared/Loader";
 function ItemEditDetail({ item, loading }) {
   const { getError, getSuccess } = useContext(NotificationContext);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
       await ApiServices.updateProducts(item._id, values)
         .then(() => {
           getSuccess("Your item was updated");
+          resetForm({ values: "" });
         })
         .catch((error) => {
           getError("Error updating your product", error);

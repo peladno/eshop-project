@@ -11,18 +11,16 @@ function AdminForm() {
   const { getError, getSuccess } = useContext(NotificationContext);
   const { setItem } = useContext(ProductsContext);
 
-  const handleSubmit = async (values) => {
- 
+  const handleSubmit = async (values, { resetForm }) => {
     try {
-      await ApiServices.saveProduct(values)
-        .then((response) => {
-          const data = response.data;
-          setItem((prev) => [...prev, data]);
-          getSuccess("Your product was added");
-        })
-        .catch((error) => {
-          getError("Error adding your product", error);
-        });
+      await ApiServices.saveProduct(values).then((response) => {
+        const data = response.data;
+        setItem((prev) => [...prev, data]);
+        getSuccess("Your product was added");
+      });
+      resetForm({ values: "" }).catch((error) => {
+        getError("Error adding your product", error);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -117,9 +115,7 @@ function AdminForm() {
               ) : null}
             </div>
             <div className={styles.inputGroup}>
-              <label className={styles.categoryLabel}>
-                Category:
-              </label>
+              <label className={styles.categoryLabel}>Category:</label>
               <Field
                 className={styles.input}
                 as="select"

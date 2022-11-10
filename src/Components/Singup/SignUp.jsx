@@ -9,11 +9,12 @@ import { NotificationContext } from "../../Context/NotificationContext.jsx";
 function SignUp() {
   const { getError, getSuccess } = useContext(NotificationContext);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
       await ApiServices.signup(values).then(() => {
         getSuccess("Signup succesfully");
       });
+      resetForm({ values: "" });
     } catch (error) {
       error.response.status === 409
         ? getError("User already exist")
