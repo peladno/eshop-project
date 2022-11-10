@@ -1828,3 +1828,163 @@
   label: 'Label🏷️',
   timestamp: 'Nov-10-2022 01:14:21'
 }
+{
+  errors: {
+    sender: ValidatorError: Path `sender` is required.
+        at validate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1337:13)
+        at ObjectId.SchemaType.doValidate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1321:7)
+        at /home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:2830:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `sender` is required.',
+        type: 'required',
+        path: 'sender',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'sender',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    'message.text': ValidatorError: Path `message.text` is required.
+        at validate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1337:13)
+        at SchemaString.SchemaType.doValidate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1321:7)
+        at /home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:2830:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `message.text` is required.',
+        type: 'required',
+        path: 'message.text',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'message.text',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'Messages validation failed',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:19:36'
+}
+{
+  errors: {
+    body: ValidatorError: Path `body` is required.
+        at validate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1337:13)
+        at SchemaString.SchemaType.doValidate (/home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/schematype.js:1321:7)
+        at /home/javier/Documentos/Projects/ecommerce/server/node_modules/mongoose/lib/document.js:2830:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `body` is required.',
+        type: 'required',
+        path: 'body',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'body',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'Messages validation failed',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:23:15'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:26:53'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:26:53'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:28:13'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:28:13'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:29:49'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:30:35'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:31:00'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:32:18'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:40:04'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:40:29'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:42:23'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:42:33'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:43:20'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:44:29'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:47:58'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:50:24'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:53:09'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 02:54:50'
+}

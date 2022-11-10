@@ -15,7 +15,7 @@ class messagesDAOMongoDB extends DAO {
   async addMessage(from, message) {
     try {
       const saved = await this.model.create({
-        message: message,
+        body: message,
         from: from,
       });
       return saved;

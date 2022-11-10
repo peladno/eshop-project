@@ -13,6 +13,7 @@ const numCPUs = require("os").cpus().length;
 //config server
 const config = require("./src/utils/config");
 const { URL } = config.mongoLocal;
+const { WEB } = config;
 const app = express();
 const { ruteNotFound } = require("./src/utils/middlewares");
 const logger = require("./src/logger/logger");
@@ -56,18 +57,26 @@ app.use(
 ////////////////////////////////End config/////////////////////////////////////
 
 //websocket
+//TODO implementar get all messages
+
+const {
+  addMessage,
+  getAllMessages,
+} = require("./src/controllers/messages.controller");
+
 const io = new SocketServer(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: WEB,
   },
 });
 
-io.on("connection", (socket) => { 
+io.on("connection", (socket) => {
   logger.info(`${socket.id} User connected`);
-  socket.on("message", (message) => {
-    socket.broadcast.emit("message",{
-      body: message,
-      from: "otro",
+  socket.on("message", async (message) => {
+    await addMessage(message.from, message.body);
+    socket.broadcast.emit("message", {
+      body: message.body,
+      from: message.from,
     });
   });
 });

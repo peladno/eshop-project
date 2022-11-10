@@ -1,14 +1,17 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { io } from "socket.io-client";
 import styles from "./chatContainer.module.css";
 import Button from "@mui/material/Button";
-//TODO conectar con base de dato y mostrar usuario en chat
+import { USERContext } from "../../Context/UserContext";
+
+//TODO conectar con base de dato y mostrar usuario en chat ver si puedo agregar Formik
 const socket = io(process.env.REACT_APP_SERVER);
 
 function ChatContainer() {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const lastMessageRef = useRef(null);
+  const { user } = useContext(USERContext);
 
   useEffect(() => {
     lastMessageRef.current.scrollIntoView({
@@ -32,14 +35,13 @@ function ChatContainer() {
     event.preventDefault();
     const newMessage = {
       body: message,
-      from: "Me",
+      from: user._id,
     };
     setMessages([...messages, newMessage]);
     setMessage("");
-    socket.emit("message", newMessage.body);
+    socket.emit("message", newMessage);
   };
   return (
-    
     <div className={styles.mainContainer}>
       <h1>Chat</h1>
       <div className={styles.chatContainer}>
@@ -61,7 +63,7 @@ function ChatContainer() {
             <li
               key={index}
               className={
-                message.from === "Me" ? styles.fromMe : styles.fromOther
+                message.from === user._id ? styles.fromMe : styles.fromOther
               }
             >
               {message.from}: <b>{message.body}</b>
