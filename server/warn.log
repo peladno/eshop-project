@@ -1026,3 +1026,9 @@
   label: 'Label🏷️',
   timestamp: 'Nov-05-2022 06:00:01'
 }
+{
+  message: 'Error -2 - Ruta /socket.io/?EIO=4&transport=polling&t=OHVtVEI, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-10-2022 01:48:12'
+}
