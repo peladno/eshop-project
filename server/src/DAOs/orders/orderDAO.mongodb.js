@@ -27,7 +27,6 @@ class CartDAOMongoDB extends DAO {
         total: cartTotal,
       });
       const saved = await order.save();
-      console.log(saved);
       return saved;
     } catch (error) {
       logger.error(error);

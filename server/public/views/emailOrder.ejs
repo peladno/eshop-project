@@ -3,12 +3,12 @@
   <body>
     <h1>Order N° <%= cart._id %></h1>
     <p>
-      Hello <%= name %>, your order is in process<br />
+      Hello <%= cart.user.name %>, your order is in process<br />
       Your products are:
     </p>
     <ul>
       <% cart.products.map((item)=>{%>
-      <li><%= item.name %></li>
+      <li>Item: <%= item._id.name %> - N° of items: <%= item.count %></li>
       <%}) %>
     </ul>
     <p>Will let you know when the products are dispatch.</p>

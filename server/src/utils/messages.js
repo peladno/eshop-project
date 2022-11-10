@@ -23,9 +23,9 @@ function newUserEmail(name, email) {
     path.join(process.cwd(), "/public/views/emailNewUser.ejs"),
     { name, email },
     (err, data) => {
+     
       if (err) {
         logger.error(err);
-        throw new Error(err);
       } else {
         const mailOptions = {
           from: `Eshop 📩`,
@@ -45,19 +45,20 @@ function newUserEmail(name, email) {
   );
 }
 
-//TODO chequear order mail
-function orderMail(order) {
+function orderMail(cart) {
   ejs.renderFile(
     path.join(process.cwd(), "/public/views/emailOrder.ejs"),
-    { order },
+    { cart },
     (err, data) => {
+      console.log(cart.user.email);
       if (err) {
         logger.error(err);
+        console.log(err)
       } else {
         const mailOptions = {
           from: `Eshop 📩`,
-          to: `${order.user.email}`,
-          subject: `Order N° ${order._id}`,
+          to: `${cart.user.email}`,
+          subject: `Order N° ${cart._id}`,
           html: data,
         };
 
