@@ -1988,3 +1988,21 @@
   label: 'Label🏷️',
   timestamp: 'Nov-10-2022 02:54:50'
 }
+{
+  message: 'mongoose error MongoServerError: bad auth : Authentication failed.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-11-2022 01:32:53'
+}
+{
+  message: 'Error -2 - Ruta /, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-11-2022 02:02:56'
+}
+{
+  message: 'Error -2 - Ruta /favicon.ico, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-11-2022 02:02:56'
+}

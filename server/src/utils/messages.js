@@ -1,11 +1,6 @@
 const nodemailer = require("nodemailer");
 const config = require("../utils/config.js");
 const logger = require("../logger/logger.js");
-const accountSid = config.ACCOUNT_SID_TWILIO;
-const authToken = config.AUTH_TOKEN_TWILIO;
-const twilioWhatsapp = config.WHATSAPP;
-const messagingServiceSid = config.MSG_SERVICE_SID;
-const client = require("twilio")(accountSid, authToken);
 const ejs = require("ejs");
 const path = require("path");
 
@@ -73,47 +68,6 @@ function orderMail(cart) {
   );
 }
 
-function whatsappOrder(name, phone, cart) {
-  const from = "whatsapp:" + twilioWhatsapp;
-  const to = "whatsapp:" + phone;
-  ejs.renderFile(
-    path.join(process.cwd(), "/public/views/emailOrder.ejs"),
-    { name, phone, cart },
-    (err, data) => {
-      if (err) {
-        logger.error(err);
-      } else {
-        client.messages
-          .create({
-            body: data,
-            from: from,
-            to: to,
-          })
-          .then((message) => logger.info("Whatsapp sent"));
-      }
-    }
-  );
-}
 
-function smsOrder(name, phone, cart) {
-  ejs.renderFile(
-    path.join(process.cwd(), "/public/views/emailOrder.ejs"),
-    { name, phone, cart },
-    (err, data) => {
-      if (err) {
-        logger.error(err);
-      } else {
-        client.messages
-          .create({
-            body: data,
-            messagingServiceSid: messagingServiceSid,
-            to: phone,
-          })
-          .then((message) => logger.info("SMS sent."))
-          .done();
-      }
-    }
-  );
-}
 
-module.exports = { newUserEmail, whatsappOrder, smsOrder, orderMail };
+module.exports = { newUserEmail, orderMail };

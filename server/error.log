@@ -313,3 +313,9 @@
   label: 'Label🏷️',
   timestamp: 'Nov-10-2022 02:54:50'
 }
+{
+  message: 'mongoose error MongoServerError: bad auth : Authentication failed.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-11-2022 01:32:53'
+}
