@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import ItemList from "../ItemList/index.jsx";
 import styles from "./itemListContainer.module.css";
 import { ProductsContext } from "../../Context/ProductsContext";
@@ -6,9 +6,11 @@ import SearchBar from "../SearchBar/index.jsx";
 import ApiServices from "../../Services/ApiServices";
 import { useParams } from "react-router-dom";
 import Loader from "../../Shared/Loader/index.jsx";
+import Categories from "../Categories/index.jsx";
 
 const ItemListContainer = () => {
   const { loading, item, setItem, setLoading } = useContext(ProductsContext);
+  const [category, setCategory] = useState("");
 
   const { keyword } = useParams();
 
@@ -16,9 +18,12 @@ const ItemListContainer = () => {
     setLoading(true);
     const getProducts = async () => {
       try {
-        const response = await ApiServices.getAllProducts(
-          !keyword ? "" : keyword
-        );
+        const response = !category
+          ? await ApiServices.getAllProducts(!keyword ? "" : keyword)
+          : await ApiServices.getAllProductsCategory(
+              !keyword ? "" : keyword,
+              category
+            );
         const data = await response.data;
         setItem(data);
         setLoading(false);
@@ -27,8 +32,11 @@ const ItemListContainer = () => {
       }
     };
     getProducts();
-  }, [keyword, setItem, setLoading]);
+  }, [keyword, setItem, setLoading, category]);
 
+  const setCategoryFunction = (item) => {
+    setCategory(item);
+  };
   return (
     <div className={styles.itemListContainer}>
       <SearchBar />
@@ -38,6 +46,7 @@ const ItemListContainer = () => {
         <Loader />
       ) : (
         <div className={styles.items}>
+          <Categories setCategoryFunction={setCategoryFunction} />
           <ItemList products={item} loading={loading} />
         </div>
       )}

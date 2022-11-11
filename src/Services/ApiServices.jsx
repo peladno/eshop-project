@@ -20,6 +20,10 @@ const getAllProducts = (keyword) => {
   return client.get(`/products?keyword=${keyword}`);
 };
 
+const getAllProductsCategory = (keyword, category) => {
+  return client.get(`/products?keyword=${keyword}&category=${category}`);
+};
+
 const getProductId = (id) => {
   return client.get(`/products/${id}`);
 };
@@ -76,6 +80,7 @@ const services = {
   buyProduct,
   signup,
   allOrders,
+  getAllProductsCategory
 };
 
 export default services;
