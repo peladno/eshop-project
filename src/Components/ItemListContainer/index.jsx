@@ -39,8 +39,9 @@ const ItemListContainer = () => {
   };
   return (
     <div className={styles.itemListContainer}>
+      <h1 className={styles.itemListTitle}>E-shop</h1>
+
       <SearchBar />
-      <h1 className={styles.itemListTitle}>Our products</h1>
       <div className={styles.filterContainer}>
         <p>Filter by:</p>
         <Categories setCategoryFunction={setCategoryFunction} />

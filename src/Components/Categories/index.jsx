@@ -1,4 +1,3 @@
-import styles from "./categories.module.css";
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import Button from "@mui/material/Button";
@@ -84,22 +83,16 @@ export default function CustomizedMenus({ setCategoryFunction }) {
         disableElevation
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
-        sx={{backgroundColor: "gray"}}
+        sx={{ backgroundColor: "gray" }}
       >
         Categories
       </Button>
-      <StyledMenu
-      
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-      >
+      <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {categories.map((category) => (
           <MenuItem
             key={category}
-            onClick={
-              (handleClose,
-              () => setCategoryFunction(category === "All" ? "" : category))
+            onClick={() =>
+              {handleClose(); setCategoryFunction(category === "All" ? "" : category)}
             }
             disableRipple
           >
