@@ -40,13 +40,15 @@ const ItemListContainer = () => {
   return (
     <div className={styles.itemListContainer}>
       <SearchBar />
-
-      <h1 className={styles.itemListTitle}>Nuestros productos</h1>
+      <h1 className={styles.itemListTitle}>Our products</h1>
+      <div className={styles.filterContainer}>
+        <p>Filter by:</p>
+        <Categories setCategoryFunction={setCategoryFunction} />
+      </div>
       {loading ? (
         <Loader />
       ) : (
         <div className={styles.items}>
-          <Categories setCategoryFunction={setCategoryFunction} />
           <ItemList products={item} loading={loading} />
         </div>
       )}

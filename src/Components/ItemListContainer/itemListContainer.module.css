@@ -24,3 +24,15 @@
   justify-content:center;
   min-height: calc(90vh - 55px);
 }
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
+
+.filterContainer p{
+  padding-right: 1rem;
+}

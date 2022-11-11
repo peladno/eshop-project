@@ -1,0 +1,8 @@
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 1rem;
+  width: 95vw;
+}
