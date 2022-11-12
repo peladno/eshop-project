@@ -12,7 +12,7 @@ import { NewCartContext } from "../../Context/NewCartContext";
 
 /*Componente de detalle de productos */
 const ItemDetail = ({ item, loading }) => {
-  const data = useContext(USERContext);
+  const user = useContext(USERContext);
   const { getError, getSuccess } = useContext(NotificationContext);
   const [open, setOpen] = useState(false);
   const { setCart } = useContext(NewCartContext);
@@ -23,7 +23,7 @@ const ItemDetail = ({ item, loading }) => {
 
   const handleSubmit = async (count) => {
     try {
-      const response = await ApiServices.addToCart(data.user._id, {
+      const response = await ApiServices.addToCart(user.user._id, {
         ...item,
         count,
       });

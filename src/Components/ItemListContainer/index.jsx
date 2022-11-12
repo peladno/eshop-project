@@ -33,7 +33,6 @@ const ItemListContainer = () => {
     };
     getProducts();
   }, [keyword, setItem, setLoading, category]);
-
   const setCategoryFunction = (item) => {
     setCategory(item);
   };

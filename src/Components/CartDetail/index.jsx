@@ -12,8 +12,9 @@ const CartDetail = () => {
   const { cart, setCart, removeFromCart, totalPrice, clearCart } =
     useContext(NewCartContext);
   const { getError, getSuccess } = useContext(NotificationContext);
-  const data = useContext(USERContext);
+  const user = useContext(USERContext);
   const tokenKey = localStorage.getItem("token");
+
 
   const handleBuyProduct = async (clientId) => {
     try {
@@ -34,17 +35,17 @@ const CartDetail = () => {
   useEffect(() => {
     const getCart = async () => {
       try {
-        const response = await ApiServices.getCart(data.user._id);
+        const response = await ApiServices.getCart(user.user._id);
         const dataCart = await response.data;
         setCart(dataCart);
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }
     };
-    if (tokenKey && data !== null) {
+    if (tokenKey && user !== null) {
       getCart();
     }
-  }, [tokenKey, data, setCart]);
+  }, [tokenKey, user, setCart]);
 
   return (
     <>

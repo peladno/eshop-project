@@ -7,7 +7,7 @@ import { USERContext } from "../../Context/UserContext";
 
 function CartDetailItem({ products, removeFromCart }) {
   const { getError, getSuccess } = useContext(NotificationContext);
-  const data = useContext(USERContext);
+  const user = useContext(USERContext);
 
   const handleRemoveProduct = async (idUser, idItem, itemName) => {
     try {
@@ -25,7 +25,7 @@ function CartDetailItem({ products, removeFromCart }) {
   };
 
   return products.map((item) => (
-    <div className={styles.cartItem} key={item._id._id}>
+    <div className={styles.cartItem} key={item._id}>
       <img src={item._id.photo} alt={item._id.name} />
       <h2>{item._id.name}</h2>
       <div className={styles.quantityItem}>
@@ -37,7 +37,7 @@ function CartDetailItem({ products, removeFromCart }) {
         <p>${item._id.price * item.count}</p>
       </div>
       <IconButton
-        onClick={() => handleRemoveProduct(data.user._id, item._id._id, item._id.name)}
+        onClick={() => handleRemoveProduct(user.user._id, item._id._id, item._id.name)}
       >
         <DeleteForeverIcon className={styles.delete} style={{ color: "red" }} />
       </IconButton>

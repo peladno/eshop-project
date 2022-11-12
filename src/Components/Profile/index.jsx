@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { USERContext } from "../../Context/UserContext";
+import Loader from "../../Shared/Loader";
 import styles from "./profile.module.css";
 
 function Profile() {
-  const { user } = useContext(USERContext);
-
+  const user = useContext(USERContext);
+  
   return (
     <div className={styles.profileContainer}>
-      <div className={styles.profile}>
+      {user === null ? <Loader/>: <div className={styles.profile}>
         <h1 className={styles.profileTitle} >Your Profile</h1>
         <ul>
           <img
@@ -15,13 +16,13 @@ function Profile() {
             src={user.photo}
             alt="userPhoto"
           />
-          <li>Username: {user.username}</li>
-          <li>Name: {user.name}</li>
-          <li>Email: {user.email}</li>
-          <li>Phone: {user.phone}</li>
-          <li>Address: {user.address}</li>
+          <li>Username: {user.user.username}</li>
+          <li>Name: {user.user.name}</li>
+          <li>Email: {user.user.email}</li>
+          <li>Phone: {user.user.phone}</li>
+          <li>Address: {user.user.address}</li>
         </ul>
-      </div>
+      </div>}
     </div>
   );
 }

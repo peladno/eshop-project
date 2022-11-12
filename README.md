@@ -1,6 +1,10 @@
+## About this project:
 
+This project was focused on the backend, after that I used and modified a project from the frontend react course.
 
-## Deployment
+Using Express and Node js I created a API server to use it on a ecommerce using Mongo DB as a database.
+
+## Deployment:
 
 To deploy this project run
 
@@ -10,12 +14,17 @@ To deploy this project run
   npm start
 ```
 
-## API documentation
+To deploy server 
+```bash
+  npm start
+```
+
+## API documentation:
 
 Made it on postman you can look or it in this link:
 [API](https://documenter.getpostman.com/view/21533137/2s8YerMs3d) 
 
-## Libraries used on frontend
+## Libraries used on frontend:
 
 * React
 * Axios
@@ -26,7 +35,8 @@ Made it on postman you can look or it in this link:
 * Materrial UI
 * React router dom
 
-## Libraries used on frontend
+## Libraries used on frontend:
+
 * Bcrypt (Encrypt password).
 * Connect-mongo (Conecting server to database).
 * Cookie-parser (Set cookies).
@@ -42,7 +52,8 @@ Made it on postman you can look or it in this link:
 * Socket io (Web sockets to use it on chat).
 * Winston (Set logs for warns, info or errors).
 
-## Author
+## Author:
 
 * Github: [Peladno](https://github.com/peladno)
 * LinkedIN: [JavierP](https://www.linkedin.com/in/javier-perez-u/) 
+* Portfolio [Link](https://portfoliojavierperez.web.app/)

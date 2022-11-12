@@ -4,24 +4,29 @@ import ApiServices from "../Services/ApiServices";
 export const USERContext = createContext();
 
 const USERContextProvider = ({ children }) => {
-  const [data, setData] = useState(null);
+  const [user, setUser] = useState(null);
   const tokenKey = localStorage.getItem("token");
 
   useEffect(() => {
+  
     const getUser = async () => {
       try {
         await ApiServices.getCurrentUser().then((res) => {
-          setData(res.data);
+          setUser(res.data);
+        
         });
       } catch (error) {
         throw new Error(`error fetching data ${error}`);
       }
     };
-    if (tokenKey) {
-      getUser();
-    }
+
+    tokenKey && getUser();
   }, [tokenKey]);
 
-  return <USERContext.Provider value={data}>{children}</USERContext.Provider>;
+  return (
+    <USERContext.Provider value={user}>
+      {children}
+    </USERContext.Provider>
+  );
 };
 export default USERContextProvider;

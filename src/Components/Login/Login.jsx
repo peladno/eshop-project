@@ -15,11 +15,12 @@ function Login() {
     try {
       const response = await ApiServices.loginUser(values);
 
-      const { token } = response.data;
+      const { token, user } = response.data;
 
       if (token !== null) {
         getSuccess("Login succesfully");
         localStorage.setItem("token", token);
+        localStorage.setItem("role", user.role)
         navigate("/");
         window.location.reload();
       }

@@ -10,16 +10,6 @@ const ruteNotFound = (req, res, next) => {
   });
 };
 
-const isAdmin = (request, resolve, next) =>{
-  if ("admin" in request.headers) next();
-  else {
-    resolve.status(400);
-    resolve.send("No admin");
-  }
-}
-
 
 module.exports = {
-  ruteNotFound,
-  isAdmin
-};
+  ruteNotFound}

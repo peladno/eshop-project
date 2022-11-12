@@ -17,17 +17,19 @@ import logo from "../../images/Nook_Inc.png";
 import styles from "./index.module.css";
 import { USERContext } from "../../Context/UserContext.jsx";
 import APiServices from "../../Services/ApiServices";
+import isAdmin from "../../utils/roleAutentication";
 
 const ResponsiveAppBar = () => {
   const logout = async () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("role")
     return await APiServices.userLogout().then((response) => {
       window.location.reload();
       return response.data;
     });
   };
 
-  const data = React.useContext(USERContext);
+  const user = React.useContext(USERContext);
 
   const pages = ["Login", "Signup"];
   const settings = ["Profile", "Chat", "Orders"];
@@ -147,7 +149,7 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {data && `Hi! ${data.user.username}`}
+            {user && `Hi! ${user.user.username}`}
             <CartWidget />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -170,7 +172,7 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {data ? (
+              {user ? (
                 <div>
                   <MenuItem
                     onClick={() => {
@@ -207,7 +209,7 @@ const ResponsiveAppBar = () => {
                   </MenuItem>
                 ))
               )}
-              {data?.user.role === "admin" && (
+              {isAdmin() && (
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">
                     <Link

@@ -5,13 +5,14 @@ import Button from "@mui/material/Button";
 import { USERContext } from "../../Context/UserContext";
 
 //TODO conectar con base de dato y mostrar usuario en chat ver si puedo agregar Formik
-const socket = io(process.env.REACT_APP_SERVER);
+const socket = io("http://localhost:8080/");
 
 function ChatContainer() {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const lastMessageRef = useRef(null);
-  const { user } = useContext(USERContext);
+  const user = useContext(USERContext);
+
 
   useEffect(() => {
     lastMessageRef.current.scrollIntoView({
@@ -35,7 +36,7 @@ function ChatContainer() {
     event.preventDefault();
     const newMessage = {
       body: message,
-      from: user._id,
+      from: user.user._id,
     };
     setMessages([...messages, newMessage]);
     setMessage("");
@@ -63,7 +64,7 @@ function ChatContainer() {
             <li
               key={index}
               className={
-                message.from === user._id ? styles.fromMe : styles.fromOther
+                message.from === user.user._id ? styles.fromMe : styles.fromOther
               }
             >
               {message.from}: <b>{message.body}</b>

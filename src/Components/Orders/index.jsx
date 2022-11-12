@@ -3,18 +3,18 @@ import ApiServices from "../../Services/ApiServices";
 import { USERContext } from "../../Context/UserContext";
 import OrdersList from "../OrdersList";
 import Loader from "../../Shared/Loader";
-import styles from "./orders.module.css"
+import styles from "./orders.module.css";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { user } = useContext(USERContext);
+  const user = useContext(USERContext);
 
   useEffect(() => {
     setLoading(true);
     const getOrders = async () => {
       try {
-        const response = await ApiServices.allOrders(user._id);
+        const response = await ApiServices.allOrders(user?.user._id);
         const data = await response.data;
         setOrders(data);
         setLoading(false);
@@ -22,12 +22,16 @@ function Orders() {
         throw new Error(`Error fetching data ${error}`);
       }
     };
-    getOrders();
-  }, [user._id]);
+    user != null && getOrders();
+  }, [user?.user._id, user]);
 
   return (
     <div className={styles.orderContainer}>
-      {loading ? <Loader /> : orders.map((item) => <OrdersList item={item} />)}
+      {loading ? (
+        <Loader />
+      ) : (
+        orders.map((item, index) => <OrdersList key={index} item={item} />)
+      )}
     </div>
   );
 }

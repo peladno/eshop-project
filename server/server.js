@@ -66,7 +66,7 @@ const {
 
 const io = new SocketServer(httpServer, {
   cors: {
-    origin: WEB,
+    origin: "http://localhost:3000",
   },
 });
 
