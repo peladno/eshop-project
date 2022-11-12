@@ -10,15 +10,37 @@ To deploy this project run
   npm start
 ```
 
-## Documentation of libraries
+## API documentation
 
-[React JS](https://reactjs.org/docs/getting-started.html)
+Made it on postman you can look or it in this link:
+[API](https://documenter.getpostman.com/view/21533137/2s8YerMs3d) 
 
-[React Router DOM](https://v5.reactrouter.com/web/guides/quick-start)
+## Libraries used on frontend
 
-[Material UI](https://mui.com/material-ui/getting-started/installation/)
+* React
+* Axios
+* Uiball Loader
+* Formik
+* Validator
+* Socket io
+* Materrial UI
+* React router dom
 
-[UiLoaders](https://uiball.com/loaders/)
+## Libraries used on frontend
+* Bcrypt (Encrypt password).
+* Connect-mongo (Conecting server to database).
+* Cookie-parser (Set cookies).
+* Cors (Setting cors to server).
+* Dotenv (Set enviroment variables).
+* Ejs (Used for email views).
+* Express 
+* Express-session
+* Json web token (Setting token for each user).
+* Mongoose
+* Nodemailer (Set emails).
+* Passport (Autentication).
+* Socket io (Web sockets to use it on chat).
+* Winston (Set logs for warns, info or errors).
 
 ## Author
 

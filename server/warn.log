@@ -2016,3 +2016,93 @@
   label: 'Label🏷️',
   timestamp: 'Nov-11-2022 02:12:39'
 }
+{
+  code: 'EAUTH',
+  response: '535-5.7.8 Username and Password not accepted. Learn more at\n' +
+    '535 5.7.8  https://support.google.com/mail/?p=BadCredentials k9-20020a056870958900b0010d5d5c3fc3sm2300364oao.8 - gsmtp',
+  responseCode: 535,
+  command: 'AUTH PLAIN',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 02:32:26'
+}
+{
+  message: 'Error -2 - Ruta /user, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 02:34:09'
+}
+{
+  message: 'Error -2 - Ruta /api/cart/, Método GET no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 02:35:30'
+}
+{
+  message: 'Error -2 - Ruta /logout, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 02:41:33'
+}
+{
+  message: 'Error -2 - Ruta /products/cart, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:07:19'
+}
+{
+  message: 'Error -2 - Ruta /636abc661d86effaddf90ae1/cart/products, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:11:46'
+}
+{
+  message: 'Error to edit cart ValidationError: products.0.count: Path `count` is required., products.0._id: Path `_id` is required.',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:40:00'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:40:00'
+}
+{
+  message: "Error to edit cart TypeError: Cannot read properties of undefined (reading 'toString')",
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:41:08'
+}
+{
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:41:08'
+}
+{
+  message: 'Error -2 - Ruta /636abc661d86effaddf90ae1/shop, Método POST no implementado.',
+  level: 'warn',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:42:04'
+}
+{
+  code: 'EAUTH',
+  response: '535-5.7.8 Username and Password not accepted. Learn more at\n' +
+    '535 5.7.8  https://support.google.com/mail/?p=BadCredentials m13-20020a4ad50d000000b0049bdee12662sm1548820oos.6 - gsmtp',
+  responseCode: 535,
+  command: 'AUTH PLAIN',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:43:15'
+}
+{
+  message: 'Cannot find id 636ca48fe1df82c6e7456fe CastError: Cast to ObjectId failed for value "636ca48fe1df82c6e7456fe" (type string) at path "_id" for model "products"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:49:53'
+}
+{
+  message: 'Cannot find id 636ca48fe1df82c6e7456fe CastError: Cast to ObjectId failed for value "636ca48fe1df82c6e7456fe" (type string) at path "_id" for model "products"',
+  level: 'error',
+  label: 'Label🏷️',
+  timestamp: 'Nov-12-2022 03:51:25'
+}
