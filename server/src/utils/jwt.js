@@ -57,7 +57,8 @@ const adminAuth = async (req, res, next) => {
 
 const userAuth = async (req, res, next) => {
   const headers = req.headers["authorization"];
-  const token = headers.split(" ")[1];
+  if(headers) {
+    const token = headers.split(" ")[1];
   if (!token) {
     return res.status(401).json({
       message: "No token provided",
@@ -72,6 +73,9 @@ const userAuth = async (req, res, next) => {
     req.user = decoded.user;
     next();
   });
+  } else {
+    logger.error("Header token missing")
+  }
 };
 
 exports.login = login;

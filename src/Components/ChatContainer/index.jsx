@@ -4,7 +4,7 @@ import styles from "./chatContainer.module.css";
 import Button from "@mui/material/Button";
 import { USERContext } from "../../Context/UserContext";
 
-//TODO conectar con base de dato y mostrar usuario en chat ver si puedo agregar Formik
+
 const socket = io("http://localhost:8080/");
 
 function ChatContainer() {
