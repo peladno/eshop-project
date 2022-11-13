@@ -74,12 +74,6 @@ input:valid ~ label {
   margin: 3rem;
 }
 
-.message {
-  font-size: 1.2em;
-  text-align: center;
-  color: #36a936;
-}
-
 @media (min-width: 768px) {
   .checkoutForm {
     width: 60vw;

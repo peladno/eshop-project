@@ -26,6 +26,13 @@
 .inputGroup {
   position: relative;
   margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.inputGroup p{
+  font-size: .8rem;
+  color: #d90000;
+  position: absolute;
 }
 
 .input {

@@ -25,7 +25,7 @@ function validationProduct(data) {
       "Product fields must have: name, price, photo, category, stock, code, description"
     );
   }
-  /*if (typeof price === "number") {
+  if (typeof price === "number") {
     throw new Error("Price must be a number");
   }
 
@@ -33,9 +33,9 @@ function validationProduct(data) {
     throw new Error("Stock must be a number");
   }
 
-  if (typeof code === "string") {
-    throw new Error("Code must be a string");
-  }*/
+  if (typeof code === "number") {
+    throw new Error("Code must be a number");
+  }
 
   if (stock <= 0) {
     throw new Error("Stock must be higher than 0");
@@ -50,9 +50,7 @@ function validationProduct(data) {
   if (!validCharacters.exec(description)) {
     throw new Error("Description must to be only letters, number and spaces");
   }
-  /*if (!validCharacters.exec(photo)) {
-    throw new Error("Photo must  be and url");
-  }*/
+ 
   if (!validCharacters.exec(category)) {
     throw new Error("Categpry must has only letters, numbers and /");
   }
@@ -60,7 +58,6 @@ function validationProduct(data) {
 
 function validationUserLogin(data) {
   const { username, password } = data;
-  const validCharacters = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚú -:/\s]+$/;
 
   if (!username || !password) {
     throw new Error("User fields must have: username, password.");

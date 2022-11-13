@@ -57,7 +57,6 @@ app.use(
 ////////////////////////////////End config/////////////////////////////////////
 
 //websocket
-//TODO implementar get all messages
 
 const {
   addMessage,

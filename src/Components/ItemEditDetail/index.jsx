@@ -44,19 +44,19 @@ function ItemEditDetail({ item, loading }) {
     if (!values.price) {
       errors.price = "Price is required";
     } else if (!validator.isNumeric(values.price)) {
-      errors.price = "Invalid character";
+      errors.price = "Invalid character, should be a number";
     }
 
     if (!values.code) {
       errors.code = "Code is required";
     } else if (!validator.isNumeric(values.code)) {
-      errors.code = "Invalid character";
+      errors.code = "Invalid character, should be a number";
     }
 
     if (!values.stock) {
       errors.stock = "Stock is required";
     } else if (!validator.isNumeric(values.stock)) {
-      errors.stock = "Invalid character";
+      errors.stock = "Invalid character, should be a number";
     }
 
     if (!values.photo) {
