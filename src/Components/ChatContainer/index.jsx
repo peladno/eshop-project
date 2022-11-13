@@ -4,15 +4,13 @@ import styles from "./chatContainer.module.css";
 import Button from "@mui/material/Button";
 import { USERContext } from "../../Context/UserContext";
 
-
-const socket = io("http://localhost:8080/");
+const socket = io("https://ecommerce-server-production.up.railway.app/");
 
 function ChatContainer() {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const lastMessageRef = useRef(null);
   const user = useContext(USERContext);
-
 
   useEffect(() => {
     lastMessageRef.current.scrollIntoView({
@@ -64,7 +62,9 @@ function ChatContainer() {
             <li
               key={index}
               className={
-                message.from === user.user._id ? styles.fromMe : styles.fromOther
+                message.from === user.user._id
+                  ? styles.fromMe
+                  : styles.fromOther
               }
             >
               {message.from}: <b>{message.body}</b>

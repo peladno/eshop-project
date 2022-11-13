@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const tokenKey = localStorage.getItem("token");
+const web = "https://ecommerce-server-production.up.railway.app/";
 
 export const user = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: web,
   headers: {
     Authorization: `Bearer ${tokenKey}`,
     "Content-type": "application/json",
@@ -12,7 +13,7 @@ export const user = axios.create({
 });
 
 export const clientAdmin = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: web,
   headers: {
     Authorization: `Bearer ${tokenKey}`,
     "Content-type": "application/json",
@@ -20,7 +21,7 @@ export const clientAdmin = axios.create({
 });
 
 export const client = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: web,
   headers: {
     "Content-type": "application/json",
     withCredentials: true,
