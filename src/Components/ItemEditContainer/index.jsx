@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./itemEditContainer.module.css";
 import { useParams } from "react-router-dom";
 import ItemEditDetail from "../ItemEditDetail";
+import ApiServices from "../../Services/ApiServices"
 
 function ItemEditContainer() {
   const [item, setItem] = useState([]);
@@ -14,8 +15,8 @@ function ItemEditContainer() {
 
     const fetchData = async () => {
       try {
-        const result = await fetch("http://localhost:8080/api/products/" + id);
-        const data = await result.json();
+        const result = await ApiServices.getProductId(id)
+        const data = await result.data
         setItem(data);
       } catch (error) {
         console.log(error);

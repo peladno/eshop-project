@@ -65,7 +65,7 @@ const {
 
 const io = new SocketServer(httpServer, {
   cors: {
-    origin: WEB,
+    origin: "*",
   },
 });
 
