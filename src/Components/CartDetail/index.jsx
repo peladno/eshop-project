@@ -8,6 +8,8 @@ import CartDetailItem from "../CartDetailItem";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";
 import { USERContext } from "../../Context/UserContext";
 
+//TODO agregar redux
+
 const CartDetail = () => {
   const { cart, setCart, removeFromCart, totalPrice, clearCart } =
     useContext(NewCartContext);

@@ -5,7 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { USERContext } from "../../Context/UserContext";
 
-//componente de boton contador
+//TODO agregar redux
 
 function ItemCount({ stock, initial, addCart, setOpen }) {
   const [count, setCount] = useState(initial);

@@ -3,6 +3,8 @@ import ApiServices from "../Services/ApiServices";
 
 export const USERContext = createContext();
 
+//TODO eliminar esto despues de implementar redux
+
 const USERContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const tokenKey = localStorage.getItem("token");

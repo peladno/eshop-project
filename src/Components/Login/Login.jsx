@@ -1,47 +1,45 @@
-import { useContext } from "react";
-import Button from "@mui/material/Button";
-import styles from "./login.module.css";
-import ApiServices from "../../Services/ApiServices";
-import { Form, Formik, Field } from "formik";
-import { useNavigate } from "react-router-dom";
-import { NotificationContext } from "../../Context/NotificationContext.jsx";
+import { useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
+import styles from './login.module.css';
+import ApiServices from '../../Services/ApiServices';
+import { Form, Formik, Field } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { NotificationContext } from '../../Context/NotificationContext.jsx';
+import { userLogin } from '../../store/auth.slice';
 
-
+//TODO user unwrap de redux para manejar el estado del submit
 function Login() {
   const navigate = useNavigate();
   const { getError, getSuccess } = useContext(NotificationContext);
+  const dispatch = useDispatch();
 
-  const handleSubmit = async (values) => {
-    try {
-      const response = await ApiServices.loginUser(values);
-
-      const { token, user } = response.data;
-
-      if (token !== null) {
-        getSuccess("Login succesfully");
-        localStorage.setItem("token", token);
-        localStorage.setItem("role", user.role)
-        navigate("/");
-        window.location.reload();
-      }
-    } catch (error) {
-      error.response.status === 401
-        ? getError("Username or password incorrect")
-        : getError("Oops something happened", error);
-    }
+  const handleSubmit = (values) => {
+    dispatch(userLogin(values));
   };
+
+  const { token, error, success, user } = useSelector((state) => state.auth);
+
+  console.log(error)
+
+  useEffect(() => {
+    if (success === true) {
+      navigate('/');
+      getSuccess('Login succesfully');
+    }
+  }, [navigate, success, getSuccess]);
 
   const validateForm = (values) => {
     const errors = {};
 
     if (!values.username) {
-      errors.username = "User is required";
+      errors.username = 'User is required';
     } else if (values.username.length > 15) {
-      errors.username = "Must be 15 characters or less";
+      errors.username = 'Must be 15 characters or less';
     }
 
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = 'Password is required';
     }
     return errors;
   };
@@ -51,7 +49,7 @@ function Login() {
       <Formik
         validate={validateForm}
         onSubmit={handleSubmit}
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ username: '', password: '' }}
       >
         {(formik) => (
           <Form className={styles.adminForm}>
@@ -59,8 +57,8 @@ function Login() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="text"
-                name="username"
+                type='text'
+                name='username'
                 maxLength={20}
               />
               <label className={styles.userLabel}>Username</label>
@@ -73,8 +71,8 @@ function Login() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="password"
-                name="password"
+                type='password'
+                name='password'
                 maxLength={20}
               />
               <label className={styles.userLabel}>Password</label>
@@ -82,7 +80,7 @@ function Login() {
                 <p>{formik.errors.password}</p>
               ) : null}
             </div>
-            <Button variant="contained" type="submit">
+            <Button variant='contained' type='submit'>
               Submit
             </Button>
           </Form>

@@ -10,7 +10,7 @@ import Modal from "../../Shared/Modal/index";
 import Loader from "../../Shared/Loader/index.jsx";
 import { NewCartContext } from "../../Context/NewCartContext";
 
-/*Componente de detalle de productos */
+//TODO agregar redux
 const ItemDetail = ({ item, loading }) => {
   const user = useContext(USERContext);
   const { getError, getSuccess } = useContext(NotificationContext);

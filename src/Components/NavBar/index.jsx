@@ -19,6 +19,8 @@ import { USERContext } from "../../Context/UserContext.jsx";
 import APiServices from "../../Services/ApiServices";
 import isAdmin from "../../utils/roleAutentication";
 
+//TODO agregar redux
+
 const ResponsiveAppBar = () => {
   const logout = async () => {
     localStorage.removeItem("token");

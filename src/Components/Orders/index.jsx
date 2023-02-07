@@ -10,6 +10,8 @@ function Orders() {
   const [loading, setLoading] = useState(false);
   const user = useContext(USERContext);
 
+  //TODO usar redux
+
   useEffect(() => {
     setLoading(true);
     const getOrders = async () => {

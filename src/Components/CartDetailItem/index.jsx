@@ -5,6 +5,8 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { NotificationContext } from "../../Context/NotificationContext.jsx";
 import { USERContext } from "../../Context/UserContext";
 
+//TODO agregar redux
+
 function CartDetailItem({ products, removeFromCart }) {
   const { getError, getSuccess } = useContext(NotificationContext);
   const user = useContext(USERContext);

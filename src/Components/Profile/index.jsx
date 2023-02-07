@@ -5,6 +5,8 @@ import styles from "./profile.module.css";
 
 function Profile() {
   const user = useContext(USERContext);
+
+  //TODO usar redux
   
   return (
     <div className={styles.profileContainer}>

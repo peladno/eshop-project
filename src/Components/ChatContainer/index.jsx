@@ -4,6 +4,8 @@ import styles from './chatContainer.module.css';
 import Button from '@mui/material/Button';
 import { USERContext } from '../../Context/UserContext';
 
+//TODO agregar redux
+
 const socket = io(process.env.REACT_APP_SERVER);
 
 function ChatContainer() {
