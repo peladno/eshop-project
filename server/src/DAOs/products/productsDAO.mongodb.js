@@ -97,6 +97,7 @@ class ProductDAOMongoDB extends DAO {
       if (!updated) {
         return { error: "product not found" };
       } else {
+        //TODO en vez de mandar el updated, mandar el producto mismo
         return updated;
       }
     } catch (error) {

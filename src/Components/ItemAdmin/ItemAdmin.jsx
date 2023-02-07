@@ -40,7 +40,7 @@ function ItemAdmin({ id, name, price, description, photo, stock }) {
           <li>Name: {name}</li>
           <li>Price: {price}</li>
           <li>
-            <img src={photo} alt={name} />
+            <img className={styles.adminItemPhoto} src={photo} alt={name} />
           </li>
           <li>Stock: {stock}</li>
         </ul>

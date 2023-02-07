@@ -176,7 +176,6 @@ function ItemEditDetail({ item, loading }) {
                 name="photo"
                 value={formik.values.photo}
                 onChange={formik.handleChange}
-                maxLength={100}
               />
               <label className={styles.userLabel}>Photo</label>
               {formik.touched.photo && formik.errors.photo ? (

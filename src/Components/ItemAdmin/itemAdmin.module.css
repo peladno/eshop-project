@@ -21,4 +21,6 @@
   flex-direction: column;
   justify-content: center;
 }
-
+.adminItemPhoto {
+  width: 15rem;
+}

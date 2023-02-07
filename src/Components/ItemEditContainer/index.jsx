@@ -9,7 +9,6 @@ function ItemEditContainer() {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  //TODO cambiar a API services
   useEffect(() => {
     setLoading(true);
 
