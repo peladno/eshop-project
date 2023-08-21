@@ -1,24 +1,25 @@
-import { useContext } from "react";
-import Button from "@mui/material/Button";
-import styles from "./signup.module.css";
-import { Form, Formik, Field } from "formik";
-import validator from "validator";
-import ApiServices from "../../Services/ApiServices";
-import { NotificationContext } from "../../Context/NotificationContext.jsx";
+import { useContext } from 'react';
+import Button from '@mui/material/Button';
+import styles from './signup.module.css';
+import { Form, Formik, Field } from 'formik';
+import validator from 'validator';
+import ApiServices from '../../Services/ApiServices';
+import { NotificationContext } from '../../Context/NotificationContext.jsx';
 
 function SignUp() {
   const { getError, getSuccess } = useContext(NotificationContext);
 
   const handleSubmit = async (values, { resetForm }) => {
+    console.log('values');
     try {
       await ApiServices.signup(values).then(() => {
-        getSuccess("Signup succesfully");
+        getSuccess('Signup succesfully');
       });
-      resetForm({ values: "" });
+      resetForm({ values: '' });
     } catch (error) {
       error.response.status === 409
-        ? getError("User already exist")
-        : getError("Error signing up");
+        ? getError('User already exist')
+        : getError('Error signing up');
     }
   };
 
@@ -26,51 +27,51 @@ function SignUp() {
     const errors = {};
 
     if (!values.name) {
-      errors.username = "User is required";
+      errors.name = 'Name is required';
     }
 
     if (!values.username) {
-      errors.username = "User is required";
+      errors.username = 'User is required';
     } else if (values.username.length > 15) {
-      errors.username = "Must be 15 characters or less";
+      errors.username = 'Must be 15 characters or less';
     }
 
     if (!values.email) {
-      errors.email = "Email is required";
+      errors.email = 'Email is required';
     } else if (!validator.isEmail(values.email)) {
-      errors.email = "Invalid email address";
+      errors.email = 'Invalid email address';
     }
 
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = 'Password is required';
     } else if (!validator.isStrongPassword(values.password)) {
       errors.password =
-        "Password must contain one Capital letter, Small Letter, Number & Special symbol";
+        'Password must contain one Capital letter, Small Letter, Number & Special symbol';
     }
 
     if (!values.confirmPassword) {
-      errors.confirmPassword = "Confirm password is required";
+      errors.confirmPassword = 'Confirm password is required';
     } else if (values.password !== values.confirmPassword) {
-      errors.confirmPassword = "Password does not match";
+      errors.confirmPassword = 'Password does not match';
     }
 
     if (!values.phone) {
-      errors.phone = "Phone Number is required";
+      errors.phone = 'Phone Number is required';
     } else if (
-      !validator.isMobilePhone(values.phone, "es-CL", { strictMode: true })
+      !validator.isMobilePhone(values.phone, 'es-CL', { strictMode: true })
     ) {
-      errors.phone = "Invalid Phone Number - +56XXXXXXXX";
+      errors.phone = 'Invalid Phone Number - +56XXXXXXXX';
     }
 
     if (!values.address) {
-      errors.address = "Address is required";
+      errors.address = 'Address is required';
     }
 
-    if (!values.photo) {
-      errors.photo = "Photo url is required";
-    } else if (!validator.isURL(values.photo, { require_protocol: true })) {
-      errors.code = "Invalid character";
-    }
+    // if (!values.photo) {
+    //   errors.photo = 'Photo url is required';
+    // } else if (!validator.isURL(values.photo, { require_protocol: true })) {
+    //   errors.code = 'Invalid character';
+    // }
 
     return errors;
   };
@@ -81,14 +82,14 @@ function SignUp() {
         validate={validateForm}
         onSubmit={handleSubmit}
         initialValues={{
-          name: "",
-          username: "",
-          password: "",
-          email: "",
-          photo: "",
-          phone: "",
-          address: "",
-          confirmPassword: "",
+          name: '',
+          username: '',
+          password: '',
+          email: '',
+          photo: '',
+          phone: '',
+          address: '',
+          confirmPassword: '',
         }}
       >
         {(formik) => (
@@ -97,8 +98,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="text"
-                name="username"
+                type='text'
+                name='username'
                 maxLength={20}
                 onChange={formik.handleChange}
                 value={formik.values.username}
@@ -112,8 +113,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="text"
-                name="name"
+                type='text'
+                name='name'
                 maxLength={20}
                 onChange={formik.handleChange}
                 value={formik.values.name}
@@ -127,8 +128,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="email"
-                name="email"
+                type='email'
+                name='email'
                 maxLength={50}
                 onChange={formik.handleChange}
                 value={formik.values.email}
@@ -143,8 +144,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="text"
-                name="phone"
+                type='text'
+                name='phone'
                 maxLength={15}
                 onChange={formik.handleChange}
                 value={formik.values.phone}
@@ -159,8 +160,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="text"
-                name="photo"
+                type='text'
+                name='photo'
                 maxLength={100}
                 onChange={formik.handleChange}
                 value={formik.values.photo}
@@ -175,8 +176,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="text"
-                name="address"
+                type='text'
+                name='address'
                 maxLength={25}
                 onChange={formik.handleChange}
                 value={formik.values.address}
@@ -191,8 +192,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="password"
-                name="password"
+                type='password'
+                name='password'
                 maxLength={20}
                 onChange={formik.handleChange}
                 value={formik.values.password}
@@ -205,8 +206,8 @@ function SignUp() {
             <div className={styles.inputGroup}>
               <Field
                 className={styles.input}
-                type="password"
-                name="confirmPassword"
+                type='password'
+                name='confirmPassword'
                 maxLength={20}
                 onChange={formik.handleChange}
                 value={formik.values.confirmPassword}
@@ -218,7 +219,7 @@ function SignUp() {
               ) : null}
             </div>
 
-            <Button variant="contained" type="submit">
+            <Button variant='contained' type='submit'>
               Submit
             </Button>
           </Form>
