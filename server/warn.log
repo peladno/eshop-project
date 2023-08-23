@@ -2454,27 +2454,3 @@
   label: 'Label🏷️',
   timestamp: 'Nov-13-2022 18:10:31'
 }
-{
-  message: 'Error -2 - Ruta /, Método GET no implementado.',
-  level: 'warn',
-  label: 'Label🏷️',
-  timestamp: 'Jan-29-2023 03:57:19'
-}
-{
-  message: 'Error -2 - Ruta /favicon.ico, Método GET no implementado.',
-  level: 'warn',
-  label: 'Label🏷️',
-  timestamp: 'Jan-29-2023 03:57:19'
-}
-{
-  message: 'Error -2 - Ruta /apple-touch-icon-precomposed.png, Método GET no implementado.',
-  level: 'warn',
-  label: 'Label🏷️',
-  timestamp: 'Jan-29-2023 03:57:19'
-}
-{
-  message: 'Error -2 - Ruta /apple-touch-icon.png, Método GET no implementado.',
-  level: 'warn',
-  label: 'Label🏷️',
-  timestamp: 'Jan-29-2023 03:57:19'
-}
